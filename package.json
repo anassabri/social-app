@@ -279,7 +279,9 @@
     "ts-node": "^10.9.1",
     "ts-plugin-sort-import-suggestions": "^1.0.4",
     "typescript": "^5.9.2",
-    "webpack-bundle-analyzer": "^4.10.1"
+    "webpack-bundle-analyzer": "^4.10.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
   },
   "resolutions": {
     "@react-native/babel-preset": "0.81.5",

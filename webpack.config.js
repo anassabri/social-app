@@ -32,6 +32,14 @@ module.exports = async function (env, argv) {
     ...(config.module.rules || []),
     reactNativeWebWebviewConfiguration,
   ]
+  
+  config.devServer = {
+    ...config.devServer,
+    host: '0.0.0.0',
+    port: 5000,
+    allowedHosts: 'all',
+  }
+  
   if (env.mode === 'development') {
     config.plugins.push(new ReactRefreshWebpackPlugin())
   } else {
