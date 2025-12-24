@@ -18,7 +18,15 @@ const reactNativeWebWebviewConfiguration = {
   },
 }
 
-module.exports = async function (env, argv) {
+module.exports = async function (env = {}, argv = {}) {
+  // Ensure env has mode set from argv or environment
+  if (!env.mode && argv.mode) {
+    env.mode = argv.mode
+  }
+  if (!env.mode) {
+    env.mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
+  }
+  
   let config = await createExpoWebpackConfigAsync(env, argv)
   config = withAlias(config, {
     'react-native$': 'react-native-web',
@@ -33,11 +41,14 @@ module.exports = async function (env, argv) {
     reactNativeWebWebviewConfiguration,
   ]
   
+  // Override devServer config for port 5000 and allow all hosts
+  const { https, ...devServerRest } = config.devServer || {}
   config.devServer = {
-    ...config.devServer,
+    ...devServerRest,
     host: '0.0.0.0',
     port: 5000,
     allowedHosts: 'all',
+    server: https ? 'https' : 'http',
   }
   
   if (env.mode === 'development') {
