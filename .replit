@@ -26,9 +26,13 @@ outputType = "webview"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "yarn build-web && npx http-server dist --port 5000 --host 0.0.0.0 --cors"
+args = "./node_modules/.bin/http-server web-build --port 5000 --host 0.0.0.0 --cors -c-1"
 waitForPort = 5000
 
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[deployment]
+deploymentTarget = "static"
+publicDir = "web-build"
