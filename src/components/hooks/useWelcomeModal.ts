@@ -5,9 +5,10 @@ import {useSession} from '#/state/session'
 
 export function useWelcomeModal() {
   const {hasSession} = useSession()
+  // DISABLED: Welcome modal disabled for local development
   const [isOpen, setIsOpen] = useState(false)
 
-  const open = () => setIsOpen(true)
+  const open = () => setIsOpen(false) // Disabled - always keep closed
   const close = () => {
     setIsOpen(false)
     // Mark that user has actively closed the modal, don't show again this session
@@ -16,6 +17,9 @@ export function useWelcomeModal() {
     }
   }
 
+  // DISABLED: Welcome modal disabled for local development
+  // To re-enable, uncomment the useEffect below and change open() to setIsOpen(true)
+  /*
   useEffect(() => {
     // Only show modal if:
     // 1. User is not logged in
@@ -38,6 +42,7 @@ export function useWelcomeModal() {
       }
     }
   }, [hasSession])
+  */
 
   return {isOpen, open, close}
 }
