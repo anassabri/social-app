@@ -37,3 +37,4 @@ externalPort = 80
 deploymentTarget = "autoscale"
 build = ["yarn", "build-web"]
 run = ["yarn", "serve:prod"]
+publicDir = "dist/public"
