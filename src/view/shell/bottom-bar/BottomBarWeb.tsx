@@ -179,52 +179,7 @@ export function BottomBarWeb() {
             </>
           )}
         </>
-      ) : (
-        <>
-          <View
-            style={{
-              width: '100%',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              paddingTop: 14,
-              paddingBottom: 14,
-              paddingLeft: 14,
-              paddingRight: 6,
-              gap: 8,
-            }}>
-            <View style={{flexDirection: 'row', alignItems: 'center', gap: 12}}>
-              <Logo width={32} />
-              <View style={{paddingTop: 4}}>
-                <Logotype width={80} fill={t.atoms.text.color} />
-              </View>
-            </View>
-
-            <View style={[a.flex_row, a.flex_wrap, a.gap_sm]}>
-              <Button
-                onPress={showCreateAccount}
-                label={_(msg`Create account`)}
-                size="small"
-                variant="solid"
-                color="primary">
-                <ButtonText>
-                  <Trans>Create account</Trans>
-                </ButtonText>
-              </Button>
-              <Button
-                onPress={showSignIn}
-                label={_(msg`Sign in`)}
-                size="small"
-                variant="solid"
-                color="secondary">
-                <ButtonText>
-                  <Trans>Sign in</Trans>
-                </ButtonText>
-              </Button>
-            </View>
-          </View>
-        </>
-      )}
+      ) : null}
     </Animated.View>
   )
 }
