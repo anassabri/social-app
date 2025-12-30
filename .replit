@@ -34,7 +34,7 @@ localPort = 5000
 externalPort = 80
 
 [deployment]
-deploymentTarget = "autoscale"
+deploymentTarget = "static"
 build = ["yarn", "build-web"]
 run = ["yarn", "serve:prod"]
-publicDir = "dist/public"
+publicDir = "web-build"
