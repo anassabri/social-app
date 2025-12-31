@@ -716,49 +716,68 @@ export function DesktopLeftNav() {
       ]}>
       <ParentDomainHomeButton />
 
-      {hasSession ? (
-        <ProfileCard />
-      ) : null}
+      {hasSession && <ProfileCard />}
 
+      {/* These nav items show for both logged-in and logged-out users */}
+      <NavItem
+        href="/"
+        hasNew={hasSession && hasHomeBadge && gate('remove_show_latest_button')}
+        icon={
+          <Home
+            aria-hidden={true}
+            width={NAV_ICON_WIDTH}
+            style={pal.text}
+          />
+        }
+        iconFilled={
+          <HomeFilled
+            aria-hidden={true}
+            width={NAV_ICON_WIDTH}
+            style={pal.text}
+          />
+        }
+        label={_(msg`Home`)}
+      />
+      <NavItem
+        href="/search"
+        icon={
+          <MagnifyingGlass
+            style={pal.text}
+            aria-hidden={true}
+            width={NAV_ICON_WIDTH}
+          />
+        }
+        iconFilled={
+          <MagnifyingGlassFilled
+            style={pal.text}
+            aria-hidden={true}
+            width={NAV_ICON_WIDTH}
+          />
+        }
+        label={_(msg`Explore`)}
+      />
+      <NavItem
+        href="/feeds"
+        icon={
+          <Hashtag
+            style={pal.text}
+            aria-hidden={true}
+            width={NAV_ICON_WIDTH}
+          />
+        }
+        iconFilled={
+          <HashtagFilled
+            style={pal.text}
+            aria-hidden={true}
+            width={NAV_ICON_WIDTH}
+          />
+        }
+        label={_(msg`Feeds`)}
+      />
+
+      {/* These nav items only show for logged-in users */}
       {hasSession && (
         <>
-          <NavItem
-            href="/"
-            hasNew={hasHomeBadge && gate('remove_show_latest_button')}
-            icon={
-              <Home
-                aria-hidden={true}
-                width={NAV_ICON_WIDTH}
-                style={pal.text}
-              />
-            }
-            iconFilled={
-              <HomeFilled
-                aria-hidden={true}
-                width={NAV_ICON_WIDTH}
-                style={pal.text}
-              />
-            }
-            label={_(msg`Home`)}
-          />
-          <NavItem
-            href="/search"
-            icon={
-              <MagnifyingGlass
-                style={pal.text}
-                aria-hidden={true}
-                width={NAV_ICON_WIDTH}
-              />
-            }
-            iconFilled={
-              <MagnifyingGlassFilled
-                style={pal.text}
-                aria-hidden={true}
-                width={NAV_ICON_WIDTH}
-              />
-            }
-            label={_(msg`Explore`)}
-          />
           <NavItem
             href="/notifications"
             count={numUnreadNotifications}
@@ -779,24 +798,6 @@ export function DesktopLeftNav() {
             label={_(msg`Notifications`)}
           />
           <ChatNavItem />
-          <NavItem
-            href="/feeds"
-            icon={
-              <Hashtag
-                style={pal.text}
-                aria-hidden={true}
-                width={NAV_ICON_WIDTH}
-              />
-            }
-            iconFilled={
-              <HashtagFilled
-                style={pal.text}
-                aria-hidden={true}
-                width={NAV_ICON_WIDTH}
-              />
-            }
-            label={_(msg`Feeds`)}
-          />
           <NavItem
             href="/lists"
             icon={
