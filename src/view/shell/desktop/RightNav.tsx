@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/core'
 import {FEEDBACK_FORM_URL, HELP_DESK_URL} from '#/lib/constants'
 import {useKawaiiMode} from '#/state/preferences/kawaii'
 import {useSession} from '#/state/session'
+import {PressableWithHover} from '#/view/com/util/PressableWithHover'
 import {DesktopFeeds} from '#/view/shell/desktop/Feeds'
 import {DesktopSearch} from '#/view/shell/desktop/Search'
 import {SidebarTrendingTopics} from '#/view/shell/desktop/SidebarTrendingTopics'
@@ -19,10 +20,78 @@ import {
 } from '#/alf'
 import {AppLanguageDropdown} from '#/components/AppLanguageDropdown'
 import {Divider} from '#/components/Divider'
+import {
+  HomeOpen_Stoke2_Corner0_Rounded as Home,
+} from '#/components/icons/HomeOpen'
 import {CENTER_COLUMN_OFFSET} from '#/components/Layout'
 import {InlineLinkText} from '#/components/Link'
 import {ProgressGuideList} from '#/components/ProgressGuide/List'
 import {Text} from '#/components/Typography'
+
+/**
+ * Gets the parent domain URL by removing the "social." prefix from the current hostname.
+ * Example: "social.hi.onl" -> "https://hi.onl"
+ * Example: "social.chatgpt.net.im" -> "https://chatgpt.net.im"
+ * If no "social." prefix exists, returns null.
+ */
+function getParentDomainUrl(): string | null {
+  if (typeof window === 'undefined') return null
+  const hostname = window.location.hostname
+  if (hostname.startsWith('social.')) {
+    const parentDomain = hostname.replace(/^social\./, '')
+    return `${window.location.protocol}//${parentDomain}`
+  }
+  return null
+}
+
+/**
+ * Home button component that links to the parent domain (removes "social." prefix).
+ * Only renders when the current domain starts with "social."
+ */
+function ParentDomainHomeButton() {
+  const t = useTheme()
+  const parentUrl = getParentDomainUrl()
+
+  // Don't render if there's no parent domain (no "social." prefix)
+  if (!parentUrl) return null
+
+  return (
+    <PressableWithHover
+      style={[
+        a.flex_row,
+        a.align_center,
+        a.p_md,
+        a.rounded_sm,
+        a.gap_sm,
+        a.outline_inset_1,
+        a.transition_color,
+      ]}
+      hoverStyle={t.atoms.bg_contrast_25}
+      onPress={() => {
+        window.open(parentUrl, '_self')
+      }}
+      role="link"
+      accessibilityLabel="Home"
+      accessibilityHint="Go to main site">
+      <View
+        style={[
+          a.align_center,
+          a.justify_center,
+          {
+            width: 24,
+            height: 24,
+          },
+        ]}>
+        <Home
+          aria-hidden={true}
+          width={28}
+          style={t.atoms.text}
+        />
+      </View>
+      <Text style={[a.text_xl, a.font_normal]}>Home</Text>
+    </PressableWithHover>
+  )
+}
 
 function useWebQueryParams() {
   const navigation = useNavigation()
@@ -82,6 +151,8 @@ export function DesktopRightNav({routeName}: {routeName: string}) {
           maxHeight: '100vh',
         }),
       ]}>
+      <ParentDomainHomeButton />
+
       {!isSearchScreen && <DesktopSearch />}
 
       {hasSession && (
