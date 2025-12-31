@@ -32,28 +32,26 @@ import {Text} from '#/components/Typography'
  * Gets the parent domain URL by removing the "social." prefix from the current hostname.
  * Example: "social.hi.onl" -> "https://hi.onl"
  * Example: "social.chatgpt.net.im" -> "https://chatgpt.net.im"
- * If no "social." prefix exists, returns null.
+ * If no "social." prefix exists, returns the current origin.
  */
-function getParentDomainUrl(): string | null {
-  if (typeof window === 'undefined') return null
+function getParentDomainUrl(): string {
+  if (typeof window === 'undefined') return '/'
   const hostname = window.location.hostname
   if (hostname.startsWith('social.')) {
     const parentDomain = hostname.replace(/^social\./, '')
     return `${window.location.protocol}//${parentDomain}`
   }
-  return null
+  // Return current origin if no "social." prefix
+  return window.location.origin
 }
 
 /**
  * Home button component that links to the parent domain (removes "social." prefix).
- * Only renders when the current domain starts with "social."
+ * Always renders - links to parent domain or current origin.
  */
 function ParentDomainHomeButton() {
   const t = useTheme()
   const parentUrl = getParentDomainUrl()
-
-  // Don't render if there's no parent domain (no "social." prefix)
-  if (!parentUrl) return null
 
   return (
     <PressableWithHover
