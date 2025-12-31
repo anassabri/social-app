@@ -8,15 +8,61 @@ import {HITSLOP_10} from '#/lib/constants'
 import {PressableScale} from '#/lib/custom-animations/PressableScale'
 import {useHaptics} from '#/lib/haptics'
 import {useMinimalShellHeaderTransform} from '#/lib/hooks/useMinimalShellTransform'
+import {isWeb} from '#/platform/detection'
 import {emitSoftReset} from '#/state/events'
 import {useSession} from '#/state/session'
 import {useShellLayout} from '#/state/shell/shell-layout'
 import {Logo} from '#/view/icons/Logo'
 import {atoms as a, useTheme} from '#/alf'
-import {ButtonIcon} from '#/components/Button'
+import {Button, ButtonIcon} from '#/components/Button'
 import {Hashtag_Stroke2_Corner0_Rounded as FeedsIcon} from '#/components/icons/Hashtag'
+import {HomeOpen_Stoke2_Corner0_Rounded as HomeIcon} from '#/components/icons/HomeOpen'
 import * as Layout from '#/components/Layout'
 import {Link} from '#/components/Link'
+
+/**
+ * Gets the parent domain URL by removing the "social." prefix from the current hostname.
+ */
+function getParentDomainUrl(): string {
+  if (typeof window === 'undefined') return '/'
+  const hostname = window.location.hostname
+  if (hostname.startsWith('social.')) {
+    const parentDomain = hostname.replace(/^social\./, '')
+    return `${window.location.protocol}//${parentDomain}`
+  }
+  return window.location.origin
+}
+
+/**
+ * Home button for mobile header that links to parent domain.
+ * Only renders on web.
+ */
+function MobileParentDomainHomeButton() {
+  const {_} = useLingui()
+
+  if (!isWeb) return null
+
+  const parentUrl = getParentDomainUrl()
+
+  return (
+    <Button
+      label={_(msg`Go to main site`)}
+      size="small"
+      variant="ghost"
+      color="secondary"
+      shape="square"
+      onPress={() => {
+        window.open(parentUrl, '_self')
+      }}
+      style={[
+        a.justify_center,
+        {marginLeft: -Layout.BUTTON_VISUAL_ALIGNMENT_OFFSET},
+        a.bg_transparent,
+      ]}>
+      <ButtonIcon icon={HomeIcon} size="lg" />
+    </Button>
+  )
+}
 
 export function HomeHeaderLayoutMobile({
   children,
@@ -49,7 +95,7 @@ export function HomeHeaderLayoutMobile({
       }}>
       <Layout.Header.Outer noBottomBorder>
         <Layout.Header.Slot>
-          <Layout.Header.MenuButton />
+          <MobileParentDomainHomeButton />
         </Layout.Header.Slot>
 
         <View style={[a.flex_1, a.align_center]}>
