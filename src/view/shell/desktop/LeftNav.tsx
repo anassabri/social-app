@@ -31,7 +31,6 @@ import {useCloseAllActiveElements} from '#/state/util'
 import {LoadingPlaceholder} from '#/view/com/util/LoadingPlaceholder'
 import {PressableWithHover} from '#/view/com/util/PressableWithHover'
 import {UserAvatar} from '#/view/com/util/UserAvatar'
-import {NavSignupCard} from '#/view/shell/NavSignupCard'
 import {atoms as a, tokens, useLayoutBreakpoints, useTheme, web} from '#/alf'
 import {Button, ButtonIcon, ButtonText} from '#/components/Button'
 import {type DialogControlProps} from '#/components/Dialog'
@@ -719,10 +718,6 @@ export function DesktopLeftNav() {
 
       {hasSession ? (
         <ProfileCard />
-      ) : !leftNavMinimal ? (
-        <View style={[a.pt_xl]}>
-          <NavSignupCard />
-        </View>
       ) : null}
 
       {hasSession && (
