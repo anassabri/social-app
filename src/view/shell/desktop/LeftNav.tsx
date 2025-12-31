@@ -613,13 +613,14 @@ export function DesktopLeftNav() {
   const {hasSession, currentAccount} = useSession()
   const pal = usePalette('default')
   const {_} = useLingui()
-  const {isDesktop} = useWebMediaQueries()
+  const {isDesktop, isMobile} = useWebMediaQueries()
   const {leftNavMinimal, centerColumnOffset} = useLayoutBreakpoints()
   const numUnreadNotifications = useUnreadNotifications()
   const hasHomeBadge = useHomeBadge()
   const gate = useGate()
 
-  if (!hasSession && !isDesktop) {
+  // Show on desktop and tablet (not mobile), regardless of login state
+  if (isMobile) {
     return null
   }
 
