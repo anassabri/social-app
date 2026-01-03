@@ -636,7 +636,11 @@ function commonScreens(Stack: typeof Flat, unreadCountLabel?: string) {
  * The TabsNavigator is used by native mobile to represent the routes
  * in 3 distinct tab-stacks with a different root screen on each.
  */
-function TabsNavigator() {
+function TabsNavigator({
+  layout,
+}: {
+  layout: React.ComponentProps<typeof Tab.Navigator>['layout']
+}) {
   const tabBar = useCallback(
     (props: JSX.IntrinsicAttributes & BottomTabBarProps) => (
       <BottomBar {...props} />
@@ -649,7 +653,8 @@ function TabsNavigator() {
       initialRouteName="HomeTab"
       backBehavior="initialRoute"
       screenOptions={{headerShown: false, lazy: true}}
-      tabBar={tabBar}>
+      tabBar={tabBar}
+      layout={layout}>
       <Tab.Screen name="HomeTab" getComponent={() => HomeTabNavigator} />
       <Tab.Screen name="SearchTab" getComponent={() => SearchTabNavigator} />
       <Tab.Screen
@@ -757,7 +762,11 @@ function MessagesTabNavigator() {
  * The FlatNavigator is used by Web to represent the routes
  * in a single ("flat") stack.
  */
-const FlatNavigator = () => {
+const FlatNavigator = ({
+  layout,
+}: {
+  layout: React.ComponentProps<typeof Flat.Navigator>['layout']
+}) => {
   const t = useTheme()
   const numUnread = useUnreadNotifications()
   const screenListeners = useWebScrollRestoration()
@@ -765,6 +774,7 @@ const FlatNavigator = () => {
 
   return (
     <Flat.Navigator
+      layout={layout}
       screenListeners={screenListeners}
       screenOptions={screenOptions(t)}>
       <Flat.Screen
