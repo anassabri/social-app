@@ -43,7 +43,8 @@ module.exports = async function (env = {}, argv = {}) {
   ]
   
   // Override devServer config for port 5000 and allow all hosts
-  const { https, ...devServerRest } = config.devServer || {}
+  // Remove invalid options that are not compatible with webpack-dev-server v5
+  const { https, _assetEmittingPreviousFiles, ...devServerRest } = config.devServer || {}
   config.devServer = {
     ...devServerRest,
     host: '0.0.0.0',
