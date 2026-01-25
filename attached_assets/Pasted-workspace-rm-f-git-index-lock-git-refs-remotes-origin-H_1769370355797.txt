@@ -1,0 +1,45 @@
+workspace$ rm -f .git/index.lock .git/refs/remotes/origin/HEAD.lock
+~/workspace$ # Create and switch to a new branch
+git checkout -b your-new-branch-name
+
+# Push the new branch to the remote repository
+git push origin your-new-branch-name
+Switched to a new branch 'your-new-branch-name'
+Enumerating objects: 40, done.
+Counting objects: 100% (37/37), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (19/19), done.
+Writing objects: 100% (22/22), 16.30 KiB | 2.33 MiB/s, done.
+Total 22 (delta 18), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (18/18), completed with 5 local objects.
+To https://github.com/anassabri/social-app
+ ! [remote rejected] your-new-branch-name -> your-new-branch-name (refusing to allow an OAuth App to create or update workflow `.github/workflows/build-submit-android.yml` without `workflow` scope)
+error: failed to push some refs to 'https://github.com/anassabri/social-app'
+~/workspace$ git checkout origin/main -- .github/workflows/build-submit-android.yml
+~/workspace$ git add .
+git commit -m "Update without workflow changes"
+git push origin your-new-branch-name
+npm warn config optional Use `--omit=optional` to exclude optional dependencies, or
+npm warn config `--include=optional` to include them.
+npm warn config
+npm warn config       Default value does install optional deps unless otherwise omitted.
+→ No staged files match any configured task.
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.8.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.8.0
+npm notice To update run: npm install -g npm@11.8.0
+npm notice
+[your-new-branch-name 85c9c18] Update without workflow changes
+ 1 file changed, 3 insertions(+)
+Enumerating objects: 52, done.
+Counting objects: 100% (45/45), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (23/23), done.
+Writing objects: 100% (26/26), 16.70 KiB | 1.67 MiB/s, done.
+Total 26 (delta 20), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (20/20), completed with 6 local objects.
+To https://github.com/anassabri/social-app
+ ! [remote rejected] your-new-branch-name -> your-new-branch-name (refusing to allow an OAuth App to create or update workflow `.github/workflows/build-submit-ios.yml` without `workflow` scope)
+error: failed to push some refs to 'https://github.com/anassabri/social-app'
+~/workspace$ ^C
+~/workspace$ 
