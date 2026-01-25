@@ -1,0 +1,56 @@
+ git add .
+git commit -m "Update without workflow changes"
+git push origin your-new-branch-name
+npm warn config optional Use `--omit=optional` to exclude optional dependencies, or
+npm warn config `--include=optional` to include them.
+npm warn config
+npm warn config       Default value does install optional deps unless otherwise omitted.
+→ No staged files match any configured task.
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.8.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.8.0
+npm notice To update run: npm install -g npm@11.8.0
+npm notice
+[your-new-branch-name 85c9c18] Update without workflow changes
+ 1 file changed, 3 insertions(+)
+Enumerating objects: 52, done.
+Counting objects: 100% (45/45), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (23/23), done.
+Writing objects: 100% (26/26), 16.70 KiB | 1.67 MiB/s, done.
+Total 26 (delta 20), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (20/20), completed with 6 local objects.
+To https://github.com/anassabri/social-app
+ ! [remote rejected] your-new-branch-name -> your-new-branch-name (refusing to allow an OAuth App to create or update workflow `.github/workflows/build-submit-ios.yml` without `workflow` scope)
+error: failed to push some refs to 'https://github.com/anassabri/social-app'
+~/workspace$ ^C
+~/workspace$ # 1. Reset the iOS workflow file to its original state
+git checkout origin/main -- .github/workflows/build-submit-ios.yml
+
+# 2. Add the changes and update your previous commit
+git add .
+git commit --amend --no-edit
+
+# 3. Push to your branch
+git push origin your-new-branch-name
+npm warn config optional Use `--omit=optional` to exclude optional dependencies, or
+npm warn config `--include=optional` to include them.
+npm warn config
+npm warn config       Default value does install optional deps unless otherwise omitted.
+→ No staged files match any configured task.
+[your-new-branch-name 5ac166a] Remove workflow files to allow pushing changes to the repository
+ Author: si515896 <53715865-si515896@users.noreply.replit.com>
+ Date: Sun Jan 25 19:46:15 2026 +0000
+ 2 files changed, 48 insertions(+)
+ create mode 100644 attached_assets/Pasted-workspace-rm-f-git-index-lock-git-refs-remotes-origin-H_1769370355797.txt
+Enumerating objects: 60, done.
+Counting objects: 100% (52/52), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (29/29), done.
+Writing objects: 100% (32/32), 18.45 KiB | 2.05 MiB/s, done.
+Total 32 (delta 23), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (23/23), completed with 7 local objects.
+To https://github.com/anassabri/social-app
+ ! [remote rejected] your-new-branch-name -> your-new-branch-name (refusing to allow an OAuth App to create or update workflow `.github/workflows/bundle-deploy-eas-update.yml` without `workflow` scope)
+error: failed to push some refs to 'https://github.com/anassabri/social-app'
+~/workspace$ 
