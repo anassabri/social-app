@@ -230,7 +230,7 @@ msgstr "{0}m"
 msgid "{0}s"
 msgstr "{0}e"
 
-#: src/view/shell/desktop/LeftNav.tsx:454
+#: src/view/shell/desktop/LeftNav.tsx:453
 msgid "{count, plural, one {# unread item} other {# unread items}}"
 msgstr "{count, plural, one {# eitem heb ei ddarllen} other {# eitemau heb eu darllen}}"
 
@@ -432,7 +432,7 @@ msgstr "{joinedAllTimeCount, plural, other {Mae # eraill}} wedi ymuno!"
 msgid "{minutes, plural, one {# minute} other {# minutes}}"
 msgstr "{minutes, plural, zero {}one {# munud} two {# funud} few {# munud} many {# munud} other {# munud}}"
 
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:277
+#: src/view/shell/bottom-bar/BottomBarWeb.tsx:232
 msgid "{notificationCount, plural, one {# unread item} other {# unread items}}"
 msgstr "{notificationCount, plural, one {# eitem heb ei darllen} other {# eitem heb eu darllen}}"
 
@@ -749,8 +749,8 @@ msgstr "Ychwanegu testun amgen (dewisol)"
 
 #: src/screens/Settings/Settings.tsx:582
 #: src/screens/Settings/Settings.tsx:585
-#: src/view/shell/desktop/LeftNav.tsx:262
-#: src/view/shell/desktop/LeftNav.tsx:266
+#: src/view/shell/desktop/LeftNav.tsx:261
+#: src/view/shell/desktop/LeftNav.tsx:265
 msgid "Add another account"
 msgstr "Ychwanegu cyfrif arall"
 
@@ -1382,8 +1382,8 @@ msgctxt "Name of app icon variant"
 msgid "Aurora"
 msgstr "Aurora"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:118
-#: src/screens/Settings/ContentAndMediaSettings.tsx:124
+#: src/screens/Settings/ContentAndMediaSettings.tsx:117
+#: src/screens/Settings/ContentAndMediaSettings.tsx:123
 msgid "Autoplay videos and GIFs"
 msgstr "Awtochwarae fideos a GIFs"
 
@@ -1792,7 +1792,7 @@ msgstr "Camera"
 #: src/view/com/composer/Composer.tsx:1063
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:43
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:52
-#: src/view/shell/desktop/LeftNav.tsx:213
+#: src/view/shell/desktop/LeftNav.tsx:212
 msgid "Cancel"
 msgstr "Diddymu"
 
@@ -1902,7 +1902,7 @@ msgstr "Newidiadau wedi'u cadw"
 #: src/lib/hooks/useNotificationHandler.ts:102
 #: src/Navigation.tsx:560
 #: src/view/shell/bottom-bar/BottomBar.tsx:218
-#: src/view/shell/desktop/LeftNav.tsx:608
+#: src/view/shell/desktop/LeftNav.tsx:607
 #: src/view/shell/Drawer.tsx:466
 msgid "Chat"
 msgstr "Sgyrsiau"
@@ -2243,7 +2243,7 @@ msgid "Complete the challenge"
 msgstr "Cwblhewch yr her"
 
 #: src/view/com/feeds/ComposerPrompt.tsx:145
-#: src/view/shell/desktop/LeftNav.tsx:573
+#: src/view/shell/desktop/LeftNav.tsx:572
 msgid "Compose new post"
 msgstr "Cyfansoddi postiad newydd"
 
@@ -2263,7 +2263,6 @@ msgstr "Yn cywasgu fideo..."
 msgid "Configure content filtering setting for category: {name}"
 msgstr "Ffurfweddw gosodiad hidlo cynnwys ar gyfer categori: {name}"
 
-#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:51
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:36
 msgid "Configure live event banner"
 msgstr "Ffurfweddu baner digwyddiad byw"
@@ -2343,7 +2342,7 @@ msgstr "Cysylltiadau wedi'u Mewnforio"
 msgid "Contacts removed"
 msgstr "Tynnwyd y cysylltiadau"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:53
+#: src/screens/Settings/ContentAndMediaSettings.tsx:52
 msgid "Content & Media"
 msgstr "Cynnwys a Chyfryngau"
 
@@ -2658,8 +2657,6 @@ msgstr "Creu pecyn cychwyn i mi"
 #: src/view/com/auth/SplashScreen.web.tsx:121
 #: src/view/shell/bottom-bar/BottomBar.tsx:342
 #: src/view/shell/bottom-bar/BottomBar.tsx:347
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:201
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:206
 #: src/view/shell/NavSignupCard.tsx:47
 #: src/view/shell/NavSignupCard.tsx:52
 msgid "Create account"
@@ -3049,6 +3046,10 @@ msgstr "Cau'r canllaw cychwyn arni"
 msgid "Dismiss interests"
 msgstr "Diystyru diddordebau"
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:81
+msgid "Dismiss live event banner"
+msgstr ""
+
 #: src/components/interstitials/TrendingVideos.tsx:89
 msgid "Dismiss this section"
 msgstr "Cau'r adran hon"
@@ -3421,13 +3422,13 @@ msgstr "Galluogi isdeitlau"
 msgid "Enable this source only"
 msgstr "Galluogi dim ond y ffynhonnell hon"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:134
-#: src/screens/Settings/ContentAndMediaSettings.tsx:148
+#: src/screens/Settings/ContentAndMediaSettings.tsx:133
+#: src/screens/Settings/ContentAndMediaSettings.tsx:147
 msgid "Enable trending topics"
 msgstr "Galluogi pynciau tueddol"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:156
-#: src/screens/Settings/ContentAndMediaSettings.tsx:170
+#: src/screens/Settings/ContentAndMediaSettings.tsx:154
+#: src/screens/Settings/ContentAndMediaSettings.tsx:168
 msgid "Enable trending videos in your Discover feed"
 msgstr "Galluogi fideos tueddol yn eich ffrwd Darganfod"
 
@@ -3638,7 +3639,7 @@ msgstr "Delweddau di-noethol amlwg."
 
 #: src/Navigation.tsx:789
 #: src/screens/Search/Shell.tsx:327
-#: src/view/shell/desktop/LeftNav.tsx:687
+#: src/view/shell/desktop/LeftNav.tsx:681
 #: src/view/shell/Drawer.tsx:414
 msgid "Explore"
 msgstr "Darganfod"
@@ -3657,8 +3658,8 @@ msgstr "Allforio fy nata"
 msgid "Export My Data"
 msgstr "Allforio Fy Nata"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:86
-#: src/screens/Settings/ContentAndMediaSettings.tsx:89
+#: src/screens/Settings/ContentAndMediaSettings.tsx:85
+#: src/screens/Settings/ContentAndMediaSettings.tsx:88
 msgid "External media"
 msgstr "Cyfryngau allanol"
 
@@ -3939,8 +3940,8 @@ msgstr "Toglo ffrwd"
 msgid "Feed unavailable"
 msgstr "Dyw'r ffrwd ddim ar gael"
 
-#: src/view/shell/desktop/RightNav.tsx:107
-#: src/view/shell/desktop/RightNav.tsx:108
+#: src/view/shell/desktop/RightNav.tsx:177
+#: src/view/shell/desktop/RightNav.tsx:178
 #: src/view/shell/Drawer.tsx:368
 msgid "Feedback"
 msgstr "Adborth"
@@ -3957,7 +3958,7 @@ msgstr "Adborth wedi'i anfon at weithredwr ffrwd"
 #: src/screens/StarterPack/StarterPackScreen.tsx:193
 #: src/view/screens/Feeds.tsx:511
 #: src/view/screens/Profile.tsx:239
-#: src/view/shell/desktop/LeftNav.tsx:725
+#: src/view/shell/desktop/LeftNav.tsx:699
 #: src/view/shell/Drawer.tsx:530
 msgid "Feeds"
 msgstr "Ffrydiau"
@@ -4218,8 +4219,8 @@ msgstr "Yn dilyn {0}"
 msgid "Following {handle}"
 msgstr "Yn dilyn {handle}"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:78
-#: src/screens/Settings/ContentAndMediaSettings.tsx:81
+#: src/screens/Settings/ContentAndMediaSettings.tsx:77
+#: src/screens/Settings/ContentAndMediaSettings.tsx:80
 msgid "Following feed preferences"
 msgstr "Dewisiadau ffrydio Yn Dilyn"
 
@@ -4478,13 +4479,17 @@ msgstr "Ewch i sgwrs gyda {0}"
 msgid "Go to feed"
 msgstr "Ewch i'r ffrwd"
 
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:49
+msgid "Go to main site"
+msgstr ""
+
 #: src/screens/Login/ForgotPasswordForm.tsx:165
 msgid "Go to next"
 msgstr "Ewch i'r nesaf"
 
 #: src/components/dms/ConvoMenu.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:317
-#: src/view/shell/desktop/LeftNav.tsx:323
+#: src/view/shell/desktop/LeftNav.tsx:316
+#: src/view/shell/desktop/LeftNav.tsx:322
 msgid "Go to profile"
 msgstr "Ewch i'r proffil"
 
@@ -4590,8 +4595,8 @@ msgstr "Wedi ei gadw gan Bluesky am 7 diwrnod i osgoi camddefnydd, yna ei ddileu
 
 #: src/screens/Settings/Settings.tsx:252
 #: src/screens/Settings/Settings.tsx:256
-#: src/view/shell/desktop/RightNav.tsx:128
-#: src/view/shell/desktop/RightNav.tsx:131
+#: src/view/shell/desktop/RightNav.tsx:198
+#: src/view/shell/desktop/RightNav.tsx:201
 #: src/view/shell/Drawer.tsx:381
 msgid "Help"
 msgstr "Cymorth"
@@ -4761,7 +4766,7 @@ msgstr "Daliwch ati! Rydyn ni'n rhoi mynediad i fideo yn raddol, ac rydych chi'n
 #: src/Navigation.tsx:784
 #: src/Navigation.tsx:804
 #: src/view/shell/bottom-bar/BottomBar.tsx:175
-#: src/view/shell/desktop/LeftNav.tsx:669
+#: src/view/shell/desktop/LeftNav.tsx:663
 #: src/view/shell/Drawer.tsx:440
 msgid "Home"
 msgstr "Cartref"
@@ -5473,7 +5478,7 @@ msgstr "Rhestr heb ei thewi"
 #: src/view/screens/Lists.tsx:67
 #: src/view/screens/Profile.tsx:233
 #: src/view/screens/Profile.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:743
+#: src/view/shell/desktop/LeftNav.tsx:741
 #: src/view/shell/Drawer.tsx:545
 msgid "Lists"
 msgstr "Rhestrau"
@@ -5496,9 +5501,17 @@ msgstr "BYW"
 msgid "Live event happening now: {0}"
 msgstr "Digwyddiadau byw'n digwydd nawr: {0}"
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:50
+msgid "Live event hidden"
+msgstr ""
+
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:105
 msgid "Live event options"
 msgstr "Dewisiadau digwyddiadau byw"
+
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:52
+msgid "Live event unhidden"
+msgstr ""
 
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:109
 msgid "Live events appear occasionally when something exciting is happening. If you'd like, you can hide this particular event, or all events for this placement in your app interface."
@@ -5559,11 +5572,11 @@ msgstr "Wedi allgofnodi"
 msgid "Logged-out visibility"
 msgstr "Gwelededd wedi allgofnodi"
 
-#: src/view/shell/desktop/RightNav.tsx:140
+#: src/view/shell/desktop/RightNav.tsx:210
 msgid "Logo by @sawaratsuki.bsky.social"
 msgstr "Logo gan @sawaratsuki.bsky.social"
 
-#: src/view/shell/desktop/RightNav.tsx:137
+#: src/view/shell/desktop/RightNav.tsx:207
 #: src/view/shell/Drawer.tsx:709
 msgid "Logo by <0>@sawaratsuki.bsky.social</0>"
 msgstr "Logo gan <0>@sawaratsuki.bsky.social</0>"
@@ -5600,8 +5613,8 @@ msgstr "Gwnewch un i mi"
 msgid "Make sure this is where you intend to go!"
 msgstr "Gwnewch yn si≈µr mai dyma lle rydych chi'n bwriadu mynd!"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:62
-#: src/screens/Settings/ContentAndMediaSettings.tsx:65
+#: src/screens/Settings/ContentAndMediaSettings.tsx:61
+#: src/screens/Settings/ContentAndMediaSettings.tsx:64
 msgid "Manage saved feeds"
 msgstr "Rheoli ffrydiau wedi'u cadw"
 
@@ -6032,7 +6045,7 @@ msgctxt "action"
 msgid "New post"
 msgstr "Postiad newydd"
 
-#: src/view/shell/desktop/LeftNav.tsx:581
+#: src/view/shell/desktop/LeftNav.tsx:580
 msgctxt "action"
 msgid "New Post"
 msgstr "Postiad Newydd"
@@ -6351,7 +6364,7 @@ msgstr "Seiniau Hysbysu"
 #: src/screens/Settings/Settings.tsx:203
 #: src/view/screens/Notifications.tsx:130
 #: src/view/shell/bottom-bar/BottomBar.tsx:249
-#: src/view/shell/desktop/LeftNav.tsx:706
+#: src/view/shell/desktop/LeftNav.tsx:722
 #: src/view/shell/Drawer.tsx:493
 msgid "Notifications"
 msgstr "Hysbysiadau"
@@ -7229,8 +7242,8 @@ msgstr "Prif iaith"
 msgid "Primary Language"
 msgstr "Prif Iaith"
 
-#: src/view/shell/desktop/RightNav.tsx:116
-#: src/view/shell/desktop/RightNav.tsx:117
+#: src/view/shell/desktop/RightNav.tsx:186
+#: src/view/shell/desktop/RightNav.tsx:187
 msgid "Privacy"
 msgstr "Preifatrwydd"
 
@@ -7281,7 +7294,7 @@ msgid "profile"
 msgstr "proffil"
 
 #: src/view/shell/bottom-bar/BottomBar.tsx:313
-#: src/view/shell/desktop/LeftNav.tsx:784
+#: src/view/shell/desktop/LeftNav.tsx:782
 #: src/view/shell/Drawer.tsx:77
 #: src/view/shell/Drawer.tsx:596
 msgid "Profile"
@@ -8102,7 +8115,7 @@ msgstr "Cadw'r dewisiadau hyn ar gyfer y tro nesaf"
 msgid "Save to my feeds"
 msgstr "Cadw i fy ffrydiau"
 
-#: src/view/shell/desktop/LeftNav.tsx:762
+#: src/view/shell/desktop/LeftNav.tsx:760
 #: src/view/shell/Drawer.tsx:571
 msgctxt "link to bookmarks screen"
 msgid "Saved"
@@ -8565,7 +8578,7 @@ msgstr "Yn gosod e-bost ar gyfer ailosod cyfrinair"
 
 #: src/Navigation.tsx:216
 #: src/screens/Settings/Settings.tsx:103
-#: src/view/shell/desktop/LeftNav.tsx:802
+#: src/view/shell/desktop/LeftNav.tsx:800
 #: src/view/shell/Drawer.tsx:609
 msgid "Settings"
 msgstr "Gosodiadau"
@@ -8848,8 +8861,6 @@ msgstr "Yn dangos y cynnwys"
 #: src/view/com/auth/SplashScreen.web.tsx:135
 #: src/view/shell/bottom-bar/BottomBar.tsx:352
 #: src/view/shell/bottom-bar/BottomBar.tsx:357
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:211
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:216
 #: src/view/shell/NavSignupCard.tsx:57
 #: src/view/shell/NavSignupCard.tsx:62
 msgid "Sign in"
@@ -8891,9 +8902,9 @@ msgstr "Mewngofnodwch i weld y postiad"
 #: src/screens/SignupQueued.tsx:93
 #: src/screens/SignupQueued.tsx:96
 #: src/screens/Takendown.tsx:88
-#: src/view/shell/desktop/LeftNav.tsx:212
-#: src/view/shell/desktop/LeftNav.tsx:269
-#: src/view/shell/desktop/LeftNav.tsx:272
+#: src/view/shell/desktop/LeftNav.tsx:211
+#: src/view/shell/desktop/LeftNav.tsx:268
+#: src/view/shell/desktop/LeftNav.tsx:271
 msgid "Sign out"
 msgstr "Allgofnodi"
 
@@ -8902,7 +8913,7 @@ msgid "Sign Out"
 msgstr "Allgofnodi"
 
 #: src/screens/Settings/Settings.tsx:301
-#: src/view/shell/desktop/LeftNav.tsx:209
+#: src/view/shell/desktop/LeftNav.tsx:208
 msgid "Sign out?"
 msgstr "Allgofnodi?"
 
@@ -9245,7 +9256,7 @@ msgstr "Dyw cynnal y nodwedd hon heb ei alluogi yn eich gwald chi eto! Dewch 'n√
 #: src/screens/Settings/Settings.tsx:127
 #: src/screens/Settings/Settings.tsx:141
 #: src/screens/Settings/Settings.tsx:622
-#: src/view/shell/desktop/LeftNav.tsx:247
+#: src/view/shell/desktop/LeftNav.tsx:246
 msgid "Switch account"
 msgstr "Newid cyfrif"
 
@@ -9254,11 +9265,11 @@ msgstr "Newid cyfrif"
 msgid "Switch Account"
 msgstr "Newid Cyfrif"
 
-#: src/view/shell/desktop/LeftNav.tsx:110
+#: src/view/shell/desktop/LeftNav.tsx:109
 msgid "Switch accounts"
 msgstr "Newid cyfrifon"
 
-#: src/view/shell/desktop/LeftNav.tsx:346
+#: src/view/shell/desktop/LeftNav.tsx:345
 msgid "Switch to {0}"
 msgstr "Newid i {0}"
 
@@ -9342,8 +9353,8 @@ msgstr "Dywedwch ychydig wrthym amdanoch chi'ch hun"
 msgid "Tell us a little more"
 msgstr "Dywedwch ychydig mwy wrthym"
 
-#: src/view/shell/desktop/RightNav.tsx:123
-#: src/view/shell/desktop/RightNav.tsx:124
+#: src/view/shell/desktop/RightNav.tsx:193
+#: src/view/shell/desktop/RightNav.tsx:194
 msgid "Terms"
 msgstr "Telerau"
 
@@ -9900,8 +9911,8 @@ msgstr "Bydd hyn yn tynnu'ch postiad o'r postiad dyfynnu hwn ar gyfer pob defnyd
 msgid "Thread options"
 msgstr "Opsiynau edafedd"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:70
-#: src/screens/Settings/ContentAndMediaSettings.tsx:73
+#: src/screens/Settings/ContentAndMediaSettings.tsx:69
+#: src/screens/Settings/ContentAndMediaSettings.tsx:72
 msgid "Thread preferences"
 msgstr "Dewisiadau edafedd"
 
@@ -10127,6 +10138,8 @@ msgctxt "Button label to undo saving/removing a post from saved posts."
 msgid "Undo"
 msgstr "Dadwneud"
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:57
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:63
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:72
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:78
 msgid "Undo"
@@ -10389,8 +10402,8 @@ msgstr "Defnyddiwch y darparwr rhagosodedig"
 msgid "Use in-app browser"
 msgstr "Defnyddio'r porwr o fewn yr ap"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:104
-#: src/screens/Settings/ContentAndMediaSettings.tsx:110
+#: src/screens/Settings/ContentAndMediaSettings.tsx:103
+#: src/screens/Settings/ContentAndMediaSettings.tsx:109
 msgid "Use in-app browser to open links"
 msgstr "Defnyddio'r porwr o fewn yr ap i agor dolenni"
 
@@ -10750,7 +10763,7 @@ msgid "View your default post interaction settings"
 msgstr "Gweld eich gosodiadau rhyngweithio postiadau rhagosodedig"
 
 #: src/view/com/home/HomeHeaderLayout.web.tsx:57
-#: src/view/com/home/HomeHeaderLayoutMobile.tsx:72
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:118
 msgid "View your feeds and explore more"
 msgstr "Gweld eich ffrydiau ac archwilio mwy"
 
@@ -11479,7 +11492,7 @@ msgid "You recently changed your birthdate"
 msgstr "Rydych wedi newid eich dyddiad geni'n ddiweddar"
 
 #: src/screens/Settings/Settings.tsx:302
-#: src/view/shell/desktop/LeftNav.tsx:210
+#: src/view/shell/desktop/LeftNav.tsx:209
 msgid "You will be signed out of all your accounts."
 msgstr "Byddwch yn cael eich allgofnodi o'ch holl gyfrifon."
 
@@ -11692,8 +11705,8 @@ msgstr "Eich enw dangos llawn fydd <0>@{0}</0>"
 
 #: src/Navigation.tsx:527
 #: src/screens/Search/modules/ExploreInterestsCard.tsx:67
-#: src/screens/Settings/ContentAndMediaSettings.tsx:94
-#: src/screens/Settings/ContentAndMediaSettings.tsx:97
+#: src/screens/Settings/ContentAndMediaSettings.tsx:93
+#: src/screens/Settings/ContentAndMediaSettings.tsx:96
 #: src/screens/Settings/InterestsSettings.tsx:46
 msgid "Your interests"
 msgstr "Eich diddordebau"

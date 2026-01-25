@@ -230,7 +230,7 @@ msgstr "{0}λ."
 msgid "{0}s"
 msgstr "{0}δευτ."
 
-#: src/view/shell/desktop/LeftNav.tsx:454
+#: src/view/shell/desktop/LeftNav.tsx:453
 msgid "{count, plural, one {# unread item} other {# unread items}}"
 msgstr ""
 
@@ -432,7 +432,7 @@ msgstr ""
 msgid "{minutes, plural, one {# minute} other {# minutes}}"
 msgstr ""
 
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:277
+#: src/view/shell/bottom-bar/BottomBarWeb.tsx:232
 msgid "{notificationCount, plural, one {# unread item} other {# unread items}}"
 msgstr ""
 
@@ -749,8 +749,8 @@ msgstr "Προσθήκη εναλλακτικού κειμένου (προαιρ
 
 #: src/screens/Settings/Settings.tsx:582
 #: src/screens/Settings/Settings.tsx:585
-#: src/view/shell/desktop/LeftNav.tsx:262
-#: src/view/shell/desktop/LeftNav.tsx:266
+#: src/view/shell/desktop/LeftNav.tsx:261
+#: src/view/shell/desktop/LeftNav.tsx:265
 msgid "Add another account"
 msgstr "Προσθήκη άλλου λογαριασμού"
 
@@ -1382,8 +1382,8 @@ msgctxt "Name of app icon variant"
 msgid "Aurora"
 msgstr ""
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:118
-#: src/screens/Settings/ContentAndMediaSettings.tsx:124
+#: src/screens/Settings/ContentAndMediaSettings.tsx:117
+#: src/screens/Settings/ContentAndMediaSettings.tsx:123
 msgid "Autoplay videos and GIFs"
 msgstr "Αυτόματη αναπαραγωγή βίντεο και GIF"
 
@@ -1792,7 +1792,7 @@ msgstr "Κάμερα"
 #: src/view/com/composer/Composer.tsx:1063
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:43
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:52
-#: src/view/shell/desktop/LeftNav.tsx:213
+#: src/view/shell/desktop/LeftNav.tsx:212
 msgid "Cancel"
 msgstr "Ακύρωση"
 
@@ -1902,7 +1902,7 @@ msgstr ""
 #: src/lib/hooks/useNotificationHandler.ts:102
 #: src/Navigation.tsx:560
 #: src/view/shell/bottom-bar/BottomBar.tsx:218
-#: src/view/shell/desktop/LeftNav.tsx:608
+#: src/view/shell/desktop/LeftNav.tsx:607
 #: src/view/shell/Drawer.tsx:466
 msgid "Chat"
 msgstr "Συνομιλία"
@@ -2243,7 +2243,7 @@ msgid "Complete the challenge"
 msgstr "Ολοκλήρωση της πρόκλησης"
 
 #: src/view/com/feeds/ComposerPrompt.tsx:145
-#: src/view/shell/desktop/LeftNav.tsx:573
+#: src/view/shell/desktop/LeftNav.tsx:572
 msgid "Compose new post"
 msgstr "Σύνταξη νέας ανάρτησης"
 
@@ -2263,7 +2263,6 @@ msgstr "Συμπίεση βίντεο..."
 msgid "Configure content filtering setting for category: {name}"
 msgstr "Ρύθμιση ρύθμισης φιλτραρίσματος περιεχομένου για κατηγορία: {name}"
 
-#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:51
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:36
 msgid "Configure live event banner"
 msgstr ""
@@ -2343,7 +2342,7 @@ msgstr ""
 msgid "Contacts removed"
 msgstr ""
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:53
+#: src/screens/Settings/ContentAndMediaSettings.tsx:52
 msgid "Content & Media"
 msgstr ""
 
@@ -2658,8 +2657,6 @@ msgstr "Δημιουργία starter pack για μένα"
 #: src/view/com/auth/SplashScreen.web.tsx:121
 #: src/view/shell/bottom-bar/BottomBar.tsx:342
 #: src/view/shell/bottom-bar/BottomBar.tsx:347
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:201
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:206
 #: src/view/shell/NavSignupCard.tsx:47
 #: src/view/shell/NavSignupCard.tsx:52
 msgid "Create account"
@@ -3049,6 +3046,10 @@ msgstr "Απόρριψη οδηγού Starter Pack"
 msgid "Dismiss interests"
 msgstr ""
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:81
+msgid "Dismiss live event banner"
+msgstr ""
+
 #: src/components/interstitials/TrendingVideos.tsx:89
 msgid "Dismiss this section"
 msgstr ""
@@ -3421,13 +3422,13 @@ msgstr "Ενεργοποίηση υπότιτλων"
 msgid "Enable this source only"
 msgstr "Ενεργοποίηση μόνο αυτής της πηγής"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:134
-#: src/screens/Settings/ContentAndMediaSettings.tsx:148
+#: src/screens/Settings/ContentAndMediaSettings.tsx:133
+#: src/screens/Settings/ContentAndMediaSettings.tsx:147
 msgid "Enable trending topics"
 msgstr ""
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:156
-#: src/screens/Settings/ContentAndMediaSettings.tsx:170
+#: src/screens/Settings/ContentAndMediaSettings.tsx:154
+#: src/screens/Settings/ContentAndMediaSettings.tsx:168
 msgid "Enable trending videos in your Discover feed"
 msgstr ""
 
@@ -3638,7 +3639,7 @@ msgstr "Γυμνές σεξουαλικές εικόνες."
 
 #: src/Navigation.tsx:789
 #: src/screens/Search/Shell.tsx:327
-#: src/view/shell/desktop/LeftNav.tsx:687
+#: src/view/shell/desktop/LeftNav.tsx:681
 #: src/view/shell/Drawer.tsx:414
 msgid "Explore"
 msgstr ""
@@ -3657,8 +3658,8 @@ msgstr "Εξαγωγή των δεδομένων μου"
 msgid "Export My Data"
 msgstr "Εξαγωγή των δεδομένων μου"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:86
-#: src/screens/Settings/ContentAndMediaSettings.tsx:89
+#: src/screens/Settings/ContentAndMediaSettings.tsx:85
+#: src/screens/Settings/ContentAndMediaSettings.tsx:88
 msgid "External media"
 msgstr "Εξωτερικό μέσο"
 
@@ -3939,8 +3940,8 @@ msgstr "Εναλλαγή ροής"
 msgid "Feed unavailable"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:107
-#: src/view/shell/desktop/RightNav.tsx:108
+#: src/view/shell/desktop/RightNav.tsx:177
+#: src/view/shell/desktop/RightNav.tsx:178
 #: src/view/shell/Drawer.tsx:368
 msgid "Feedback"
 msgstr "Σχόλια"
@@ -3957,7 +3958,7 @@ msgstr ""
 #: src/screens/StarterPack/StarterPackScreen.tsx:193
 #: src/view/screens/Feeds.tsx:511
 #: src/view/screens/Profile.tsx:239
-#: src/view/shell/desktop/LeftNav.tsx:725
+#: src/view/shell/desktop/LeftNav.tsx:699
 #: src/view/shell/Drawer.tsx:530
 msgid "Feeds"
 msgstr "Ροές"
@@ -4218,8 +4219,8 @@ msgstr "Ακολουθείτε {0}"
 msgid "Following {handle}"
 msgstr ""
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:78
-#: src/screens/Settings/ContentAndMediaSettings.tsx:81
+#: src/screens/Settings/ContentAndMediaSettings.tsx:77
+#: src/screens/Settings/ContentAndMediaSettings.tsx:80
 msgid "Following feed preferences"
 msgstr "Προτιμήσεις της ροής Ακολουθείτε"
 
@@ -4478,13 +4479,17 @@ msgstr "Μετάβαση στην συνομιλία με {0}"
 msgid "Go to feed"
 msgstr ""
 
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:49
+msgid "Go to main site"
+msgstr ""
+
 #: src/screens/Login/ForgotPasswordForm.tsx:165
 msgid "Go to next"
 msgstr "Συνέχεια"
 
 #: src/components/dms/ConvoMenu.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:317
-#: src/view/shell/desktop/LeftNav.tsx:323
+#: src/view/shell/desktop/LeftNav.tsx:316
+#: src/view/shell/desktop/LeftNav.tsx:322
 msgid "Go to profile"
 msgstr "Προφίλ"
 
@@ -4590,8 +4595,8 @@ msgstr ""
 
 #: src/screens/Settings/Settings.tsx:252
 #: src/screens/Settings/Settings.tsx:256
-#: src/view/shell/desktop/RightNav.tsx:128
-#: src/view/shell/desktop/RightNav.tsx:131
+#: src/view/shell/desktop/RightNav.tsx:198
+#: src/view/shell/desktop/RightNav.tsx:201
 #: src/view/shell/Drawer.tsx:381
 msgid "Help"
 msgstr "Βοήθεια"
@@ -4761,7 +4766,7 @@ msgstr "Περιμένετε! Δίνουμε σταδιακά πρόσβαση �
 #: src/Navigation.tsx:784
 #: src/Navigation.tsx:804
 #: src/view/shell/bottom-bar/BottomBar.tsx:175
-#: src/view/shell/desktop/LeftNav.tsx:669
+#: src/view/shell/desktop/LeftNav.tsx:663
 #: src/view/shell/Drawer.tsx:440
 msgid "Home"
 msgstr "Αρχική"
@@ -5473,7 +5478,7 @@ msgstr "Λίστα αφαίρεση σίγασης"
 #: src/view/screens/Lists.tsx:67
 #: src/view/screens/Profile.tsx:233
 #: src/view/screens/Profile.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:743
+#: src/view/shell/desktop/LeftNav.tsx:741
 #: src/view/shell/Drawer.tsx:545
 msgid "Lists"
 msgstr "Λίστες"
@@ -5496,8 +5501,16 @@ msgstr ""
 msgid "Live event happening now: {0}"
 msgstr ""
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:50
+msgid "Live event hidden"
+msgstr ""
+
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:105
 msgid "Live event options"
+msgstr ""
+
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:52
+msgid "Live event unhidden"
 msgstr ""
 
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:109
@@ -5559,11 +5572,11 @@ msgstr ""
 msgid "Logged-out visibility"
 msgstr "Ορατότητα κατά την αποσύνδεση"
 
-#: src/view/shell/desktop/RightNav.tsx:140
+#: src/view/shell/desktop/RightNav.tsx:210
 msgid "Logo by @sawaratsuki.bsky.social"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:137
+#: src/view/shell/desktop/RightNav.tsx:207
 #: src/view/shell/Drawer.tsx:709
 msgid "Logo by <0>@sawaratsuki.bsky.social</0>"
 msgstr "Λογότυπο από <0>@sawaratsuki.bsky.social</0>"
@@ -5600,8 +5613,8 @@ msgstr "Φτιάξε ένα για μένα"
 msgid "Make sure this is where you intend to go!"
 msgstr "Βεβαιωθείτε ότι αυτό είναι το μέρος που θέλετε να πάτε!"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:62
-#: src/screens/Settings/ContentAndMediaSettings.tsx:65
+#: src/screens/Settings/ContentAndMediaSettings.tsx:61
+#: src/screens/Settings/ContentAndMediaSettings.tsx:64
 msgid "Manage saved feeds"
 msgstr "Διαχείριση αποθηκευμένων ροών"
 
@@ -6032,7 +6045,7 @@ msgctxt "action"
 msgid "New post"
 msgstr "Νέα δημοσίευση"
 
-#: src/view/shell/desktop/LeftNav.tsx:581
+#: src/view/shell/desktop/LeftNav.tsx:580
 msgctxt "action"
 msgid "New Post"
 msgstr "Νέα Δημοσίευση"
@@ -6351,7 +6364,7 @@ msgstr "Ήχοι Ειδοποιήσεων"
 #: src/screens/Settings/Settings.tsx:203
 #: src/view/screens/Notifications.tsx:130
 #: src/view/shell/bottom-bar/BottomBar.tsx:249
-#: src/view/shell/desktop/LeftNav.tsx:706
+#: src/view/shell/desktop/LeftNav.tsx:722
 #: src/view/shell/Drawer.tsx:493
 msgid "Notifications"
 msgstr "Ειδοποιήσεις"
@@ -7229,8 +7242,8 @@ msgstr ""
 msgid "Primary Language"
 msgstr "Κύρια Γλώσσα"
 
-#: src/view/shell/desktop/RightNav.tsx:116
-#: src/view/shell/desktop/RightNav.tsx:117
+#: src/view/shell/desktop/RightNav.tsx:186
+#: src/view/shell/desktop/RightNav.tsx:187
 msgid "Privacy"
 msgstr "Απόρρητο"
 
@@ -7281,7 +7294,7 @@ msgid "profile"
 msgstr "προφίλ"
 
 #: src/view/shell/bottom-bar/BottomBar.tsx:313
-#: src/view/shell/desktop/LeftNav.tsx:784
+#: src/view/shell/desktop/LeftNav.tsx:782
 #: src/view/shell/Drawer.tsx:77
 #: src/view/shell/Drawer.tsx:596
 msgid "Profile"
@@ -8102,7 +8115,7 @@ msgstr ""
 msgid "Save to my feeds"
 msgstr "Αποθήκευση στις ροές μου"
 
-#: src/view/shell/desktop/LeftNav.tsx:762
+#: src/view/shell/desktop/LeftNav.tsx:760
 #: src/view/shell/Drawer.tsx:571
 msgctxt "link to bookmarks screen"
 msgid "Saved"
@@ -8565,7 +8578,7 @@ msgstr "Ορίζει email για επαναφορά κωδικού πρόσβα
 
 #: src/Navigation.tsx:216
 #: src/screens/Settings/Settings.tsx:103
-#: src/view/shell/desktop/LeftNav.tsx:802
+#: src/view/shell/desktop/LeftNav.tsx:800
 #: src/view/shell/Drawer.tsx:609
 msgid "Settings"
 msgstr "Ρυθμίσεις"
@@ -8848,8 +8861,6 @@ msgstr ""
 #: src/view/com/auth/SplashScreen.web.tsx:135
 #: src/view/shell/bottom-bar/BottomBar.tsx:352
 #: src/view/shell/bottom-bar/BottomBar.tsx:357
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:211
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:216
 #: src/view/shell/NavSignupCard.tsx:57
 #: src/view/shell/NavSignupCard.tsx:62
 msgid "Sign in"
@@ -8891,9 +8902,9 @@ msgstr ""
 #: src/screens/SignupQueued.tsx:93
 #: src/screens/SignupQueued.tsx:96
 #: src/screens/Takendown.tsx:88
-#: src/view/shell/desktop/LeftNav.tsx:212
-#: src/view/shell/desktop/LeftNav.tsx:269
-#: src/view/shell/desktop/LeftNav.tsx:272
+#: src/view/shell/desktop/LeftNav.tsx:211
+#: src/view/shell/desktop/LeftNav.tsx:268
+#: src/view/shell/desktop/LeftNav.tsx:271
 msgid "Sign out"
 msgstr "Αποσύνδεση"
 
@@ -8902,7 +8913,7 @@ msgid "Sign Out"
 msgstr ""
 
 #: src/screens/Settings/Settings.tsx:301
-#: src/view/shell/desktop/LeftNav.tsx:209
+#: src/view/shell/desktop/LeftNav.tsx:208
 msgid "Sign out?"
 msgstr "Αποσύνδεση;"
 
@@ -9245,7 +9256,7 @@ msgstr ""
 #: src/screens/Settings/Settings.tsx:127
 #: src/screens/Settings/Settings.tsx:141
 #: src/screens/Settings/Settings.tsx:622
-#: src/view/shell/desktop/LeftNav.tsx:247
+#: src/view/shell/desktop/LeftNav.tsx:246
 msgid "Switch account"
 msgstr "Αλλαγή λογαριασμού"
 
@@ -9254,11 +9265,11 @@ msgstr "Αλλαγή λογαριασμού"
 msgid "Switch Account"
 msgstr "Αλλαγή λογαριασμού"
 
-#: src/view/shell/desktop/LeftNav.tsx:110
+#: src/view/shell/desktop/LeftNav.tsx:109
 msgid "Switch accounts"
 msgstr ""
 
-#: src/view/shell/desktop/LeftNav.tsx:346
+#: src/view/shell/desktop/LeftNav.tsx:345
 msgid "Switch to {0}"
 msgstr ""
 
@@ -9342,8 +9353,8 @@ msgstr "Πες μας λίγα πράγματα για τον εαυτό σου"
 msgid "Tell us a little more"
 msgstr "Πες μας λίγα ακόμη"
 
-#: src/view/shell/desktop/RightNav.tsx:123
-#: src/view/shell/desktop/RightNav.tsx:124
+#: src/view/shell/desktop/RightNav.tsx:193
+#: src/view/shell/desktop/RightNav.tsx:194
 msgid "Terms"
 msgstr "Όροι"
 
@@ -9900,8 +9911,8 @@ msgstr ""
 msgid "Thread options"
 msgstr ""
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:70
-#: src/screens/Settings/ContentAndMediaSettings.tsx:73
+#: src/screens/Settings/ContentAndMediaSettings.tsx:69
+#: src/screens/Settings/ContentAndMediaSettings.tsx:72
 msgid "Thread preferences"
 msgstr "Προτιμήσεις νήματος"
 
@@ -10127,6 +10138,8 @@ msgctxt "Button label to undo saving/removing a post from saved posts."
 msgid "Undo"
 msgstr ""
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:57
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:63
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:72
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:78
 msgid "Undo"
@@ -10389,8 +10402,8 @@ msgstr "Χρησιμοποιήστε τον προεπιλεγμένο πάρο�
 msgid "Use in-app browser"
 msgstr "Χρησιμοποιήστε το ενσωματωμένο πρόγραμμα περιήγησης"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:104
-#: src/screens/Settings/ContentAndMediaSettings.tsx:110
+#: src/screens/Settings/ContentAndMediaSettings.tsx:103
+#: src/screens/Settings/ContentAndMediaSettings.tsx:109
 msgid "Use in-app browser to open links"
 msgstr "Χρησιμοποιήστε το ενσωματωμένο πρόγραμμα περιήγησης για να ανοίξετε συνδέσμους"
 
@@ -10750,7 +10763,7 @@ msgid "View your default post interaction settings"
 msgstr ""
 
 #: src/view/com/home/HomeHeaderLayout.web.tsx:57
-#: src/view/com/home/HomeHeaderLayoutMobile.tsx:72
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:118
 msgid "View your feeds and explore more"
 msgstr "Δείτε τις ροές σας και εξερευνήστε περισσότερα"
 
@@ -11479,7 +11492,7 @@ msgid "You recently changed your birthdate"
 msgstr ""
 
 #: src/screens/Settings/Settings.tsx:302
-#: src/view/shell/desktop/LeftNav.tsx:210
+#: src/view/shell/desktop/LeftNav.tsx:209
 msgid "You will be signed out of all your accounts."
 msgstr "Θα αποσυνδεθείτε από όλους τους λογαριασμούς σας."
 
@@ -11692,8 +11705,8 @@ msgstr "Το πλήρες όνομα χρήστη σας θα είναι <0>@{0}
 
 #: src/Navigation.tsx:527
 #: src/screens/Search/modules/ExploreInterestsCard.tsx:67
-#: src/screens/Settings/ContentAndMediaSettings.tsx:94
-#: src/screens/Settings/ContentAndMediaSettings.tsx:97
+#: src/screens/Settings/ContentAndMediaSettings.tsx:93
+#: src/screens/Settings/ContentAndMediaSettings.tsx:96
 #: src/screens/Settings/InterestsSettings.tsx:46
 msgid "Your interests"
 msgstr ""

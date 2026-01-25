@@ -230,7 +230,7 @@ msgstr "{0}분"
 msgid "{0}s"
 msgstr "{0}초"
 
-#: src/view/shell/desktop/LeftNav.tsx:454
+#: src/view/shell/desktop/LeftNav.tsx:453
 msgid "{count, plural, one {# unread item} other {# unread items}}"
 msgstr "읽지 않은 항목 {count, plural, other {#개}}"
 
@@ -432,7 +432,7 @@ msgstr "{joinedAllTimeCount, plural, other {#명}}의 사용자가 가입했습�
 msgid "{minutes, plural, one {# minute} other {# minutes}}"
 msgstr "{minutes, plural, other {#분}}"
 
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:277
+#: src/view/shell/bottom-bar/BottomBarWeb.tsx:232
 msgid "{notificationCount, plural, one {# unread item} other {# unread items}}"
 msgstr "읽지 않은 항목 {notificationCount, plural, other {#개}}"
 
@@ -749,8 +749,8 @@ msgstr "대체 텍스트 추가 (선택 사항)"
 
 #: src/screens/Settings/Settings.tsx:582
 #: src/screens/Settings/Settings.tsx:585
-#: src/view/shell/desktop/LeftNav.tsx:262
-#: src/view/shell/desktop/LeftNav.tsx:266
+#: src/view/shell/desktop/LeftNav.tsx:261
+#: src/view/shell/desktop/LeftNav.tsx:265
 msgid "Add another account"
 msgstr "다른 계정 추가"
 
@@ -1382,8 +1382,8 @@ msgctxt "Name of app icon variant"
 msgid "Aurora"
 msgstr "오로라"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:118
-#: src/screens/Settings/ContentAndMediaSettings.tsx:124
+#: src/screens/Settings/ContentAndMediaSettings.tsx:117
+#: src/screens/Settings/ContentAndMediaSettings.tsx:123
 msgid "Autoplay videos and GIFs"
 msgstr "동영상 및 GIF 자동 재생"
 
@@ -1792,7 +1792,7 @@ msgstr "카메라"
 #: src/view/com/composer/Composer.tsx:1063
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:43
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:52
-#: src/view/shell/desktop/LeftNav.tsx:213
+#: src/view/shell/desktop/LeftNav.tsx:212
 msgid "Cancel"
 msgstr "취소"
 
@@ -1902,7 +1902,7 @@ msgstr "변경 사항을 저장했습니다"
 #: src/lib/hooks/useNotificationHandler.ts:102
 #: src/Navigation.tsx:560
 #: src/view/shell/bottom-bar/BottomBar.tsx:218
-#: src/view/shell/desktop/LeftNav.tsx:608
+#: src/view/shell/desktop/LeftNav.tsx:607
 #: src/view/shell/Drawer.tsx:466
 msgid "Chat"
 msgstr "대화"
@@ -2243,7 +2243,7 @@ msgid "Complete the challenge"
 msgstr "챌린지 완료하기"
 
 #: src/view/com/feeds/ComposerPrompt.tsx:145
-#: src/view/shell/desktop/LeftNav.tsx:573
+#: src/view/shell/desktop/LeftNav.tsx:572
 msgid "Compose new post"
 msgstr "새 게시물 작성하기"
 
@@ -2263,7 +2263,6 @@ msgstr "동영상 압축 중…"
 msgid "Configure content filtering setting for category: {name}"
 msgstr "{name} 카테고리에 대한 콘텐츠 필터링 설정을 구성합니다."
 
-#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:51
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:36
 msgid "Configure live event banner"
 msgstr "라이브 이벤트 배너 설정"
@@ -2343,7 +2342,7 @@ msgstr "연락처 가져오기 완료"
 msgid "Contacts removed"
 msgstr "연락처를 제거했습니다"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:53
+#: src/screens/Settings/ContentAndMediaSettings.tsx:52
 msgid "Content & Media"
 msgstr "콘텐츠 및 미디어"
 
@@ -2658,8 +2657,6 @@ msgstr "나를 위한 스타터 팩 만들기"
 #: src/view/com/auth/SplashScreen.web.tsx:121
 #: src/view/shell/bottom-bar/BottomBar.tsx:342
 #: src/view/shell/bottom-bar/BottomBar.tsx:347
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:201
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:206
 #: src/view/shell/NavSignupCard.tsx:47
 #: src/view/shell/NavSignupCard.tsx:52
 msgid "Create account"
@@ -3049,6 +3046,10 @@ msgstr "시작하기 가이드 닫기"
 msgid "Dismiss interests"
 msgstr "관심 주제 닫기"
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:81
+msgid "Dismiss live event banner"
+msgstr ""
+
 #: src/components/interstitials/TrendingVideos.tsx:89
 msgid "Dismiss this section"
 msgstr "이 부분 닫기"
@@ -3421,13 +3422,13 @@ msgstr "자막 사용"
 msgid "Enable this source only"
 msgstr "이 소스에서만 사용"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:134
-#: src/screens/Settings/ContentAndMediaSettings.tsx:148
+#: src/screens/Settings/ContentAndMediaSettings.tsx:133
+#: src/screens/Settings/ContentAndMediaSettings.tsx:147
 msgid "Enable trending topics"
 msgstr "인기 주제 사용"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:156
-#: src/screens/Settings/ContentAndMediaSettings.tsx:170
+#: src/screens/Settings/ContentAndMediaSettings.tsx:154
+#: src/screens/Settings/ContentAndMediaSettings.tsx:168
 msgid "Enable trending videos in your Discover feed"
 msgstr "Discover 피드에서 인기 동영상 사용"
 
@@ -3638,7 +3639,7 @@ msgstr "노골적인 성적 이미지."
 
 #: src/Navigation.tsx:789
 #: src/screens/Search/Shell.tsx:327
-#: src/view/shell/desktop/LeftNav.tsx:687
+#: src/view/shell/desktop/LeftNav.tsx:681
 #: src/view/shell/Drawer.tsx:414
 msgid "Explore"
 msgstr "탐색"
@@ -3657,8 +3658,8 @@ msgstr "내 데이터 내보내기"
 msgid "Export My Data"
 msgstr "내 데이터 내보내기"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:86
-#: src/screens/Settings/ContentAndMediaSettings.tsx:89
+#: src/screens/Settings/ContentAndMediaSettings.tsx:85
+#: src/screens/Settings/ContentAndMediaSettings.tsx:88
 msgid "External media"
 msgstr "외부 미디어"
 
@@ -3939,8 +3940,8 @@ msgstr "피드 켜기/끄기"
 msgid "Feed unavailable"
 msgstr "사용할 수 없는 피드"
 
-#: src/view/shell/desktop/RightNav.tsx:107
-#: src/view/shell/desktop/RightNav.tsx:108
+#: src/view/shell/desktop/RightNav.tsx:177
+#: src/view/shell/desktop/RightNav.tsx:178
 #: src/view/shell/Drawer.tsx:368
 msgid "Feedback"
 msgstr "피드백"
@@ -3957,7 +3958,7 @@ msgstr "피드 운영자에게 피드백을 전송했습니다"
 #: src/screens/StarterPack/StarterPackScreen.tsx:193
 #: src/view/screens/Feeds.tsx:511
 #: src/view/screens/Profile.tsx:239
-#: src/view/shell/desktop/LeftNav.tsx:725
+#: src/view/shell/desktop/LeftNav.tsx:699
 #: src/view/shell/Drawer.tsx:530
 msgid "Feeds"
 msgstr "피드"
@@ -4218,8 +4219,8 @@ msgstr "{0} 님을 팔로우했습니다"
 msgid "Following {handle}"
 msgstr "{handle} 님을 팔로우 중"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:78
-#: src/screens/Settings/ContentAndMediaSettings.tsx:81
+#: src/screens/Settings/ContentAndMediaSettings.tsx:77
+#: src/screens/Settings/ContentAndMediaSettings.tsx:80
 msgid "Following feed preferences"
 msgstr "팔로우 중 피드 설정"
 
@@ -4478,13 +4479,17 @@ msgstr "{0} 님과의 대화로 이동합니다"
 msgid "Go to feed"
 msgstr "피드로 이동"
 
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:49
+msgid "Go to main site"
+msgstr ""
+
 #: src/screens/Login/ForgotPasswordForm.tsx:165
 msgid "Go to next"
 msgstr "다음"
 
 #: src/components/dms/ConvoMenu.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:317
-#: src/view/shell/desktop/LeftNav.tsx:323
+#: src/view/shell/desktop/LeftNav.tsx:316
+#: src/view/shell/desktop/LeftNav.tsx:322
 msgid "Go to profile"
 msgstr "프로필로 이동"
 
@@ -4590,8 +4595,8 @@ msgstr "Bluesky에서는 악용 방지를 위해 7일간 보관 후 삭제됩니
 
 #: src/screens/Settings/Settings.tsx:252
 #: src/screens/Settings/Settings.tsx:256
-#: src/view/shell/desktop/RightNav.tsx:128
-#: src/view/shell/desktop/RightNav.tsx:131
+#: src/view/shell/desktop/RightNav.tsx:198
+#: src/view/shell/desktop/RightNav.tsx:201
 #: src/view/shell/Drawer.tsx:381
 msgid "Help"
 msgstr "도움말"
@@ -4761,7 +4766,7 @@ msgstr "잠깐! 동영상에 대한 접근 권한이 점차적으로 제공되�
 #: src/Navigation.tsx:784
 #: src/Navigation.tsx:804
 #: src/view/shell/bottom-bar/BottomBar.tsx:175
-#: src/view/shell/desktop/LeftNav.tsx:669
+#: src/view/shell/desktop/LeftNav.tsx:663
 #: src/view/shell/Drawer.tsx:440
 msgid "Home"
 msgstr "홈"
@@ -5473,7 +5478,7 @@ msgstr "리스트를 언뮤트했습니다"
 #: src/view/screens/Lists.tsx:67
 #: src/view/screens/Profile.tsx:233
 #: src/view/screens/Profile.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:743
+#: src/view/shell/desktop/LeftNav.tsx:741
 #: src/view/shell/Drawer.tsx:545
 msgid "Lists"
 msgstr "리스트"
@@ -5496,9 +5501,17 @@ msgstr "라이브"
 msgid "Live event happening now: {0}"
 msgstr "라이브 이벤트 진행 중: {0}"
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:50
+msgid "Live event hidden"
+msgstr ""
+
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:105
 msgid "Live event options"
 msgstr "라이브 이벤트 옵션"
+
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:52
+msgid "Live event unhidden"
+msgstr ""
 
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:109
 msgid "Live events appear occasionally when something exciting is happening. If you'd like, you can hide this particular event, or all events for this placement in your app interface."
@@ -5559,11 +5572,11 @@ msgstr "로그아웃됨"
 msgid "Logged-out visibility"
 msgstr "로그아웃 표시"
 
-#: src/view/shell/desktop/RightNav.tsx:140
+#: src/view/shell/desktop/RightNav.tsx:210
 msgid "Logo by @sawaratsuki.bsky.social"
 msgstr "@sawaratsuki.bsky.social 님의 로고"
 
-#: src/view/shell/desktop/RightNav.tsx:137
+#: src/view/shell/desktop/RightNav.tsx:207
 #: src/view/shell/Drawer.tsx:709
 msgid "Logo by <0>@sawaratsuki.bsky.social</0>"
 msgstr "<0>@sawaratsuki.bsky.social</0> 님의 로고"
@@ -5600,8 +5613,8 @@ msgstr "나를 위해 만들기"
 msgid "Make sure this is where you intend to go!"
 msgstr "이곳이 당신이 가고자 하는 곳인지 확인하세요!"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:62
-#: src/screens/Settings/ContentAndMediaSettings.tsx:65
+#: src/screens/Settings/ContentAndMediaSettings.tsx:61
+#: src/screens/Settings/ContentAndMediaSettings.tsx:64
 msgid "Manage saved feeds"
 msgstr "저장된 피드 관리"
 
@@ -6032,7 +6045,7 @@ msgctxt "action"
 msgid "New post"
 msgstr "새 게시물"
 
-#: src/view/shell/desktop/LeftNav.tsx:581
+#: src/view/shell/desktop/LeftNav.tsx:580
 msgctxt "action"
 msgid "New Post"
 msgstr "새 게시물"
@@ -6351,7 +6364,7 @@ msgstr "알림음"
 #: src/screens/Settings/Settings.tsx:203
 #: src/view/screens/Notifications.tsx:130
 #: src/view/shell/bottom-bar/BottomBar.tsx:249
-#: src/view/shell/desktop/LeftNav.tsx:706
+#: src/view/shell/desktop/LeftNav.tsx:722
 #: src/view/shell/Drawer.tsx:493
 msgid "Notifications"
 msgstr "알림"
@@ -7229,8 +7242,8 @@ msgstr "주 언어"
 msgid "Primary Language"
 msgstr "주 언어"
 
-#: src/view/shell/desktop/RightNav.tsx:116
-#: src/view/shell/desktop/RightNav.tsx:117
+#: src/view/shell/desktop/RightNav.tsx:186
+#: src/view/shell/desktop/RightNav.tsx:187
 msgid "Privacy"
 msgstr "개인정보"
 
@@ -7281,7 +7294,7 @@ msgid "profile"
 msgstr "프로필"
 
 #: src/view/shell/bottom-bar/BottomBar.tsx:313
-#: src/view/shell/desktop/LeftNav.tsx:784
+#: src/view/shell/desktop/LeftNav.tsx:782
 #: src/view/shell/Drawer.tsx:77
 #: src/view/shell/Drawer.tsx:596
 msgid "Profile"
@@ -8102,7 +8115,7 @@ msgstr "다음에도 이 옵션 저장하기"
 msgid "Save to my feeds"
 msgstr "내 피드에 저장"
 
-#: src/view/shell/desktop/LeftNav.tsx:762
+#: src/view/shell/desktop/LeftNav.tsx:760
 #: src/view/shell/Drawer.tsx:571
 msgctxt "link to bookmarks screen"
 msgid "Saved"
@@ -8565,7 +8578,7 @@ msgstr "비밀번호 재설정을 위한 이메일을 설정합니다"
 
 #: src/Navigation.tsx:216
 #: src/screens/Settings/Settings.tsx:103
-#: src/view/shell/desktop/LeftNav.tsx:802
+#: src/view/shell/desktop/LeftNav.tsx:800
 #: src/view/shell/Drawer.tsx:609
 msgid "Settings"
 msgstr "설정"
@@ -8848,8 +8861,6 @@ msgstr "콘텐츠를 표시합니다"
 #: src/view/com/auth/SplashScreen.web.tsx:135
 #: src/view/shell/bottom-bar/BottomBar.tsx:352
 #: src/view/shell/bottom-bar/BottomBar.tsx:357
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:211
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:216
 #: src/view/shell/NavSignupCard.tsx:57
 #: src/view/shell/NavSignupCard.tsx:62
 msgid "Sign in"
@@ -8891,9 +8902,9 @@ msgstr "로그인하여 게시물 보기"
 #: src/screens/SignupQueued.tsx:93
 #: src/screens/SignupQueued.tsx:96
 #: src/screens/Takendown.tsx:88
-#: src/view/shell/desktop/LeftNav.tsx:212
-#: src/view/shell/desktop/LeftNav.tsx:269
-#: src/view/shell/desktop/LeftNav.tsx:272
+#: src/view/shell/desktop/LeftNav.tsx:211
+#: src/view/shell/desktop/LeftNav.tsx:268
+#: src/view/shell/desktop/LeftNav.tsx:271
 msgid "Sign out"
 msgstr "로그아웃"
 
@@ -8902,7 +8913,7 @@ msgid "Sign Out"
 msgstr "로그아웃"
 
 #: src/screens/Settings/Settings.tsx:301
-#: src/view/shell/desktop/LeftNav.tsx:209
+#: src/view/shell/desktop/LeftNav.tsx:208
 msgid "Sign out?"
 msgstr "로그아웃하시겠습니까?"
 
@@ -9245,7 +9256,7 @@ msgstr "회원님의 국가에서는 아직 이 기능이 지원되지 않습니
 #: src/screens/Settings/Settings.tsx:127
 #: src/screens/Settings/Settings.tsx:141
 #: src/screens/Settings/Settings.tsx:622
-#: src/view/shell/desktop/LeftNav.tsx:247
+#: src/view/shell/desktop/LeftNav.tsx:246
 msgid "Switch account"
 msgstr "계정 전환"
 
@@ -9254,11 +9265,11 @@ msgstr "계정 전환"
 msgid "Switch Account"
 msgstr "계정 전환"
 
-#: src/view/shell/desktop/LeftNav.tsx:110
+#: src/view/shell/desktop/LeftNav.tsx:109
 msgid "Switch accounts"
 msgstr "계정 전환"
 
-#: src/view/shell/desktop/LeftNav.tsx:346
+#: src/view/shell/desktop/LeftNav.tsx:345
 msgid "Switch to {0}"
 msgstr "{0}(으)로 전환"
 
@@ -9342,8 +9353,8 @@ msgstr "본인에 대해 간단히 소개해 주세요"
 msgid "Tell us a little more"
 msgstr "좀 더 자세히 알려주세요"
 
-#: src/view/shell/desktop/RightNav.tsx:123
-#: src/view/shell/desktop/RightNav.tsx:124
+#: src/view/shell/desktop/RightNav.tsx:193
+#: src/view/shell/desktop/RightNav.tsx:194
 msgid "Terms"
 msgstr "이용약관"
 
@@ -9900,8 +9911,8 @@ msgstr "모든 사용자의 인용 게시물에서 해당 게시물이 삭제되
 msgid "Thread options"
 msgstr "스레드 옵션"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:70
-#: src/screens/Settings/ContentAndMediaSettings.tsx:73
+#: src/screens/Settings/ContentAndMediaSettings.tsx:69
+#: src/screens/Settings/ContentAndMediaSettings.tsx:72
 msgid "Thread preferences"
 msgstr "스레드 설정"
 
@@ -10127,6 +10138,8 @@ msgctxt "Button label to undo saving/removing a post from saved posts."
 msgid "Undo"
 msgstr "실행 취소"
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:57
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:63
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:72
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:78
 msgid "Undo"
@@ -10389,8 +10402,8 @@ msgstr "기본 제공자 사용"
 msgid "Use in-app browser"
 msgstr "인앱 브라우저 사용"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:104
-#: src/screens/Settings/ContentAndMediaSettings.tsx:110
+#: src/screens/Settings/ContentAndMediaSettings.tsx:103
+#: src/screens/Settings/ContentAndMediaSettings.tsx:109
 msgid "Use in-app browser to open links"
 msgstr "인앱 브라우저를 사용하여 링크 열기"
 
@@ -10750,7 +10763,7 @@ msgid "View your default post interaction settings"
 msgstr "기본 게시물 상호작용 설정 보기"
 
 #: src/view/com/home/HomeHeaderLayout.web.tsx:57
-#: src/view/com/home/HomeHeaderLayoutMobile.tsx:72
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:118
 msgid "View your feeds and explore more"
 msgstr "내 피드를 보거나 새 피드 탐색하기"
 
@@ -11479,7 +11492,7 @@ msgid "You recently changed your birthdate"
 msgstr "최근 생년월일을 변경했습니다"
 
 #: src/screens/Settings/Settings.tsx:302
-#: src/view/shell/desktop/LeftNav.tsx:210
+#: src/view/shell/desktop/LeftNav.tsx:209
 msgid "You will be signed out of all your accounts."
 msgstr "모든 계정에서 로그아웃됩니다."
 
@@ -11692,8 +11705,8 @@ msgstr "내 전체 핸들: <0>@{0}</0>"
 
 #: src/Navigation.tsx:527
 #: src/screens/Search/modules/ExploreInterestsCard.tsx:67
-#: src/screens/Settings/ContentAndMediaSettings.tsx:94
-#: src/screens/Settings/ContentAndMediaSettings.tsx:97
+#: src/screens/Settings/ContentAndMediaSettings.tsx:93
+#: src/screens/Settings/ContentAndMediaSettings.tsx:96
 #: src/screens/Settings/InterestsSettings.tsx:46
 msgid "Your interests"
 msgstr "내 관심 주제"

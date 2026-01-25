@@ -230,7 +230,7 @@ msgstr "{0}min"
 msgid "{0}s"
 msgstr "{0}s"
 
-#: src/view/shell/desktop/LeftNav.tsx:454
+#: src/view/shell/desktop/LeftNav.tsx:453
 msgid "{count, plural, one {# unread item} other {# unread items}}"
 msgstr "{count, plural, one {# item não lido} other {# itens não lidos}}"
 
@@ -432,7 +432,7 @@ msgstr "{joinedAllTimeCount, plural, other {# usuários se juntaram}}!"
 msgid "{minutes, plural, one {# minute} other {# minutes}}"
 msgstr "{minutes, plural, one {# minuto} other {# minutos}}"
 
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:277
+#: src/view/shell/bottom-bar/BottomBarWeb.tsx:232
 msgid "{notificationCount, plural, one {# unread item} other {# unread items}}"
 msgstr "{notificationCount, plural, one {# item não lido} other {# itens não lidos}}"
 
@@ -749,8 +749,8 @@ msgstr "Adicionar texto alternativo (opcional)"
 
 #: src/screens/Settings/Settings.tsx:582
 #: src/screens/Settings/Settings.tsx:585
-#: src/view/shell/desktop/LeftNav.tsx:262
-#: src/view/shell/desktop/LeftNav.tsx:266
+#: src/view/shell/desktop/LeftNav.tsx:261
+#: src/view/shell/desktop/LeftNav.tsx:265
 msgid "Add another account"
 msgstr "Adicionar outra conta"
 
@@ -1382,8 +1382,8 @@ msgctxt "Name of app icon variant"
 msgid "Aurora"
 msgstr "Aurora"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:118
-#: src/screens/Settings/ContentAndMediaSettings.tsx:124
+#: src/screens/Settings/ContentAndMediaSettings.tsx:117
+#: src/screens/Settings/ContentAndMediaSettings.tsx:123
 msgid "Autoplay videos and GIFs"
 msgstr "Reproduzir vídeos e GIFs automaticamente"
 
@@ -1792,7 +1792,7 @@ msgstr "Câmera"
 #: src/view/com/composer/Composer.tsx:1063
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:43
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:52
-#: src/view/shell/desktop/LeftNav.tsx:213
+#: src/view/shell/desktop/LeftNav.tsx:212
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1902,7 +1902,7 @@ msgstr "Alterações salvas"
 #: src/lib/hooks/useNotificationHandler.ts:102
 #: src/Navigation.tsx:560
 #: src/view/shell/bottom-bar/BottomBar.tsx:218
-#: src/view/shell/desktop/LeftNav.tsx:608
+#: src/view/shell/desktop/LeftNav.tsx:607
 #: src/view/shell/Drawer.tsx:466
 msgid "Chat"
 msgstr "Conversas"
@@ -2243,7 +2243,7 @@ msgid "Complete the challenge"
 msgstr "Complete o captcha"
 
 #: src/view/com/feeds/ComposerPrompt.tsx:145
-#: src/view/shell/desktop/LeftNav.tsx:573
+#: src/view/shell/desktop/LeftNav.tsx:572
 msgid "Compose new post"
 msgstr "Escrever nova postagem"
 
@@ -2263,7 +2263,6 @@ msgstr "Comprimindo vídeo..."
 msgid "Configure content filtering setting for category: {name}"
 msgstr "Configure o filtro de conteúdo por categoria: {name}"
 
-#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:51
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:36
 msgid "Configure live event banner"
 msgstr "Configurar banner de eventos ao vivo"
@@ -2343,7 +2342,7 @@ msgstr "Contatos importados"
 msgid "Contacts removed"
 msgstr "Contatos removidos"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:53
+#: src/screens/Settings/ContentAndMediaSettings.tsx:52
 msgid "Content & Media"
 msgstr "Conteúdo e mídia"
 
@@ -2658,8 +2657,6 @@ msgstr "Crie um pacote inicial para mim"
 #: src/view/com/auth/SplashScreen.web.tsx:121
 #: src/view/shell/bottom-bar/BottomBar.tsx:342
 #: src/view/shell/bottom-bar/BottomBar.tsx:347
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:201
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:206
 #: src/view/shell/NavSignupCard.tsx:47
 #: src/view/shell/NavSignupCard.tsx:52
 msgid "Create account"
@@ -3049,6 +3046,10 @@ msgstr "Ignorar guia de primeiros passos"
 msgid "Dismiss interests"
 msgstr "Dispensar interesses"
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:81
+msgid "Dismiss live event banner"
+msgstr ""
+
 #: src/components/interstitials/TrendingVideos.tsx:89
 msgid "Dismiss this section"
 msgstr "Dispensar esta seção"
@@ -3421,13 +3422,13 @@ msgstr "Ativar legendas"
 msgid "Enable this source only"
 msgstr "Ativar apenar para esta fonte"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:134
-#: src/screens/Settings/ContentAndMediaSettings.tsx:148
+#: src/screens/Settings/ContentAndMediaSettings.tsx:133
+#: src/screens/Settings/ContentAndMediaSettings.tsx:147
 msgid "Enable trending topics"
 msgstr "Ativar assuntos em alta"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:156
-#: src/screens/Settings/ContentAndMediaSettings.tsx:170
+#: src/screens/Settings/ContentAndMediaSettings.tsx:154
+#: src/screens/Settings/ContentAndMediaSettings.tsx:168
 msgid "Enable trending videos in your Discover feed"
 msgstr "Ativar vídeos em alta no feed Descobrir"
 
@@ -3638,7 +3639,7 @@ msgstr "Imagens sexualmente explícitas."
 
 #: src/Navigation.tsx:789
 #: src/screens/Search/Shell.tsx:327
-#: src/view/shell/desktop/LeftNav.tsx:687
+#: src/view/shell/desktop/LeftNav.tsx:681
 #: src/view/shell/Drawer.tsx:414
 msgid "Explore"
 msgstr "Explorar"
@@ -3657,8 +3658,8 @@ msgstr "Exportar meus dados"
 msgid "Export My Data"
 msgstr "Exportar meus dados"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:86
-#: src/screens/Settings/ContentAndMediaSettings.tsx:89
+#: src/screens/Settings/ContentAndMediaSettings.tsx:85
+#: src/screens/Settings/ContentAndMediaSettings.tsx:88
 msgid "External media"
 msgstr "Mídia externa"
 
@@ -3939,8 +3940,8 @@ msgstr "Alternar feed"
 msgid "Feed unavailable"
 msgstr "Feed indisponível"
 
-#: src/view/shell/desktop/RightNav.tsx:107
-#: src/view/shell/desktop/RightNav.tsx:108
+#: src/view/shell/desktop/RightNav.tsx:177
+#: src/view/shell/desktop/RightNav.tsx:178
 #: src/view/shell/Drawer.tsx:368
 msgid "Feedback"
 msgstr "Comentários"
@@ -3957,7 +3958,7 @@ msgstr "Comentários enviados para o operador do feed"
 #: src/screens/StarterPack/StarterPackScreen.tsx:193
 #: src/view/screens/Feeds.tsx:511
 #: src/view/screens/Profile.tsx:239
-#: src/view/shell/desktop/LeftNav.tsx:725
+#: src/view/shell/desktop/LeftNav.tsx:699
 #: src/view/shell/Drawer.tsx:530
 msgid "Feeds"
 msgstr "Feeds"
@@ -4218,8 +4219,8 @@ msgstr "Seguindo {0}"
 msgid "Following {handle}"
 msgstr "Seguindo {handle}"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:78
-#: src/screens/Settings/ContentAndMediaSettings.tsx:81
+#: src/screens/Settings/ContentAndMediaSettings.tsx:77
+#: src/screens/Settings/ContentAndMediaSettings.tsx:80
 msgid "Following feed preferences"
 msgstr "Preferências do feed principal"
 
@@ -4478,13 +4479,17 @@ msgstr "Ir para a conversa com {0}"
 msgid "Go to feed"
 msgstr "Ir para o feed"
 
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:49
+msgid "Go to main site"
+msgstr ""
+
 #: src/screens/Login/ForgotPasswordForm.tsx:165
 msgid "Go to next"
 msgstr "Próximo"
 
 #: src/components/dms/ConvoMenu.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:317
-#: src/view/shell/desktop/LeftNav.tsx:323
+#: src/view/shell/desktop/LeftNav.tsx:316
+#: src/view/shell/desktop/LeftNav.tsx:322
 msgid "Go to profile"
 msgstr "Ir para este perfil"
 
@@ -4590,8 +4595,8 @@ msgstr "Mantido pelo Bluesky por 7 dias para evitar abusos, e depois excluído"
 
 #: src/screens/Settings/Settings.tsx:252
 #: src/screens/Settings/Settings.tsx:256
-#: src/view/shell/desktop/RightNav.tsx:128
-#: src/view/shell/desktop/RightNav.tsx:131
+#: src/view/shell/desktop/RightNav.tsx:198
+#: src/view/shell/desktop/RightNav.tsx:201
 #: src/view/shell/Drawer.tsx:381
 msgid "Help"
 msgstr "Ajuda"
@@ -4761,7 +4766,7 @@ msgstr "Espere! Estamos gradualmente dando acesso ao vídeo, e você ainda está
 #: src/Navigation.tsx:784
 #: src/Navigation.tsx:804
 #: src/view/shell/bottom-bar/BottomBar.tsx:175
-#: src/view/shell/desktop/LeftNav.tsx:669
+#: src/view/shell/desktop/LeftNav.tsx:663
 #: src/view/shell/Drawer.tsx:440
 msgid "Home"
 msgstr "Página Inicial"
@@ -5473,7 +5478,7 @@ msgstr "Lista dessilenciada"
 #: src/view/screens/Lists.tsx:67
 #: src/view/screens/Profile.tsx:233
 #: src/view/screens/Profile.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:743
+#: src/view/shell/desktop/LeftNav.tsx:741
 #: src/view/shell/Drawer.tsx:545
 msgid "Lists"
 msgstr "Listas"
@@ -5496,9 +5501,17 @@ msgstr "AO VIVO"
 msgid "Live event happening now: {0}"
 msgstr "Evento ao vivo acontecendo agora: {0}"
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:50
+msgid "Live event hidden"
+msgstr ""
+
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:105
 msgid "Live event options"
 msgstr "Opções do evento ao vivo"
+
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:52
+msgid "Live event unhidden"
+msgstr ""
 
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:109
 msgid "Live events appear occasionally when something exciting is happening. If you'd like, you can hide this particular event, or all events for this placement in your app interface."
@@ -5559,11 +5572,11 @@ msgstr "Sessão encerrada"
 msgid "Logged-out visibility"
 msgstr "Visibilidade do seu perfil"
 
-#: src/view/shell/desktop/RightNav.tsx:140
+#: src/view/shell/desktop/RightNav.tsx:210
 msgid "Logo by @sawaratsuki.bsky.social"
 msgstr "Logo por @sawaratsuki.bsky.social"
 
-#: src/view/shell/desktop/RightNav.tsx:137
+#: src/view/shell/desktop/RightNav.tsx:207
 #: src/view/shell/Drawer.tsx:709
 msgid "Logo by <0>@sawaratsuki.bsky.social</0>"
 msgstr "Logo por <0>@sawaratsuki.bsky.social</0>"
@@ -5600,8 +5613,8 @@ msgstr "Faça um para mim"
 msgid "Make sure this is where you intend to go!"
 msgstr "Certifique-se de onde está indo!"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:62
-#: src/screens/Settings/ContentAndMediaSettings.tsx:65
+#: src/screens/Settings/ContentAndMediaSettings.tsx:61
+#: src/screens/Settings/ContentAndMediaSettings.tsx:64
 msgid "Manage saved feeds"
 msgstr "Gerenciar feeds salvos"
 
@@ -6032,7 +6045,7 @@ msgctxt "action"
 msgid "New post"
 msgstr "Postar"
 
-#: src/view/shell/desktop/LeftNav.tsx:581
+#: src/view/shell/desktop/LeftNav.tsx:580
 msgctxt "action"
 msgid "New Post"
 msgstr "Postar"
@@ -6351,7 +6364,7 @@ msgstr "Sons de Notificação"
 #: src/screens/Settings/Settings.tsx:203
 #: src/view/screens/Notifications.tsx:130
 #: src/view/shell/bottom-bar/BottomBar.tsx:249
-#: src/view/shell/desktop/LeftNav.tsx:706
+#: src/view/shell/desktop/LeftNav.tsx:722
 #: src/view/shell/Drawer.tsx:493
 msgid "Notifications"
 msgstr "Notificações"
@@ -7229,8 +7242,8 @@ msgstr "Idioma principal"
 msgid "Primary Language"
 msgstr "Idioma Principal"
 
-#: src/view/shell/desktop/RightNav.tsx:116
-#: src/view/shell/desktop/RightNav.tsx:117
+#: src/view/shell/desktop/RightNav.tsx:186
+#: src/view/shell/desktop/RightNav.tsx:187
 msgid "Privacy"
 msgstr "Privacidade"
 
@@ -7281,7 +7294,7 @@ msgid "profile"
 msgstr "perfil"
 
 #: src/view/shell/bottom-bar/BottomBar.tsx:313
-#: src/view/shell/desktop/LeftNav.tsx:784
+#: src/view/shell/desktop/LeftNav.tsx:782
 #: src/view/shell/Drawer.tsx:77
 #: src/view/shell/Drawer.tsx:596
 msgid "Profile"
@@ -8102,7 +8115,7 @@ msgstr "Salvar estas opções para a próxima vez"
 msgid "Save to my feeds"
 msgstr "Salvar nos meus feeds"
 
-#: src/view/shell/desktop/LeftNav.tsx:762
+#: src/view/shell/desktop/LeftNav.tsx:760
 #: src/view/shell/Drawer.tsx:571
 msgctxt "link to bookmarks screen"
 msgid "Saved"
@@ -8565,7 +8578,7 @@ msgstr "Configura o e-mail para recuperação de senha"
 
 #: src/Navigation.tsx:216
 #: src/screens/Settings/Settings.tsx:103
-#: src/view/shell/desktop/LeftNav.tsx:802
+#: src/view/shell/desktop/LeftNav.tsx:800
 #: src/view/shell/Drawer.tsx:609
 msgid "Settings"
 msgstr "Configurações"
@@ -8848,8 +8861,6 @@ msgstr "Exibe o conteúdo"
 #: src/view/com/auth/SplashScreen.web.tsx:135
 #: src/view/shell/bottom-bar/BottomBar.tsx:352
 #: src/view/shell/bottom-bar/BottomBar.tsx:357
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:211
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:216
 #: src/view/shell/NavSignupCard.tsx:57
 #: src/view/shell/NavSignupCard.tsx:62
 msgid "Sign in"
@@ -8891,9 +8902,9 @@ msgstr "Faça login para ver a postagem"
 #: src/screens/SignupQueued.tsx:93
 #: src/screens/SignupQueued.tsx:96
 #: src/screens/Takendown.tsx:88
-#: src/view/shell/desktop/LeftNav.tsx:212
-#: src/view/shell/desktop/LeftNav.tsx:269
-#: src/view/shell/desktop/LeftNav.tsx:272
+#: src/view/shell/desktop/LeftNav.tsx:211
+#: src/view/shell/desktop/LeftNav.tsx:268
+#: src/view/shell/desktop/LeftNav.tsx:271
 msgid "Sign out"
 msgstr "Sair"
 
@@ -8902,7 +8913,7 @@ msgid "Sign Out"
 msgstr "Sair"
 
 #: src/screens/Settings/Settings.tsx:301
-#: src/view/shell/desktop/LeftNav.tsx:209
+#: src/view/shell/desktop/LeftNav.tsx:208
 msgid "Sign out?"
 msgstr "Sair?"
 
@@ -9245,7 +9256,7 @@ msgstr "O suporte para este recurso no seu país ainda não foi habilitado! Por 
 #: src/screens/Settings/Settings.tsx:127
 #: src/screens/Settings/Settings.tsx:141
 #: src/screens/Settings/Settings.tsx:622
-#: src/view/shell/desktop/LeftNav.tsx:247
+#: src/view/shell/desktop/LeftNav.tsx:246
 msgid "Switch account"
 msgstr "Alterar conta"
 
@@ -9254,11 +9265,11 @@ msgstr "Alterar conta"
 msgid "Switch Account"
 msgstr "Alterar Conta"
 
-#: src/view/shell/desktop/LeftNav.tsx:110
+#: src/view/shell/desktop/LeftNav.tsx:109
 msgid "Switch accounts"
 msgstr "Trocar de conta "
 
-#: src/view/shell/desktop/LeftNav.tsx:346
+#: src/view/shell/desktop/LeftNav.tsx:345
 msgid "Switch to {0}"
 msgstr "Alterar para {0}"
 
@@ -9342,8 +9353,8 @@ msgstr "Conte-nos um pouco sobre você"
 msgid "Tell us a little more"
 msgstr "Conte-nos um pouco mais"
 
-#: src/view/shell/desktop/RightNav.tsx:123
-#: src/view/shell/desktop/RightNav.tsx:124
+#: src/view/shell/desktop/RightNav.tsx:193
+#: src/view/shell/desktop/RightNav.tsx:194
 msgid "Terms"
 msgstr "Termos"
 
@@ -9900,8 +9911,8 @@ msgstr "Isso removerá sua postagem desta postagem de citação para todos os us
 msgid "Thread options"
 msgstr "Opções de tópicos"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:70
-#: src/screens/Settings/ContentAndMediaSettings.tsx:73
+#: src/screens/Settings/ContentAndMediaSettings.tsx:69
+#: src/screens/Settings/ContentAndMediaSettings.tsx:72
 msgid "Thread preferences"
 msgstr "Preferências dos tópicos"
 
@@ -10127,6 +10138,8 @@ msgctxt "Button label to undo saving/removing a post from saved posts."
 msgid "Undo"
 msgstr "Desfazer"
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:57
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:63
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:72
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:78
 msgid "Undo"
@@ -10389,8 +10402,8 @@ msgstr "Usar provedor padrão"
 msgid "Use in-app browser"
 msgstr "Usar o navegador interno"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:104
-#: src/screens/Settings/ContentAndMediaSettings.tsx:110
+#: src/screens/Settings/ContentAndMediaSettings.tsx:103
+#: src/screens/Settings/ContentAndMediaSettings.tsx:109
 msgid "Use in-app browser to open links"
 msgstr "Usar o navegador interno para abrir links"
 
@@ -10750,7 +10763,7 @@ msgid "View your default post interaction settings"
 msgstr "Ver suas opções padrão de interação em postagens"
 
 #: src/view/com/home/HomeHeaderLayout.web.tsx:57
-#: src/view/com/home/HomeHeaderLayoutMobile.tsx:72
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:118
 msgid "View your feeds and explore more"
 msgstr "Veja seus feeds e explore mais"
 
@@ -11479,7 +11492,7 @@ msgid "You recently changed your birthdate"
 msgstr "Você alterou sua data de nascimento recentemente"
 
 #: src/screens/Settings/Settings.tsx:302
-#: src/view/shell/desktop/LeftNav.tsx:210
+#: src/view/shell/desktop/LeftNav.tsx:209
 msgid "You will be signed out of all your accounts."
 msgstr "Você será desconectado de todas as suas contas."
 
@@ -11692,8 +11705,8 @@ msgstr "Seu nome de usuário completo será <0>@{0}</0>"
 
 #: src/Navigation.tsx:527
 #: src/screens/Search/modules/ExploreInterestsCard.tsx:67
-#: src/screens/Settings/ContentAndMediaSettings.tsx:94
-#: src/screens/Settings/ContentAndMediaSettings.tsx:97
+#: src/screens/Settings/ContentAndMediaSettings.tsx:93
+#: src/screens/Settings/ContentAndMediaSettings.tsx:96
 #: src/screens/Settings/InterestsSettings.tsx:46
 msgid "Your interests"
 msgstr "Seus interesses"

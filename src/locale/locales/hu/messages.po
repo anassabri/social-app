@@ -230,7 +230,7 @@ msgstr "{0} perce"
 msgid "{0}s"
 msgstr "{0} másodperce"
 
-#: src/view/shell/desktop/LeftNav.tsx:454
+#: src/view/shell/desktop/LeftNav.tsx:453
 msgid "{count, plural, one {# unread item} other {# unread items}}"
 msgstr "{count, plural, one {# olvasatlan} other {# olvasatlan}}"
 
@@ -432,7 +432,7 @@ msgstr "{joinedAllTimeCount, plural, other {#}} felhasználó csatlakozott ezzel
 msgid "{minutes, plural, one {# minute} other {# minutes}}"
 msgstr "{minutes, plural, one {# perc} other {# perc}}"
 
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:277
+#: src/view/shell/bottom-bar/BottomBarWeb.tsx:232
 msgid "{notificationCount, plural, one {# unread item} other {# unread items}}"
 msgstr "{notificationCount, plural, one {# olvasatlan értesítés} other {# olvasatlan értesítés}}"
 
@@ -749,8 +749,8 @@ msgstr "Helyettesítő szöveg hozzáadása (nem kötelező)"
 
 #: src/screens/Settings/Settings.tsx:582
 #: src/screens/Settings/Settings.tsx:585
-#: src/view/shell/desktop/LeftNav.tsx:262
-#: src/view/shell/desktop/LeftNav.tsx:266
+#: src/view/shell/desktop/LeftNav.tsx:261
+#: src/view/shell/desktop/LeftNav.tsx:265
 msgid "Add another account"
 msgstr "Fiók felvétele a listára"
 
@@ -1382,8 +1382,8 @@ msgctxt "Name of app icon variant"
 msgid "Aurora"
 msgstr "Sarki Fény"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:118
-#: src/screens/Settings/ContentAndMediaSettings.tsx:124
+#: src/screens/Settings/ContentAndMediaSettings.tsx:117
+#: src/screens/Settings/ContentAndMediaSettings.tsx:123
 msgid "Autoplay videos and GIFs"
 msgstr "Videók és GIF-ek automatikus lejátszása"
 
@@ -1792,7 +1792,7 @@ msgstr "Kamera"
 #: src/view/com/composer/Composer.tsx:1063
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:43
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:52
-#: src/view/shell/desktop/LeftNav.tsx:213
+#: src/view/shell/desktop/LeftNav.tsx:212
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -1902,7 +1902,7 @@ msgstr "Változtatások elmentve"
 #: src/lib/hooks/useNotificationHandler.ts:102
 #: src/Navigation.tsx:560
 #: src/view/shell/bottom-bar/BottomBar.tsx:218
-#: src/view/shell/desktop/LeftNav.tsx:608
+#: src/view/shell/desktop/LeftNav.tsx:607
 #: src/view/shell/Drawer.tsx:466
 msgid "Chat"
 msgstr "Csevegés"
@@ -2243,7 +2243,7 @@ msgid "Complete the challenge"
 msgstr "Biztonsági kihívás"
 
 #: src/view/com/feeds/ComposerPrompt.tsx:145
-#: src/view/shell/desktop/LeftNav.tsx:573
+#: src/view/shell/desktop/LeftNav.tsx:572
 msgid "Compose new post"
 msgstr "Új bejegyzés írása"
 
@@ -2263,7 +2263,6 @@ msgstr "Videó tömörítése folyamatban…"
 msgid "Configure content filtering setting for category: {name}"
 msgstr "A(z) „{name}” tartalomkategória szűrési beállításai"
 
-#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:51
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:36
 msgid "Configure live event banner"
 msgstr "Élő adásos reklámcsík testreszabása"
@@ -2343,7 +2342,7 @@ msgstr "Névjegyek importálva"
 msgid "Contacts removed"
 msgstr "Névjegyek eltávolítva"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:53
+#: src/screens/Settings/ContentAndMediaSettings.tsx:52
 msgid "Content & Media"
 msgstr "Tartalom és média"
 
@@ -2658,8 +2657,6 @@ msgstr "Automatikus létrehozás"
 #: src/view/com/auth/SplashScreen.web.tsx:121
 #: src/view/shell/bottom-bar/BottomBar.tsx:342
 #: src/view/shell/bottom-bar/BottomBar.tsx:347
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:201
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:206
 #: src/view/shell/NavSignupCard.tsx:47
 #: src/view/shell/NavSignupCard.tsx:52
 msgid "Create account"
@@ -3049,6 +3046,10 @@ msgstr "Gyorstalpaló bezárása"
 msgid "Dismiss interests"
 msgstr "Érdeklődési körök bezárása"
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:81
+msgid "Dismiss live event banner"
+msgstr ""
+
 #: src/components/interstitials/TrendingVideos.tsx:89
 msgid "Dismiss this section"
 msgstr "Szakasz bezárása"
@@ -3421,13 +3422,13 @@ msgstr "Feliratok engedélyezése"
 msgid "Enable this source only"
 msgstr "Csak ezen forrás engedélyezése"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:134
-#: src/screens/Settings/ContentAndMediaSettings.tsx:148
+#: src/screens/Settings/ContentAndMediaSettings.tsx:133
+#: src/screens/Settings/ContentAndMediaSettings.tsx:147
 msgid "Enable trending topics"
 msgstr "Felkapott témakörök megjelenítése"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:156
-#: src/screens/Settings/ContentAndMediaSettings.tsx:170
+#: src/screens/Settings/ContentAndMediaSettings.tsx:154
+#: src/screens/Settings/ContentAndMediaSettings.tsx:168
 msgid "Enable trending videos in your Discover feed"
 msgstr "Felkapott videók megjelenítése a Követett hírfolyamon"
 
@@ -3638,7 +3639,7 @@ msgstr "Szexuális tartalmakat ábrázoló képek."
 
 #: src/Navigation.tsx:789
 #: src/screens/Search/Shell.tsx:327
-#: src/view/shell/desktop/LeftNav.tsx:687
+#: src/view/shell/desktop/LeftNav.tsx:681
 #: src/view/shell/Drawer.tsx:414
 msgid "Explore"
 msgstr "Felfedezés"
@@ -3657,8 +3658,8 @@ msgstr "Adatok exportálása"
 msgid "Export My Data"
 msgstr "Adatok exportálása"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:86
-#: src/screens/Settings/ContentAndMediaSettings.tsx:89
+#: src/screens/Settings/ContentAndMediaSettings.tsx:85
+#: src/screens/Settings/ContentAndMediaSettings.tsx:88
 msgid "External media"
 msgstr "Külső médiatartalmak"
 
@@ -3939,8 +3940,8 @@ msgstr "Hírfolyam ki/be"
 msgid "Feed unavailable"
 msgstr "A hírfolyam nem elérhető"
 
-#: src/view/shell/desktop/RightNav.tsx:107
-#: src/view/shell/desktop/RightNav.tsx:108
+#: src/view/shell/desktop/RightNav.tsx:177
+#: src/view/shell/desktop/RightNav.tsx:178
 #: src/view/shell/Drawer.tsx:368
 msgid "Feedback"
 msgstr "Visszajelzés"
@@ -3957,7 +3958,7 @@ msgstr "Elküldtük a visszajelzést az üzemeltetőnek"
 #: src/screens/StarterPack/StarterPackScreen.tsx:193
 #: src/view/screens/Feeds.tsx:511
 #: src/view/screens/Profile.tsx:239
-#: src/view/shell/desktop/LeftNav.tsx:725
+#: src/view/shell/desktop/LeftNav.tsx:699
 #: src/view/shell/Drawer.tsx:530
 msgid "Feeds"
 msgstr "Hírfolyamok"
@@ -4218,8 +4219,8 @@ msgstr "Mostantól követed: {0}"
 msgid "Following {handle}"
 msgstr "Mostantól követed: {handle}"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:78
-#: src/screens/Settings/ContentAndMediaSettings.tsx:81
+#: src/screens/Settings/ContentAndMediaSettings.tsx:77
+#: src/screens/Settings/ContentAndMediaSettings.tsx:80
 msgid "Following feed preferences"
 msgstr "Követett hírfolyam"
 
@@ -4478,13 +4479,17 @@ msgstr "Ugrás a beszélgetéshez vele: {0}"
 msgid "Go to feed"
 msgstr "Ugrás a hírfolyamhoz"
 
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:49
+msgid "Go to main site"
+msgstr ""
+
 #: src/screens/Login/ForgotPasswordForm.tsx:165
 msgid "Go to next"
 msgstr "Tovább"
 
 #: src/components/dms/ConvoMenu.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:317
-#: src/view/shell/desktop/LeftNav.tsx:323
+#: src/view/shell/desktop/LeftNav.tsx:316
+#: src/view/shell/desktop/LeftNav.tsx:322
 msgid "Go to profile"
 msgstr "Profil megnyitása"
 
@@ -4590,8 +4595,8 @@ msgstr "A visszaélések elkerülése érdekében a Bluesky 7 napig megtartja, m
 
 #: src/screens/Settings/Settings.tsx:252
 #: src/screens/Settings/Settings.tsx:256
-#: src/view/shell/desktop/RightNav.tsx:128
-#: src/view/shell/desktop/RightNav.tsx:131
+#: src/view/shell/desktop/RightNav.tsx:198
+#: src/view/shell/desktop/RightNav.tsx:201
 #: src/view/shell/Drawer.tsx:381
 msgid "Help"
 msgstr "Súgó"
@@ -4761,7 +4766,7 @@ msgstr "Egy pillanat! A videófeltöltés lehetősége még nem mindenki számá
 #: src/Navigation.tsx:784
 #: src/Navigation.tsx:804
 #: src/view/shell/bottom-bar/BottomBar.tsx:175
-#: src/view/shell/desktop/LeftNav.tsx:669
+#: src/view/shell/desktop/LeftNav.tsx:663
 #: src/view/shell/Drawer.tsx:440
 msgid "Home"
 msgstr "Kezdőoldal"
@@ -5473,7 +5478,7 @@ msgstr "Feloldottad a listán szereplő személyek némítását"
 #: src/view/screens/Lists.tsx:67
 #: src/view/screens/Profile.tsx:233
 #: src/view/screens/Profile.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:743
+#: src/view/shell/desktop/LeftNav.tsx:741
 #: src/view/shell/Drawer.tsx:545
 msgid "Lists"
 msgstr "Listák"
@@ -5496,9 +5501,17 @@ msgstr "ÉLŐ"
 msgid "Live event happening now: {0}"
 msgstr "Jelenlegi élő esemény: {0}"
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:50
+msgid "Live event hidden"
+msgstr ""
+
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:105
 msgid "Live event options"
 msgstr "Élő esemény beállításai"
+
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:52
+msgid "Live event unhidden"
+msgstr ""
 
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:109
 msgid "Live events appear occasionally when something exciting is happening. If you'd like, you can hide this particular event, or all events for this placement in your app interface."
@@ -5559,11 +5572,11 @@ msgstr "Kijelentkezve"
 msgid "Logged-out visibility"
 msgstr "Láthatóság kijelentkezett felhasználók számára"
 
-#: src/view/shell/desktop/RightNav.tsx:140
+#: src/view/shell/desktop/RightNav.tsx:210
 msgid "Logo by @sawaratsuki.bsky.social"
 msgstr "A logó szerzője: @sawaratsuki.bsky.social"
 
-#: src/view/shell/desktop/RightNav.tsx:137
+#: src/view/shell/desktop/RightNav.tsx:207
 #: src/view/shell/Drawer.tsx:709
 msgid "Logo by <0>@sawaratsuki.bsky.social</0>"
 msgstr "A logó szerzője: <0>@sawaratsuki.bsky.social</0>"
@@ -5600,8 +5613,8 @@ msgstr "Automatikus létrehozás"
 msgid "Make sure this is where you intend to go!"
 msgstr "Ellenőrizd, hogy biztosan ide akarsz-e menni!"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:62
-#: src/screens/Settings/ContentAndMediaSettings.tsx:65
+#: src/screens/Settings/ContentAndMediaSettings.tsx:61
+#: src/screens/Settings/ContentAndMediaSettings.tsx:64
 msgid "Manage saved feeds"
 msgstr "Mentett hírfolyamok kezelése"
 
@@ -6032,7 +6045,7 @@ msgctxt "action"
 msgid "New post"
 msgstr "Új bejegyzés"
 
-#: src/view/shell/desktop/LeftNav.tsx:581
+#: src/view/shell/desktop/LeftNav.tsx:580
 msgctxt "action"
 msgid "New Post"
 msgstr "Új bejegyzés"
@@ -6351,7 +6364,7 @@ msgstr "Értesítési hangok"
 #: src/screens/Settings/Settings.tsx:203
 #: src/view/screens/Notifications.tsx:130
 #: src/view/shell/bottom-bar/BottomBar.tsx:249
-#: src/view/shell/desktop/LeftNav.tsx:706
+#: src/view/shell/desktop/LeftNav.tsx:722
 #: src/view/shell/Drawer.tsx:493
 msgid "Notifications"
 msgstr "Értesítések"
@@ -7229,8 +7242,8 @@ msgstr "Elsődleges nyelv"
 msgid "Primary Language"
 msgstr "Elsődleges nyelv"
 
-#: src/view/shell/desktop/RightNav.tsx:116
-#: src/view/shell/desktop/RightNav.tsx:117
+#: src/view/shell/desktop/RightNav.tsx:186
+#: src/view/shell/desktop/RightNav.tsx:187
 msgid "Privacy"
 msgstr "Adatvédelem"
 
@@ -7281,7 +7294,7 @@ msgid "profile"
 msgstr "profil"
 
 #: src/view/shell/bottom-bar/BottomBar.tsx:313
-#: src/view/shell/desktop/LeftNav.tsx:784
+#: src/view/shell/desktop/LeftNav.tsx:782
 #: src/view/shell/Drawer.tsx:77
 #: src/view/shell/Drawer.tsx:596
 msgid "Profile"
@@ -8102,7 +8115,7 @@ msgstr "Beállítások megjegyzése"
 msgid "Save to my feeds"
 msgstr "Mentés a hírfolyamgyűjteménybe"
 
-#: src/view/shell/desktop/LeftNav.tsx:762
+#: src/view/shell/desktop/LeftNav.tsx:760
 #: src/view/shell/Drawer.tsx:571
 msgctxt "link to bookmarks screen"
 msgid "Saved"
@@ -8565,7 +8578,7 @@ msgstr "E-mail cím beállítása jelszóvisszaállításhoz"
 
 #: src/Navigation.tsx:216
 #: src/screens/Settings/Settings.tsx:103
-#: src/view/shell/desktop/LeftNav.tsx:802
+#: src/view/shell/desktop/LeftNav.tsx:800
 #: src/view/shell/Drawer.tsx:609
 msgid "Settings"
 msgstr "Beállítások"
@@ -8848,8 +8861,6 @@ msgstr "Tartalom megjelenítése"
 #: src/view/com/auth/SplashScreen.web.tsx:135
 #: src/view/shell/bottom-bar/BottomBar.tsx:352
 #: src/view/shell/bottom-bar/BottomBar.tsx:357
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:211
-#: src/view/shell/bottom-bar/BottomBarWeb.tsx:216
 #: src/view/shell/NavSignupCard.tsx:57
 #: src/view/shell/NavSignupCard.tsx:62
 msgid "Sign in"
@@ -8891,9 +8902,9 @@ msgstr "A megtekintéshez bejelentkezés szükséges"
 #: src/screens/SignupQueued.tsx:93
 #: src/screens/SignupQueued.tsx:96
 #: src/screens/Takendown.tsx:88
-#: src/view/shell/desktop/LeftNav.tsx:212
-#: src/view/shell/desktop/LeftNav.tsx:269
-#: src/view/shell/desktop/LeftNav.tsx:272
+#: src/view/shell/desktop/LeftNav.tsx:211
+#: src/view/shell/desktop/LeftNav.tsx:268
+#: src/view/shell/desktop/LeftNav.tsx:271
 msgid "Sign out"
 msgstr "Kijelentkezés"
 
@@ -8902,7 +8913,7 @@ msgid "Sign Out"
 msgstr "Kijelentkezés"
 
 #: src/screens/Settings/Settings.tsx:301
-#: src/view/shell/desktop/LeftNav.tsx:209
+#: src/view/shell/desktop/LeftNav.tsx:208
 msgid "Sign out?"
 msgstr "Kijelentkezés"
 
@@ -9245,7 +9256,7 @@ msgstr "Ez a funkció a Te országodban még nem támogatott. Próbáld újra k�
 #: src/screens/Settings/Settings.tsx:127
 #: src/screens/Settings/Settings.tsx:141
 #: src/screens/Settings/Settings.tsx:622
-#: src/view/shell/desktop/LeftNav.tsx:247
+#: src/view/shell/desktop/LeftNav.tsx:246
 msgid "Switch account"
 msgstr "Fiókváltás"
 
@@ -9254,11 +9265,11 @@ msgstr "Fiókváltás"
 msgid "Switch Account"
 msgstr "Fiókváltás"
 
-#: src/view/shell/desktop/LeftNav.tsx:110
+#: src/view/shell/desktop/LeftNav.tsx:109
 msgid "Switch accounts"
 msgstr "Fiókváltás"
 
-#: src/view/shell/desktop/LeftNav.tsx:346
+#: src/view/shell/desktop/LeftNav.tsx:345
 msgid "Switch to {0}"
 msgstr "Váltás rá: {0}"
 
@@ -9344,8 +9355,8 @@ msgstr "Mesélj magadról!"
 msgid "Tell us a little more"
 msgstr "További részletek"
 
-#: src/view/shell/desktop/RightNav.tsx:123
-#: src/view/shell/desktop/RightNav.tsx:124
+#: src/view/shell/desktop/RightNav.tsx:193
+#: src/view/shell/desktop/RightNav.tsx:194
 msgid "Terms"
 msgstr "Feltételek"
 
@@ -9902,8 +9913,8 @@ msgstr "Ezzel el fogod távolítani a bejegyzést az idézésből mindenki szám
 msgid "Thread options"
 msgstr "Válaszlánc-beállítások"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:70
-#: src/screens/Settings/ContentAndMediaSettings.tsx:73
+#: src/screens/Settings/ContentAndMediaSettings.tsx:69
+#: src/screens/Settings/ContentAndMediaSettings.tsx:72
 msgid "Thread preferences"
 msgstr "Válaszláncok"
 
@@ -10129,6 +10140,8 @@ msgctxt "Button label to undo saving/removing a post from saved posts."
 msgid "Undo"
 msgstr "Visszavonás"
 
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:57
+#: src/features/liveEvents/components/DiscoverFeedLiveEventFeedsAndTrendingBanner.tsx:63
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:72
 #: src/features/liveEvents/components/LiveEventFeedOptionsMenu.tsx:78
 msgid "Undo"
@@ -10391,8 +10404,8 @@ msgstr "Alapértelmezett adattárszolgáltató használata"
 msgid "Use in-app browser"
 msgstr "Alkalmazáson belüli böngésző használata"
 
-#: src/screens/Settings/ContentAndMediaSettings.tsx:104
-#: src/screens/Settings/ContentAndMediaSettings.tsx:110
+#: src/screens/Settings/ContentAndMediaSettings.tsx:103
+#: src/screens/Settings/ContentAndMediaSettings.tsx:109
 msgid "Use in-app browser to open links"
 msgstr "Hivatkozások megnyitása az alkalmazáson belüli böngészővel"
 
@@ -10752,7 +10765,7 @@ msgid "View your default post interaction settings"
 msgstr "Alapértelmezett kapcsolatbalépési beállítások megtekintése"
 
 #: src/view/com/home/HomeHeaderLayout.web.tsx:57
-#: src/view/com/home/HomeHeaderLayoutMobile.tsx:72
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:118
 msgid "View your feeds and explore more"
 msgstr "Hírfolyamgyűjtemény megnyitása és további hírfolyamok felfedezése"
 
@@ -11481,7 +11494,7 @@ msgid "You recently changed your birthdate"
 msgstr "Nemrég megváltoztattad a születési dátumodat"
 
 #: src/screens/Settings/Settings.tsx:302
-#: src/view/shell/desktop/LeftNav.tsx:210
+#: src/view/shell/desktop/LeftNav.tsx:209
 msgid "You will be signed out of all your accounts."
 msgstr "Ezzel az összes fiókból ki fogsz jelentkezni."
 
@@ -11694,8 +11707,8 @@ msgstr "A teljes felhasználóneved: <0>@{0}</0>"
 
 #: src/Navigation.tsx:527
 #: src/screens/Search/modules/ExploreInterestsCard.tsx:67
-#: src/screens/Settings/ContentAndMediaSettings.tsx:94
-#: src/screens/Settings/ContentAndMediaSettings.tsx:97
+#: src/screens/Settings/ContentAndMediaSettings.tsx:93
+#: src/screens/Settings/ContentAndMediaSettings.tsx:96
 #: src/screens/Settings/InterestsSettings.tsx:46
 msgid "Your interests"
 msgstr "Saját érdeklődési körök"
