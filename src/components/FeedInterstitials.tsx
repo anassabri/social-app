@@ -7,10 +7,6 @@ import {useLingui} from '@lingui/react'
 import {useNavigation} from '@react-navigation/native'
 
 import {type NavigationProp} from '#/lib/routes/types'
-import {logEvent, useGate} from '#/lib/statsig/statsig'
-import {logger} from '#/logger'
-import {type MetricEvents} from '#/logger/metrics'
-import {isIOS} from '#/platform/detection'
 import {useModerationOpts} from '#/state/preferences/moderation-opts'
 import {useGetPopularFeedsQuery} from '#/state/queries/feed'
 import {type FeedDescriptor} from '#/state/queries/post-feed'
@@ -39,6 +35,8 @@ import {TimesLarge_Stroke2_Corner0_Rounded as X} from '#/components/icons/Times'
 import {InlineLinkText} from '#/components/Link'
 import * as ProfileCard from '#/components/ProfileCard'
 import {Text} from '#/components/Typography'
+import {type Metrics, useAnalytics} from '#/analytics'
+import {IS_IOS} from '#/env'
 import type * as bsky from '#/types/bsky'
 import {FollowDialogWithoutGuide} from './ProgressGuide/FollowDialog'
 import {ProgressGuideList} from './ProgressGuide/List'
@@ -56,6 +54,7 @@ function CardOuter({
   const {gtMobile} = useBreakpoints()
   return (
     <View
+      testID="CardOuter"
       style={[
         a.flex_1,
         a.w_full,
@@ -433,8 +432,8 @@ export function ProfileGrid({
   isVisible?: boolean
 }) {
   const t = useTheme()
+  const ax = useAnalytics()
   const {_} = useLingui()
-  const gate = useGate()
   const moderationOpts = useModerationOpts()
   const {gtMobile} = useBreakpoints()
   const followDialogControl = useDialogControl()
@@ -442,7 +441,6 @@ export function ProfileGrid({
   const isLoading = isSuggestionsLoading || !moderationOpts
   const isProfileHeaderContext = viewContext === 'profileHeader'
   const isFeedContext = viewContext === 'feed'
-  const showDismissButton = onDismiss && gate('suggested_users_dismiss')
 
   const maxLength = gtMobile ? 3 : isProfileHeaderContext ? 12 : 6
   const minLength = gtMobile ? 3 : 4
@@ -451,12 +449,11 @@ export function ProfileGrid({
   const seenProfilesRef = useRef<Set<string>>(new Set())
   const containerRef = useRef<View>(null)
   const hasTrackedRef = useRef(false)
-  const logContext: MetricEvents['suggestedUser:seen']['logContext'] =
-    isFeedContext
-      ? 'InterstitialDiscover'
-      : isProfileHeaderContext
-        ? 'Profile'
-        : 'InterstitialProfile'
+  const logContext: Metrics['suggestedUser:seen']['logContext'] = isFeedContext
+    ? 'InterstitialDiscover'
+    : isProfileHeaderContext
+      ? 'Profile'
+      : 'InterstitialProfile'
 
   // Callback to fire seen events
   const fireSeen = useCallback(() => {
@@ -468,20 +465,16 @@ export function ProfileGrid({
     profilesToShow.forEach((profile, index) => {
       if (!seenProfilesRef.current.has(profile.did)) {
         seenProfilesRef.current.add(profile.did)
-        logger.metric(
-          'suggestedUser:seen',
-          {
-            logContext,
-            recId,
-            position: index,
-            suggestedDid: profile.did,
-            category: null,
-          },
-          {statsig: true},
-        )
+        ax.metric('suggestedUser:seen', {
+          logContext,
+          recId,
+          position: index,
+          suggestedDid: profile.did,
+          category: null,
+        })
       }
     })
-  }, [isLoading, error, profiles, maxLength, logContext, recId])
+  }, [ax, isLoading, error, profiles, maxLength, logContext, recId])
 
   // For profile header, fire when isVisible becomes true
   useEffect(() => {
@@ -566,7 +559,7 @@ export function ProfileGrid({
             <ProfileCard.Link
               profile={profile}
               onPress={() => {
-                logEvent('suggestedUser:press', {
+                ax.metric('suggestedUser:press', {
                   logContext: isFeedContext
                     ? 'InterstitialDiscover'
                     : 'InterstitialProfile',
@@ -575,20 +568,21 @@ export function ProfileGrid({
                   suggestedDid: profile.did,
                   category: null,
                 })
-              }}>
+              }}
+              style={[a.flex_1]}>
               {({hovered, pressed}) => (
                 <CardOuter
                   style={[
                     (hovered || pressed) && t.atoms.border_contrast_high,
                   ]}>
                   <ProfileCard.Outer>
-                    {showDismissButton && (
+                    {onDismiss && (
                       <Button
                         label={_(msg`Dismiss this suggestion`)}
                         onPress={e => {
                           e.preventDefault()
-                          onDismiss!(profile.did)
-                          logEvent('suggestedUser:dismiss', {
+                          onDismiss(profile.did)
+                          ax.metric('suggestedUser:dismiss', {
                             logContext: isFeedContext
                               ? 'InterstitialDiscover'
                               : 'InterstitialProfile',
@@ -656,7 +650,7 @@ export function ProfileGrid({
                       withIcon={false}
                       style={[a.rounded_sm]}
                       onFollow={() => {
-                        logEvent('suggestedUser:follow', {
+                        ax.metric('suggestedUser:follow', {
                           logContext: isFeedContext
                             ? 'InterstitialDiscover'
                             : 'InterstitialProfile',
@@ -678,7 +672,7 @@ export function ProfileGrid({
   // Use totalProfileCount (before dismissals) for minLength check on initial render.
   const profileCountForMinCheck = totalProfileCount ?? profiles.length
   if (error || (!isLoading && profileCountForMinCheck < minLength)) {
-    logger.debug(`Not enough profiles to show suggested follows`)
+    ax.logger.debug(`Not enough profiles to show suggested follows`)
     return null
   }
 
@@ -690,7 +684,7 @@ export function ProfileGrid({
         t.atoms.border_contrast_low,
         t.atoms.bg_contrast_25,
       ]}
-      pointerEvents={isIOS ? 'auto' : 'box-none'}>
+      pointerEvents={IS_IOS ? 'auto' : 'box-none'}>
       <View
         style={[
           a.px_lg,
@@ -699,7 +693,7 @@ export function ProfileGrid({
           a.align_center,
           a.justify_between,
         ]}
-        pointerEvents={isIOS ? 'auto' : 'box-none'}>
+        pointerEvents={IS_IOS ? 'auto' : 'box-none'}>
         <Text style={[a.text_sm, a.font_semi_bold, t.atoms.text]}>
           {isFeedContext ? (
             <Trans>Suggested for you</Trans>
@@ -712,7 +706,7 @@ export function ProfileGrid({
             label={_(msg`See more suggested profiles`)}
             onPress={() => {
               followDialogControl.open()
-              logEvent('suggestedUser:seeMore', {
+              ax.metric('suggestedUser:seeMore', {
                 logContext: isFeedContext ? 'Explore' : 'Profile',
               })
             }}>
@@ -756,7 +750,7 @@ export function ProfileGrid({
               <SeeMoreSuggestedProfilesCard
                 onPress={() => {
                   followDialogControl.open()
-                  logger.metric('suggestedUser:seeMore', {
+                  ax.metric('suggestedUser:seeMore', {
                     logContext: 'Explore',
                   })
                 }}
@@ -794,9 +788,10 @@ function SeeMoreSuggestedProfilesCard({onPress}: {onPress: () => void}) {
   )
 }
 
+const numFeedsToDisplay = 3
 export function SuggestedFeeds() {
-  const numFeedsToDisplay = 3
   const t = useTheme()
+  const ax = useAnalytics()
   const {_} = useLingui()
   const {data, isLoading, error} = useGetPopularFeedsQuery({
     limit: numFeedsToDisplay,
@@ -829,7 +824,7 @@ export function SuggestedFeeds() {
           key={feed.uri}
           view={feed}
           onPress={() => {
-            logEvent('feed:interstitial:feedCard:press', {})
+            ax.metric('feed:interstitial:feedCard:press', {})
           }}>
           {({hovered, pressed}) => (
             <CardOuter
@@ -840,6 +835,7 @@ export function SuggestedFeeds() {
                   <FeedCard.TitleAndByline
                     title={feed.displayName}
                     creator={feed.creator}
+                    uri={feed.uri}
                   />
                 </FeedCard.Header>
                 <FeedCard.Description
@@ -931,8 +927,15 @@ export function SuggestedFeeds() {
 
 export function ProgressGuide() {
   const t = useTheme()
+  const {gtMobile} = useBreakpoints()
   return (
-    <View style={[t.atoms.border_contrast_low, a.px_lg, a.py_lg, a.pb_lg]}>
+    <View
+      style={[
+        t.atoms.border_contrast_low,
+        a.px_lg,
+        a.py_lg,
+        !gtMobile && {marginTop: 4},
+      ]}>
       <ProgressGuideList />
     </View>
   )

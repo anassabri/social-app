@@ -27,6 +27,7 @@ import {CENTER_COLUMN_OFFSET} from '#/components/Layout'
 import {InlineLinkText} from '#/components/Link'
 import {ProgressGuideList} from '#/components/ProgressGuide/List'
 import {Text} from '#/components/Typography'
+import {SidebarLiveEventFeedsBanner} from '#/features/liveEvents/components/SidebarLiveEventFeedsBanner'
 
 /**
  * Gets the parent domain URL by removing the "social." prefix from the current hostname.
@@ -117,7 +118,8 @@ export function DesktopRightNav({routeName}: {routeName: string}) {
   const isSearchScreen = routeName === 'Search'
   const webqueryParams = useWebQueryParams()
   const searchQuery = webqueryParams?.q
-  const showTrending = !isSearchScreen || (isSearchScreen && !!searchQuery)
+  const showExploreScreenDuplicatedContent =
+    !isSearchScreen || (isSearchScreen && !!searchQuery)
   const {rightNavVisible, centerColumnOffset, leftNavMinimal} =
     useLayoutBreakpoints()
 
@@ -155,13 +157,13 @@ export function DesktopRightNav({routeName}: {routeName: string}) {
 
       {hasSession && (
         <>
-          <ProgressGuideList />
           <DesktopFeeds />
-          <Divider />
+          <ProgressGuideList />
         </>
       )}
 
-      {showTrending && <SidebarTrendingTopics />}
+      {showExploreScreenDuplicatedContent && <SidebarLiveEventFeedsBanner />}
+      {showExploreScreenDuplicatedContent && <SidebarTrendingTopics />}
 
       <Text style={[a.leading_snug, t.atoms.text_contrast_low]}>
         {hasSession && (
@@ -171,25 +173,31 @@ export function DesktopRightNav({routeName}: {routeName: string}) {
                 email: currentAccount?.email,
                 handle: currentAccount?.handle,
               })}
+              style={[t.atoms.text_contrast_medium]}
               label={_(msg`Feedback`)}>
               {_(msg`Feedback`)}
             </InlineLinkText>
-            {' • '}
+            <Text style={[t.atoms.text_contrast_low]}>{' ∙ '}</Text>
           </>
         )}
         <InlineLinkText
           to="https://bsky.social/about/support/privacy-policy"
+          style={[t.atoms.text_contrast_medium]}
           label={_(msg`Privacy`)}>
           {_(msg`Privacy`)}
         </InlineLinkText>
-        {' • '}
+        <Text style={[t.atoms.text_contrast_low]}>{' ∙ '}</Text>
         <InlineLinkText
           to="https://bsky.social/about/support/tos"
+          style={[t.atoms.text_contrast_medium]}
           label={_(msg`Terms`)}>
           {_(msg`Terms`)}
         </InlineLinkText>
-        {' • '}
-        <InlineLinkText label={_(msg`Help`)} to={HELP_DESK_URL}>
+        <Text style={[t.atoms.text_contrast_low]}>{' ∙ '}</Text>
+        <InlineLinkText
+          label={_(msg`Help`)}
+          to={HELP_DESK_URL}
+          style={[t.atoms.text_contrast_medium]}>
           {_(msg`Help`)}
         </InlineLinkText>
       </Text>
