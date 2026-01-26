@@ -37,6 +37,7 @@ module.exports = async function (env = {}, argv = {}) {
       .replace(/\.cjs$/, '.js'),
     'react-native-gesture-handler': false, // RNGH should not be used on web, so let's cause a build error if it sneaks in
     'react-native-keyboard-controller': false, // Exclude from web builds - incompatible with web
+    'expo-privacy-sensitive': require.resolve('./src/lib/shims/expo-privacy-sensitive.tsx'),
   })
   config.module.rules = [
     ...(config.module.rules || []),
