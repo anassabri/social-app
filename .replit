@@ -36,6 +36,6 @@ externalPort = 80
 
 [deployment]
 deploymentTarget = "static"
-build = ["sh", "-c", "bash -c yarn install --ignore-optional --ignore-scripts && yarn build-web"]
+build = ["bash", "-c", "yarn intl:build && yarn build-web"]
 run = ["sh", "-c", "npx http-server web-build --port 5000 --host 0.0.0.0"]
-publicDir = "dist/public"
+publicDir = "web-build"
