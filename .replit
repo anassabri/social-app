@@ -35,6 +35,7 @@ localPort = 5000
 externalPort = 80
 
 [deployment]
-deploymentTarget = "autoscale"
-build = ["sh", "-c", "bash -c yarn install --ignore-optional --ignore-scripts && yarn build-web"]
+deploymentTarget = "static"
+build = ["bash", "-c", "yarn intl:build && yarn build-web"]
 run = ["sh", "-c", "npx http-server web-build --port 5000 --host 0.0.0.0"]
+publicDir = "web-build"
