@@ -38,7 +38,13 @@ module.exports = async function (env = {}, argv = {}) {
     'react-native-gesture-handler': false, // RNGH should not be used on web, so let's cause a build error if it sneaks in
     'react-native-keyboard-controller': false, // Exclude from web builds - incompatible with web
     'expo-privacy-sensitive': false, // Missing dependency, mock for web
+    '@growthbook/growthbook-react': false, // Exclude if problematic
+    'better-sqlite3': false, // Native module not needed on web
   })
+  config.optimization = {
+    ...config.optimization,
+    minimize: true,
+  }
   config.module.rules = [
     ...(config.module.rules || []),
     reactNativeWebWebviewConfiguration,

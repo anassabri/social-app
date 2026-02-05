@@ -1,0 +1,186 @@
+2026-02-04T13:09:55Z info: Deployment: 39d8f0cf-1f74-41f9-a9b8-4d6edf4ca6cd
+2026-02-04T13:09:55Z info: Running Security Scan
+2026-02-04T13:12:06Z info: Security Scan Complete
+2026-02-04T13:12:06Z info: Connecting to builder
+2026-02-04T13:12:07Z info: Builder connected
+2026-02-04T13:12:08Z info: Installing packages
+--> yarn install
+
+yarn install v1.22.22
+
+[1/5] Validating package.json...
+
+[2/5] Resolving packages...
+
+warning Resolution field "@expo/image-utils@0.8.7" is incompatible with requested version "@expo/image-utils@0.3.23"
+
+warning Resolution field "multiformats@9.9.0" is incompatible with requested version "multiformats@^13.1.0"
+
+warning Resolution field "expo-constants@18.0.8" is incompatible with requested version "expo-constants@~18.0.11"
+
+warning Resolution field "@expo/image-utils@0.8.7" is incompatible with requested version "@expo/image-utils@^0.8.8"
+
+warning Resolution field "@expo/image-utils@0.8.7" is incompatible with requested version "@expo/image-utils@^0.8.8"
+
+warning Resolution field "expo-constants@18.0.8" is incompatible with requested version "expo-constants@~18.0.11"
+
+warning Resolution field "@expo/image-utils@0.8.7" is incompatible with requested version "@expo/image-utils@^0.8.8"
+
+warning Resolution field "expo-device@7.1.4" is incompatible with requested version "expo-device@~4.1.1"
+
+warning Resolution field "@react-native/babel-preset@0.81.5" is incompatible with requested version "@react-native/babel-preset@0.81.4"
+
+(node:42) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+[3/5] Fetching packages...
+
+warning " > @discord/bottom-sheet@4.6.1" has unmet peer dependency "@shopify/flash-list@*".
+
+warning "@tiptap/react > use-sync-external-store@1.2.2" has incorrect peer dependency "react@^16.8.0 || ^17.0.0 || ^18.0.0".
+
+warning " > react-textarea-autosize@8.5.3" has incorrect peer dependency "react@^16.8.0 || ^17.0.0 || ^18.0.0".
+
+warning "react-textarea-autosize > use-latest > use-isomorphic-layout-effect@1.1.2" has incorrect peer dependency "react@^16.8.0 || ^17.0.0 || ^18.0.0".
+
+warning Workspaces can only be enabled in private projects.
+
+[5/5] Building fresh packages...
+
+Done in 24.67s.
+
+2026-02-04T13:12:34Z info: Starting Build
+yarn install v1.22.22
+
+[1/5] Validating package.json...
+
+[2/5] Resolving packages...
+
+warning Resolution field "@expo/image-utils@0.8.7" is incompatible with requested version "@expo/image-utils@0.3.23"
+
+warning Resolution field "multiformats@9.9.0" is incompatible with requested version "multiformats@^13.1.0"
+
+warning Resolution field "expo-constants@18.0.8" is incompatible with requested version "expo-constants@~18.0.11"
+
+warning Resolution field "@expo/image-utils@0.8.7" is incompatible with requested version "@expo/image-utils@^0.8.8"
+
+warning Resolution field "@expo/image-utils@0.8.7" is incompatible with requested version "@expo/image-utils@^0.8.8"
+
+warning Resolution field "expo-constants@18.0.8" is incompatible with requested version "expo-constants@~18.0.11"
+
+warning Resolution field "@expo/image-utils@0.8.7" is incompatible with requested version "@expo/image-utils@^0.8.8"
+
+warning Resolution field "expo-constants@18.0.8" is incompatible with requested version "expo-constants@~18.0.11"
+
+warning Resolution field "@react-native/normalize-colors@0.81.5" is incompatible with requested version "@react-native/normalize-colors@^0.74.1"
+
+warning Resolution field "expo-device@7.1.4" is incompatible with requested version "expo-device@~4.1.1"
+
+warning Resolution field "@react-native/babel-preset@0.81.5" is incompatible with requested version "@react-native/babel-preset@0.81.4"
+
+(node:60) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+success Already up-to-date.
+Done in 0.65s.
+
+yarn run v1.22.22
+
+$ expo export:web && node ./scripts/post-web-build.js
+
+Exporting with Webpack...
+
+Compiled with warnings
+
+
+export 'ContactAccessButtonProps' (reexported as 'ContactAccessButtonProps') was not found in './ContactAccessButton' (possible exports: default)
+  1 | export * from './Contacts';
+> 2 | export { default as ContactAccessButton, ContactAccessButtonProps } from './ContactAccessButton';
+  3 |
+
+Attempted import error: 'requireNativeComponent' is not exported from 'react-native-web/dist/index' (imported as 'requireNativeComponent').
+  31 | const RNUITextView =
+  32 |   UIManager.getViewManagerConfig?.('RNUITextView') != null
+> 33 |     ? requireNativeComponent<RNUITextViewProps>('RNUITextView')
+     |      ^
+  34 |     : () => {
+  35 |         if (Platform.OS !== 'ios') return null
+  36 |         throw new Error(LINKING_ERROR)
+
+Attempted import error: 'requireNativeComponent' is not exported from 'react-native-web/dist/index' (imported as 'requireNativeComponent').
+  38 | export const RNUITextViewChild =
+  39 |   UIManager.getViewManagerConfig?.('RNUITextViewChild') != null
+> 40 |     ? requireNativeComponent<RNUITextViewChildProps>('RNUITextViewChild')
+     |      ^
+  41 |     : () => {
+  42 |         if (Platform.OS !== 'ios') return null
+  43 |         throw new Error(LINKING_ERROR)
+
+asset size limit: The following asset(s) exceed the recommended size limit (586 KiB).
+This can impact web performance.
+Assets: 
+  static/js/main.7d69e493.js (2.74 MiB)
+  static/js/80.89243ad9.js (4.2 MiB)
+
+entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (586 KiB). This can impact web performance.
+Entrypoints:
+  main (6.95 MiB)
+      static/js/80.89243ad9.js
+      static/css/main.d41af97c.css
+      static/js/main.7d69e493.js
+
+Writing /home/runner/workspace/bskyweb/templates/scripts.html
+
+Copied /home/runner/workspace/web-build/static/js/101.452dd119.chunk.js to /home/runner/workspace/bskyweb/static/js/101.452dd119.chunk.js
+
+Copied /home/runner/workspace/web-build/static/js/101.452dd119.chunk.js.map to /home/runner/workspace/bskyweb/static/js/101.452dd119.chunk.js.map
+
+Copied /home/runner/workspace/web-build/static/js/108.be7dd1ae.chunk.js to /home/runner/workspace/bskyweb/static/js/108.be7dd1ae.chunk.js
+
+Copied /home/runner/workspace/web-build/static/js/108.be7dd1ae.chunk.js.map to /home/runner/workspace/bskyweb/static/js/108.be7dd1ae.chunk.js.map
+
+Copied /home/runner/workspace/web-build/static/js/19.c0c14349.chunk.js.LICENSE.txt to /home/runner/workspace/bskyweb/static/js/19.c0c14349.chunk.js.LICENSE.txt
+
+Copied /home/runner/workspace/web-build/static/js/19.c0c14349.chunk.js.map to /home/runner/workspace/bskyweb/static/js/19.c0c14349.chunk.js.map
+
+Copied /home/runner/workspace/web-build/static/js/251.de613add.chunk.js to /home/runner/workspace/bskyweb/static/js/251.de613add.chunk.js
+Copied /home/runner/workspace/web-build/static/js/251.de613add.chunk.js.map to /home/runner/workspace/bskyweb/static/js/251.de613add.chunk.js.map
+Copied /home/runner/workspace/web-build/static/js/262.7476560d.chunk.js to /home/runner/workspace/bskyweb/static/js/262.7476560d.chunk.js
+
+Copied /home/runner/workspace/web-build/static/js/508.7c3ee413.chunk.js to /home/runner/workspace/bskyweb/static/js/508.7c3ee413.chunk.js
+
+Copied /home/runner/workspace/web-build/static/js/508.7c3ee413.chunk.js.map to /home/runner/workspace/bskyweb/static/js/508.7c3ee413.chunk.js.map
+Copied /home/runner/workspace/web-build/static/js/521.98dd22af.chunk.js to /home/runner/workspace/bskyweb/static/js/521.98dd22af.chunk.js
+
+Copied /home/runner/workspace/web-build/static/js/666.cb28af43.chunk.js to /home/runner/workspace/bskyweb/static/js/666.cb28af43.chunk.js
+Copied /home/runner/workspace/web-build/static/js/666.cb28af43.chunk.js.map to /home/runner/workspace/bskyweb/static/js/666.cb28af43.chunk.js.map
+
+Copied /home/runner/workspace/web-build/static/media/BL.ada95f01285c1797f13c.svg to /home/runner/workspace/bskyweb/static/media/BL.ada95f01285c1797f13c.svg
+
+Copied /home/runner/workspace/web-build/static/media/BN.963407a7e41ea8928740.svg to /home/runner/workspace/bskyweb/static/media/BN.963407a7e41ea8928740.svg
+
+Copied /home/runner/workspace/web-build/static/media/DM.68a74077f39df7c1d3f4.svg to /home/runner/workspace/bskyweb/static/media/DM.68a74077f39df7c1d3f4.svg
+
+Copied /home/runner/workspace/web-build/static/media/FK.884e7a1af7769553c822.svg to /home/runner/workspace/bskyweb/static/media/FK.884e7a1af7769553c822.svg
+
+Copied /home/runner/workspace/web-build/static/media/SA.c63de000008e95637fbc.svg to /home/runner/workspace/bskyweb/static/media/SA.c63de000008e95637fbc.svg
+Copied /home/runner/workspace/web-build/static/media/SG.558e9b0df411284dcc96.svg to /home/runner/workspace/bskyweb/static/media/SG.558e9b0df411284dcc96.svg
+Copied /home/runner/workspace/web-build/static/media/SH.091841f2dd8269fb47c3.svg to /home/runner/workspace/bskyweb/static/media/SH.091841f2dd8269fb47c3.svg
+Copied /home/runner/workspace/web-build/static/media/SK.5a1ab2d914b1d43cdd81.svg to /home/runner/workspace/bskyweb/static/media/SK.5a1ab2d914b1d43cdd81.svg
+
+Done in 122.60s.
+
+2026-02-04T13:14:40Z info: Pushing pid1 binary layer...
+2026-02-04T13:14:48Z info: Pushing hosting layer...
+2026-02-04T13:14:48Z info: Pushing Repl layer...
+2026-02-04T13:14:50Z info: Nix layers for this Repl are uncached.
+2026-02-04T13:14:50Z info: Pushing nix-0 layer...
+2026-02-04T13:14:53Z info: Created hosting layer
+2026-02-04T13:15:06Z info: Created pid1 binary layer
+2026-02-04T13:17:17Z info: Created nix-0 layer
+2026-02-04T13:17:17Z info: uploading image for cached layer
+2026-02-04T13:17:19Z info: pushed cache image manifest
+2026-02-04T13:17:21Z info: pushed cache soci index manifest
+2026-02-04T13:17:22Z info: uploading cached layer
+2026-02-04T13:17:22Z info: successfully uploaded cached layer
+Deployment timed out. Check the Logs tab for more details. - 2026-02-04T13:18:55.440Z
