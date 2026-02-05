@@ -39,6 +39,10 @@ module.exports = async function (env = {}, argv = {}) {
     'react-native-keyboard-controller': false, // Exclude from web builds - incompatible with web
     'expo-privacy-sensitive': require.resolve('./src/lib/shims/expo-privacy-sensitive.tsx'),
   })
+  config.optimization = {
+    ...config.optimization,
+    minimize: true,
+  }
   config.module.rules = [
     ...(config.module.rules || []),
     reactNativeWebWebviewConfiguration,
