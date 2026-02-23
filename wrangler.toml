@@ -1,0 +1,6 @@
+name = "social-app"
+compatibility_date = "2025-02-23"
+pages_build_output_dir = "web-build"
+
+[build]
+command = "yarn intl:build && yarn build-web"
