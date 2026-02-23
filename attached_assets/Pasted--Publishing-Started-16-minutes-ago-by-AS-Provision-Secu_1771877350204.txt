@@ -1,0 +1,302 @@
+
+Publishing
+Started 16 minutes ago by AS
+Provision
+Security Scan
+Build
+Bundle
+Promote
+Promotion failed
+Your deployment attempt had the following errors:
+The deployment is failing health checks at the / endpoint
+Health check requests to / are timing out or not responding with 200 status code
+The http-server may not be serving the index.html file properly at the root path
+Agent suggestions
+Production
+Status
+AS published about 9 hours ago
+Visibility
+Public
+Domain
+https://social-app-2.replit.app
+https://social.baidu.us.org
+https://social.baseapp.cv
+https://social.buildapp.onl
+https://social.bull.onl
+https://social.deepseek.us.org
+https://social.dogecoin.pro
+https://social.dollar.us.org
+https://social.engl.im
+https://social.epstein.cx
+https://social.face.us.com
+https://social.gana.im
+https://social.gemini.us.com
+https://social.googlex.im
+https://social.gossip.onl
+https://social.baseapp.onl
+https://social.base.us.org
+https://social.bitgold.cv
+https://social.bitgold.im
+https://social.bitsilver.cv
+https://social.bit.us.org
+https://social.bolt.cafe
+https://social.chat.ae.org
+https://social.claw.li
+https://social.claw.vin
+https://social.clima.im
+https://social.doge.us.org
+https://social.dollar.org.im
+https://social.gemini.ai.in
+https://social.googlex.lol
+https://social.googlex.onl
+https://social.googol.click
+https://social.gossip.cx
+https://social.hi.onl
+https://social.insta.cv
+https://social.insta.vu
+https://social.lovable.cafe
+https://social.btc.net.im
+https://social.btc.org.im
+https://social.build.us.org
+https://social.gemini.build
+https://social.googl.click
+https://social.googlex.cv
+https://social.googleai.onl
+https://social.googlex.dev
+https://social.insta.cx
+https://social.lovable.onl
+https://social.moltbook.cv
+https://social.moltbook.cx
+https://social.opengpt.cx
+https://social.solana.build
+https://social.solana.us.com
+https://social.solana.us.org
+https://social.tik.watch
+https://social.trumpofficial.co
+https://social.usdc.us.org
+https://social.usd.us.org
+https://social.vibeapp.us
+https://social.vineapp.co
+https://social.vine.dance
+https://social.vine.onl
+https://social.xapp.cx
+https://social.youtubex.co
+https://social.youtubex.cx
+https://social.youtubex.im
+https://social.youtubex.io
+https://social.youtubex.onl
+https://social.youtubex.org
+https://social.youtubex.tech
+https://social.youtubex.us
+https://social.you.us.org
+https://social.dogwif.co
+https://social.openai.net.im
+https://social.openai.com.im
+https://social.claw.cx
+https://social.openai.us.org
+https://social.googlex.ch
+https://social.openclaw.us.org
+https://social.solana.eco
+https://social.molt.icu
+https://social.openclaw.ai.in
+https://social.myrocoin.org
+Type
+Static
+45a87a0e
+AS
+si515896
+AS
+published about 10 hours ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+b38b039a
+AS
+si515896
+AS
+published 14 days ago
+Enable "Accessible Terminal" in Workspace Settings to use a screen reader with the shell.
+Unsupported state: your HEAD is currently detached.
+Please checkout a branch.
