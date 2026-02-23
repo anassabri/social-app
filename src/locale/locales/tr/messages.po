@@ -218,7 +218,7 @@ msgstr "{0}dk"
 msgid "{0}s"
 msgstr "{0}sn"
 
-#: src/view/shell/desktop/LeftNav.tsx:454
+#: src/view/shell/desktop/LeftNav.tsx:453
 msgid "{count, plural, one {# unread item} other {# unread items}}"
 msgstr "{count, plural, other {# okunmamış öğe}}"
 
@@ -788,8 +788,8 @@ msgstr "Alternatif metin ekle (isteğe bağlı)"
 
 #: src/screens/Settings/Settings.tsx:582
 #: src/screens/Settings/Settings.tsx:585
-#: src/view/shell/desktop/LeftNav.tsx:262
-#: src/view/shell/desktop/LeftNav.tsx:266
+#: src/view/shell/desktop/LeftNav.tsx:261
+#: src/view/shell/desktop/LeftNav.tsx:265
 msgid "Add another account"
 msgstr "Başka hesap ekle"
 
@@ -906,8 +906,8 @@ msgstr "Listeye eklendi"
 msgid "Added to starter pack"
 msgstr "Başlangıç paketine eklendi"
 
-#: src/components/dialogs/lists/CreateListFromStarterPackDialog.tsx:222
-#: src/components/dialogs/lists/CreateListFromStarterPackDialog.tsx:227
+#: src/components/dialogs/lists/CreateListFromStarterPackDialog.tsx:224
+#: src/components/dialogs/lists/CreateListFromStarterPackDialog.tsx:229
 msgid "Adding members to list..."
 msgstr ""
 
@@ -1815,8 +1815,8 @@ msgstr "Kamera"
 #: src/components/dialogs/EmailDialog/screens/Manage2FA/Enable.tsx:131
 #: src/components/dialogs/InAppBrowserConsent.tsx:98
 #: src/components/dialogs/InAppBrowserConsent.tsx:104
-#: src/components/dialogs/lists/CreateListFromStarterPackDialog.tsx:189
-#: src/components/dialogs/lists/CreateListFromStarterPackDialog.tsx:197
+#: src/components/dialogs/lists/CreateListFromStarterPackDialog.tsx:191
+#: src/components/dialogs/lists/CreateListFromStarterPackDialog.tsx:199
 #: src/components/dialogs/lists/CreateOrEditListDialog.tsx:291
 #: src/components/dialogs/lists/CreateOrEditListDialog.tsx:299
 #: src/components/Menu/index.tsx:352
@@ -1845,7 +1845,7 @@ msgstr "Kamera"
 #: src/view/com/composer/Composer.tsx:1538
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:43
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:52
-#: src/view/shell/desktop/LeftNav.tsx:213
+#: src/view/shell/desktop/LeftNav.tsx:212
 msgid "Cancel"
 msgstr "İptal"
 
@@ -1941,10 +1941,14 @@ msgstr "Yer sağlayıcıyı değiştirir"
 msgid "Changes saved"
 msgstr "Değişiklikler kaydedildi"
 
+#: src/components/dialogs/lists/CreateListFromStarterPackDialog.tsx:163
+msgid "Changes to the starter pack will not be reflected in the list after creation. The list will be an independent copy."
+msgstr ""
+
 #: src/lib/hooks/useNotificationHandler.ts:102
 #: src/Navigation.tsx:560
 #: src/view/shell/bottom-bar/BottomBar.tsx:219
-#: src/view/shell/desktop/LeftNav.tsx:608
+#: src/view/shell/desktop/LeftNav.tsx:607
 #: src/view/shell/Drawer.tsx:468
 msgid "Chat"
 msgstr "Mesajlar"
@@ -2292,7 +2296,7 @@ msgid "Complete the challenge"
 msgstr "Meydan okumayı tamamlayın"
 
 #: src/view/com/feeds/ComposerPrompt.tsx:146
-#: src/view/shell/desktop/LeftNav.tsx:573
+#: src/view/shell/desktop/LeftNav.tsx:572
 msgid "Compose new post"
 msgstr "Yeni gönderi oluştur"
 
@@ -2740,8 +2744,8 @@ msgstr "Bunun yerine bir avatar oluştur"
 msgid "Create another"
 msgstr "Bir tane daha oluştur"
 
-#: src/components/dialogs/lists/CreateListFromStarterPackDialog.tsx:177
-#: src/components/dialogs/lists/CreateListFromStarterPackDialog.tsx:185
+#: src/components/dialogs/lists/CreateListFromStarterPackDialog.tsx:179
+#: src/components/dialogs/lists/CreateListFromStarterPackDialog.tsx:187
 msgid "Create list"
 msgstr ""
 
@@ -3729,7 +3733,7 @@ msgstr "Açık cinsel içerikli görseller."
 
 #: src/Navigation.tsx:789
 #: src/screens/Search/Shell.tsx:327
-#: src/view/shell/desktop/LeftNav.tsx:688
+#: src/view/shell/desktop/LeftNav.tsx:682
 #: src/view/shell/Drawer.tsx:416
 msgid "Explore"
 msgstr "Keşfet"
@@ -4049,8 +4053,8 @@ msgstr "Akış aç/kapa"
 msgid "Feed unavailable"
 msgstr "Akış kullanılamıyor"
 
-#: src/view/shell/desktop/RightNav.tsx:107
-#: src/view/shell/desktop/RightNav.tsx:108
+#: src/view/shell/desktop/RightNav.tsx:177
+#: src/view/shell/desktop/RightNav.tsx:178
 #: src/view/shell/Drawer.tsx:370
 msgid "Feedback"
 msgstr "Geribildirim"
@@ -4067,7 +4071,7 @@ msgstr "Geribildiriminiz akış operatörüne yollandı"
 #: src/screens/StarterPack/StarterPackScreen.tsx:195
 #: src/view/screens/Feeds.tsx:511
 #: src/view/screens/Profile.tsx:239
-#: src/view/shell/desktop/LeftNav.tsx:726
+#: src/view/shell/desktop/LeftNav.tsx:700
 #: src/view/shell/Drawer.tsx:532
 msgid "Feeds"
 msgstr "Akışlar"
@@ -4617,13 +4621,17 @@ msgstr "{0} ile olan yazışmaya git"
 msgid "Go to feed"
 msgstr "Akışa git"
 
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:49
+msgid "Go to main site"
+msgstr ""
+
 #: src/screens/Login/ForgotPasswordForm.tsx:173
 msgid "Go to next"
 msgstr "Sonrakine git"
 
 #: src/components/dms/ConvoMenu.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:317
-#: src/view/shell/desktop/LeftNav.tsx:323
+#: src/view/shell/desktop/LeftNav.tsx:316
+#: src/view/shell/desktop/LeftNav.tsx:322
 msgid "Go to profile"
 msgstr "Profile git"
 
@@ -4734,8 +4742,8 @@ msgstr "Bluesky tarafından kötüye kullanımı engellemek için 7 gün tutulur
 
 #: src/screens/Settings/Settings.tsx:252
 #: src/screens/Settings/Settings.tsx:256
-#: src/view/shell/desktop/RightNav.tsx:128
-#: src/view/shell/desktop/RightNav.tsx:131
+#: src/view/shell/desktop/RightNav.tsx:198
+#: src/view/shell/desktop/RightNav.tsx:201
 #: src/view/shell/Drawer.tsx:383
 msgid "Help"
 msgstr "Yardım"
@@ -4905,7 +4913,7 @@ msgstr "Bekleyin! Videoya kademeli olarak erişim veriyoruz ve siz hâlâ sırad
 #: src/Navigation.tsx:784
 #: src/Navigation.tsx:804
 #: src/view/shell/bottom-bar/BottomBar.tsx:176
-#: src/view/shell/desktop/LeftNav.tsx:670
+#: src/view/shell/desktop/LeftNav.tsx:664
 #: src/view/shell/Drawer.tsx:442
 msgid "Home"
 msgstr "Ana Sayfa"
@@ -5642,7 +5650,7 @@ msgstr "Liste sessizden çıkarıldı"
 #: src/view/screens/Lists.tsx:67
 #: src/view/screens/Profile.tsx:233
 #: src/view/screens/Profile.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:744
+#: src/view/shell/desktop/LeftNav.tsx:742
 #: src/view/shell/Drawer.tsx:547
 msgid "Lists"
 msgstr "Listeler"
@@ -5738,11 +5746,11 @@ msgstr "Çıkış yapılmış"
 msgid "Logged-out visibility"
 msgstr "Çıkış yapan görünürlüğü"
 
-#: src/view/shell/desktop/RightNav.tsx:140
+#: src/view/shell/desktop/RightNav.tsx:210
 msgid "Logo by @sawaratsuki.bsky.social"
 msgstr "Logo: @sawaratsuki.bsky.social"
 
-#: src/view/shell/desktop/RightNav.tsx:137
+#: src/view/shell/desktop/RightNav.tsx:207
 #: src/view/shell/Drawer.tsx:711
 msgid "Logo by <0>@sawaratsuki.bsky.social</0>"
 msgstr "Logo: <0>@sawaratsuki.bsky.social</0>"
@@ -6227,7 +6235,7 @@ msgctxt "action"
 msgid "New post"
 msgstr "Yeni gönderi"
 
-#: src/view/shell/desktop/LeftNav.tsx:581
+#: src/view/shell/desktop/LeftNav.tsx:580
 msgctxt "action"
 msgid "New Post"
 msgstr "Yeni Gönderi"
@@ -6557,7 +6565,7 @@ msgstr "Bildirim Sesleri"
 #: src/screens/Settings/Settings.tsx:203
 #: src/view/screens/Notifications.tsx:129
 #: src/view/shell/bottom-bar/BottomBar.tsx:250
-#: src/view/shell/desktop/LeftNav.tsx:707
+#: src/view/shell/desktop/LeftNav.tsx:723
 #: src/view/shell/Drawer.tsx:495
 msgid "Notifications"
 msgstr "Bildirimler"
@@ -7453,8 +7461,8 @@ msgstr "Önceki görsel"
 msgid "Primary language"
 msgstr "Öncelikli dil"
 
-#: src/view/shell/desktop/RightNav.tsx:116
-#: src/view/shell/desktop/RightNav.tsx:117
+#: src/view/shell/desktop/RightNav.tsx:186
+#: src/view/shell/desktop/RightNav.tsx:187
 msgid "Privacy"
 msgstr "Gizlilik"
 
@@ -7508,7 +7516,7 @@ msgid "profile"
 msgstr "profil"
 
 #: src/view/shell/bottom-bar/BottomBar.tsx:293
-#: src/view/shell/desktop/LeftNav.tsx:785
+#: src/view/shell/desktop/LeftNav.tsx:783
 #: src/view/shell/Drawer.tsx:79
 #: src/view/shell/Drawer.tsx:598
 msgid "Profile"
@@ -8373,7 +8381,7 @@ msgstr "Bu seçimleri sonrası için sakla"
 msgid "Save to my feeds"
 msgstr "Akışlarıma kaydet"
 
-#: src/view/shell/desktop/LeftNav.tsx:763
+#: src/view/shell/desktop/LeftNav.tsx:761
 #: src/view/shell/Drawer.tsx:573
 msgctxt "link to bookmarks screen"
 msgid "Saved"
@@ -8828,7 +8836,7 @@ msgstr "Şifre sıfırlama için e-posta ayarlar"
 
 #: src/Navigation.tsx:216
 #: src/screens/Settings/Settings.tsx:103
-#: src/view/shell/desktop/LeftNav.tsx:803
+#: src/view/shell/desktop/LeftNav.tsx:801
 #: src/view/shell/Drawer.tsx:611
 msgid "Settings"
 msgstr "Ayarlar"
@@ -9156,9 +9164,9 @@ msgstr "Gönderiyi görmek için giriş yap"
 #: src/screens/SignupQueued.tsx:93
 #: src/screens/SignupQueued.tsx:96
 #: src/screens/Takendown.tsx:87
-#: src/view/shell/desktop/LeftNav.tsx:212
-#: src/view/shell/desktop/LeftNav.tsx:269
-#: src/view/shell/desktop/LeftNav.tsx:272
+#: src/view/shell/desktop/LeftNav.tsx:211
+#: src/view/shell/desktop/LeftNav.tsx:268
+#: src/view/shell/desktop/LeftNav.tsx:271
 msgid "Sign out"
 msgstr "Çıkış yap"
 
@@ -9167,7 +9175,7 @@ msgid "Sign Out"
 msgstr "Çıkış Yap"
 
 #: src/screens/Settings/Settings.tsx:301
-#: src/view/shell/desktop/LeftNav.tsx:209
+#: src/view/shell/desktop/LeftNav.tsx:208
 msgid "Sign out?"
 msgstr "Çıkış yap?"
 
@@ -9520,15 +9528,15 @@ msgstr "Bu özellik ülkenizde henüz etkin değil! Lütfen daha sonra tekrar ko
 #: src/screens/Settings/Settings.tsx:127
 #: src/screens/Settings/Settings.tsx:141
 #: src/screens/Settings/Settings.tsx:622
-#: src/view/shell/desktop/LeftNav.tsx:247
+#: src/view/shell/desktop/LeftNav.tsx:246
 msgid "Switch account"
 msgstr "Hesap değiştir"
 
-#: src/view/shell/desktop/LeftNav.tsx:110
+#: src/view/shell/desktop/LeftNav.tsx:109
 msgid "Switch accounts"
 msgstr "Hesap değiştir"
 
-#: src/view/shell/desktop/LeftNav.tsx:346
+#: src/view/shell/desktop/LeftNav.tsx:345
 msgid "Switch to {0}"
 msgstr "{0} hesabına geç"
 
@@ -9612,8 +9620,8 @@ msgstr "Bize biraz kendinden bahset"
 msgid "Tell us a little more"
 msgstr "Biraz daha anlatın"
 
-#: src/view/shell/desktop/RightNav.tsx:123
-#: src/view/shell/desktop/RightNav.tsx:124
+#: src/view/shell/desktop/RightNav.tsx:193
+#: src/view/shell/desktop/RightNav.tsx:194
 msgid "Terms"
 msgstr "Şartlar"
 
@@ -11054,7 +11062,7 @@ msgid "View your default post interaction settings"
 msgstr "Varsayılan gönderi etkileşim ayarlarınızı görün"
 
 #: src/view/com/home/HomeHeaderLayout.web.tsx:57
-#: src/view/com/home/HomeHeaderLayoutMobile.tsx:72
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:118
 msgid "View your feeds and explore more"
 msgstr "Akışlarınızı görün ve daha fazlasını keşfedin"
 
@@ -11801,7 +11809,7 @@ msgid "You recently changed your birthdate"
 msgstr "Doğum tarihinizi yakın zamanda değiştirdiniz"
 
 #: src/screens/Settings/Settings.tsx:302
-#: src/view/shell/desktop/LeftNav.tsx:210
+#: src/view/shell/desktop/LeftNav.tsx:209
 msgid "You will be signed out of all your accounts."
 msgstr "Tüm hesaplarınızdan çıkış yapacaksınız."
 

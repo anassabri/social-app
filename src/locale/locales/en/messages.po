@@ -213,7 +213,7 @@ msgstr ""
 msgid "{0}s"
 msgstr ""
 
-#: src/view/shell/desktop/LeftNav.tsx:454
+#: src/view/shell/desktop/LeftNav.tsx:453
 msgid "{count, plural, one {# unread item} other {# unread items}}"
 msgstr ""
 
@@ -783,8 +783,8 @@ msgstr ""
 
 #: src/screens/Settings/Settings.tsx:582
 #: src/screens/Settings/Settings.tsx:585
-#: src/view/shell/desktop/LeftNav.tsx:262
-#: src/view/shell/desktop/LeftNav.tsx:266
+#: src/view/shell/desktop/LeftNav.tsx:261
+#: src/view/shell/desktop/LeftNav.tsx:265
 msgid "Add another account"
 msgstr ""
 
@@ -1840,7 +1840,7 @@ msgstr ""
 #: src/view/com/composer/Composer.tsx:1538
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:43
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:52
-#: src/view/shell/desktop/LeftNav.tsx:213
+#: src/view/shell/desktop/LeftNav.tsx:212
 msgid "Cancel"
 msgstr ""
 
@@ -1943,7 +1943,7 @@ msgstr ""
 #: src/lib/hooks/useNotificationHandler.ts:102
 #: src/Navigation.tsx:560
 #: src/view/shell/bottom-bar/BottomBar.tsx:219
-#: src/view/shell/desktop/LeftNav.tsx:608
+#: src/view/shell/desktop/LeftNav.tsx:607
 #: src/view/shell/Drawer.tsx:468
 msgid "Chat"
 msgstr ""
@@ -2291,7 +2291,7 @@ msgid "Complete the challenge"
 msgstr ""
 
 #: src/view/com/feeds/ComposerPrompt.tsx:146
-#: src/view/shell/desktop/LeftNav.tsx:573
+#: src/view/shell/desktop/LeftNav.tsx:572
 msgid "Compose new post"
 msgstr ""
 
@@ -3728,7 +3728,7 @@ msgstr ""
 
 #: src/Navigation.tsx:789
 #: src/screens/Search/Shell.tsx:327
-#: src/view/shell/desktop/LeftNav.tsx:688
+#: src/view/shell/desktop/LeftNav.tsx:682
 #: src/view/shell/Drawer.tsx:416
 msgid "Explore"
 msgstr ""
@@ -4048,8 +4048,8 @@ msgstr ""
 msgid "Feed unavailable"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:107
-#: src/view/shell/desktop/RightNav.tsx:108
+#: src/view/shell/desktop/RightNav.tsx:177
+#: src/view/shell/desktop/RightNav.tsx:178
 #: src/view/shell/Drawer.tsx:370
 msgid "Feedback"
 msgstr ""
@@ -4066,7 +4066,7 @@ msgstr ""
 #: src/screens/StarterPack/StarterPackScreen.tsx:195
 #: src/view/screens/Feeds.tsx:511
 #: src/view/screens/Profile.tsx:239
-#: src/view/shell/desktop/LeftNav.tsx:726
+#: src/view/shell/desktop/LeftNav.tsx:700
 #: src/view/shell/Drawer.tsx:532
 msgid "Feeds"
 msgstr ""
@@ -4616,13 +4616,17 @@ msgstr ""
 msgid "Go to feed"
 msgstr ""
 
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:49
+msgid "Go to main site"
+msgstr ""
+
 #: src/screens/Login/ForgotPasswordForm.tsx:173
 msgid "Go to next"
 msgstr ""
 
 #: src/components/dms/ConvoMenu.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:317
-#: src/view/shell/desktop/LeftNav.tsx:323
+#: src/view/shell/desktop/LeftNav.tsx:316
+#: src/view/shell/desktop/LeftNav.tsx:322
 msgid "Go to profile"
 msgstr ""
 
@@ -4733,8 +4737,8 @@ msgstr ""
 
 #: src/screens/Settings/Settings.tsx:252
 #: src/screens/Settings/Settings.tsx:256
-#: src/view/shell/desktop/RightNav.tsx:128
-#: src/view/shell/desktop/RightNav.tsx:131
+#: src/view/shell/desktop/RightNav.tsx:198
+#: src/view/shell/desktop/RightNav.tsx:201
 #: src/view/shell/Drawer.tsx:383
 msgid "Help"
 msgstr ""
@@ -4904,7 +4908,7 @@ msgstr ""
 #: src/Navigation.tsx:784
 #: src/Navigation.tsx:804
 #: src/view/shell/bottom-bar/BottomBar.tsx:176
-#: src/view/shell/desktop/LeftNav.tsx:670
+#: src/view/shell/desktop/LeftNav.tsx:664
 #: src/view/shell/Drawer.tsx:442
 msgid "Home"
 msgstr ""
@@ -5641,7 +5645,7 @@ msgstr ""
 #: src/view/screens/Lists.tsx:67
 #: src/view/screens/Profile.tsx:233
 #: src/view/screens/Profile.tsx:241
-#: src/view/shell/desktop/LeftNav.tsx:744
+#: src/view/shell/desktop/LeftNav.tsx:742
 #: src/view/shell/Drawer.tsx:547
 msgid "Lists"
 msgstr ""
@@ -5737,11 +5741,11 @@ msgstr ""
 msgid "Logged-out visibility"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:140
+#: src/view/shell/desktop/RightNav.tsx:210
 msgid "Logo by @sawaratsuki.bsky.social"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:137
+#: src/view/shell/desktop/RightNav.tsx:207
 #: src/view/shell/Drawer.tsx:711
 msgid "Logo by <0>@sawaratsuki.bsky.social</0>"
 msgstr ""
@@ -6226,7 +6230,7 @@ msgctxt "action"
 msgid "New post"
 msgstr ""
 
-#: src/view/shell/desktop/LeftNav.tsx:581
+#: src/view/shell/desktop/LeftNav.tsx:580
 msgctxt "action"
 msgid "New Post"
 msgstr ""
@@ -6556,7 +6560,7 @@ msgstr ""
 #: src/screens/Settings/Settings.tsx:203
 #: src/view/screens/Notifications.tsx:129
 #: src/view/shell/bottom-bar/BottomBar.tsx:250
-#: src/view/shell/desktop/LeftNav.tsx:707
+#: src/view/shell/desktop/LeftNav.tsx:723
 #: src/view/shell/Drawer.tsx:495
 msgid "Notifications"
 msgstr ""
@@ -7452,8 +7456,8 @@ msgstr ""
 msgid "Primary language"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:116
-#: src/view/shell/desktop/RightNav.tsx:117
+#: src/view/shell/desktop/RightNav.tsx:186
+#: src/view/shell/desktop/RightNav.tsx:187
 msgid "Privacy"
 msgstr ""
 
@@ -7507,7 +7511,7 @@ msgid "profile"
 msgstr ""
 
 #: src/view/shell/bottom-bar/BottomBar.tsx:293
-#: src/view/shell/desktop/LeftNav.tsx:785
+#: src/view/shell/desktop/LeftNav.tsx:783
 #: src/view/shell/Drawer.tsx:79
 #: src/view/shell/Drawer.tsx:598
 msgid "Profile"
@@ -8372,7 +8376,7 @@ msgstr ""
 msgid "Save to my feeds"
 msgstr ""
 
-#: src/view/shell/desktop/LeftNav.tsx:763
+#: src/view/shell/desktop/LeftNav.tsx:761
 #: src/view/shell/Drawer.tsx:573
 msgctxt "link to bookmarks screen"
 msgid "Saved"
@@ -8827,7 +8831,7 @@ msgstr ""
 
 #: src/Navigation.tsx:216
 #: src/screens/Settings/Settings.tsx:103
-#: src/view/shell/desktop/LeftNav.tsx:803
+#: src/view/shell/desktop/LeftNav.tsx:801
 #: src/view/shell/Drawer.tsx:611
 msgid "Settings"
 msgstr ""
@@ -9155,9 +9159,9 @@ msgstr ""
 #: src/screens/SignupQueued.tsx:93
 #: src/screens/SignupQueued.tsx:96
 #: src/screens/Takendown.tsx:87
-#: src/view/shell/desktop/LeftNav.tsx:212
-#: src/view/shell/desktop/LeftNav.tsx:269
-#: src/view/shell/desktop/LeftNav.tsx:272
+#: src/view/shell/desktop/LeftNav.tsx:211
+#: src/view/shell/desktop/LeftNav.tsx:268
+#: src/view/shell/desktop/LeftNav.tsx:271
 msgid "Sign out"
 msgstr ""
 
@@ -9166,7 +9170,7 @@ msgid "Sign Out"
 msgstr ""
 
 #: src/screens/Settings/Settings.tsx:301
-#: src/view/shell/desktop/LeftNav.tsx:209
+#: src/view/shell/desktop/LeftNav.tsx:208
 msgid "Sign out?"
 msgstr ""
 
@@ -9519,15 +9523,15 @@ msgstr ""
 #: src/screens/Settings/Settings.tsx:127
 #: src/screens/Settings/Settings.tsx:141
 #: src/screens/Settings/Settings.tsx:622
-#: src/view/shell/desktop/LeftNav.tsx:247
+#: src/view/shell/desktop/LeftNav.tsx:246
 msgid "Switch account"
 msgstr ""
 
-#: src/view/shell/desktop/LeftNav.tsx:110
+#: src/view/shell/desktop/LeftNav.tsx:109
 msgid "Switch accounts"
 msgstr ""
 
-#: src/view/shell/desktop/LeftNav.tsx:346
+#: src/view/shell/desktop/LeftNav.tsx:345
 msgid "Switch to {0}"
 msgstr ""
 
@@ -9611,8 +9615,8 @@ msgstr ""
 msgid "Tell us a little more"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:123
-#: src/view/shell/desktop/RightNav.tsx:124
+#: src/view/shell/desktop/RightNav.tsx:193
+#: src/view/shell/desktop/RightNav.tsx:194
 msgid "Terms"
 msgstr ""
 
@@ -11053,7 +11057,7 @@ msgid "View your default post interaction settings"
 msgstr ""
 
 #: src/view/com/home/HomeHeaderLayout.web.tsx:57
-#: src/view/com/home/HomeHeaderLayoutMobile.tsx:72
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:118
 msgid "View your feeds and explore more"
 msgstr ""
 
@@ -11800,7 +11804,7 @@ msgid "You recently changed your birthdate"
 msgstr ""
 
 #: src/screens/Settings/Settings.tsx:302
-#: src/view/shell/desktop/LeftNav.tsx:210
+#: src/view/shell/desktop/LeftNav.tsx:209
 msgid "You will be signed out of all your accounts."
 msgstr ""
 
