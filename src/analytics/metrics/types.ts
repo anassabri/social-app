@@ -15,6 +15,14 @@ export type Events = {
     experimentId: string
     variationId: string
   }
+  'feature:viewed': {
+    featureId: string
+    featureResultValue: unknown
+    /** Only available if feature has experiment rules applied */
+    experimentId?: string
+    /** Only available if feature has experiment rules applied */
+    variationId?: string
+  }
 
   'account:loggedIn': {
     logContext:
@@ -233,6 +241,53 @@ export type Events = {
     persist: boolean
     hasChanged: boolean
   }
+  'composer:open': {
+    logContext:
+      | 'Fab'
+      | 'PostReply'
+      | 'QuotePost'
+      | 'ProfileFeed'
+      | 'Deeplink'
+      | 'Other'
+    isReply: boolean
+    hasQuote: boolean
+    hasDraft: boolean
+  }
+  'draft:save': {
+    isNewDraft: boolean
+    hasText: boolean
+    hasImages: boolean
+    hasVideo: boolean
+    hasGif: boolean
+    hasQuote: boolean
+    hasLink: boolean
+    postCount: number
+    textLength: number
+  }
+  'draft:load': {
+    draftAgeMs: number
+    hasText: boolean
+    hasImages: boolean
+    hasVideo: boolean
+    hasGif: boolean
+    postCount: number
+  }
+  'draft:delete': {
+    logContext: 'DraftsList'
+    draftAgeMs: number
+  }
+  'draft:listOpen': {
+    draftCount: number
+  }
+  'draft:post': {
+    draftAgeMs: number
+    wasEdited: boolean
+  }
+  'draft:discard': {
+    logContext: 'ComposerClose' | 'BeforeDraftsList'
+    hadContent: boolean
+    textLength: number
+  }
 
   // Data events
   'account:create:begin': {}
@@ -420,8 +475,8 @@ export type Events = {
       | 'InterstitialProfile'
       | 'Profile'
       | 'Onboarding'
-    location: 'Card' | 'Profile'
-    recId?: number
+    location: 'Card' | 'Profile' | 'FollowAll'
+    recId?: number | string
     position: number
     suggestedDid: string
     category: string | null
@@ -432,7 +487,7 @@ export type Events = {
       | 'InterstitialDiscover'
       | 'InterstitialProfile'
       | 'Onboarding'
-    recId?: number
+    recId?: number | string
     position: number
     suggestedDid: string
     category: string | null
@@ -445,7 +500,7 @@ export type Events = {
       | 'Profile'
       | 'Onboarding'
       | 'ProgressGuide'
-    recId?: number
+    recId?: number | string
     position: number
     suggestedDid: string
     category: string | null
@@ -460,7 +515,7 @@ export type Events = {
   }
   'suggestedUser:dismiss': {
     logContext: 'InterstitialDiscover' | 'InterstitialProfile'
-    recId?: number
+    recId?: number | string
     position: number
     suggestedDid: string
   }
@@ -515,6 +570,10 @@ export type Events = {
     setDescription: boolean
     profilesCount: number
     feedsCount: number
+  }
+  'starterPack:convertToList': {
+    starterPack: string
+    memberCount: number
   }
   'starterPack:ctaPress': {
     starterPack: string
@@ -828,4 +887,9 @@ export type Events = {
   'liveEvents:unhideAllFeedBanners': {
     context: LiveEventFeedMetricContext
   }
+
+  'profile:associated:germ:click-to-chat': {}
+  'profile:associated:germ:click-self-info': {}
+  'profile:associated:germ:self-disconnect': {}
+  'profile:associated:germ:self-reconnect': {}
 }

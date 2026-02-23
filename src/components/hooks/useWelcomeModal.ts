@@ -5,34 +5,26 @@ import {IS_WEB} from '#/env'
 
 export function useWelcomeModal() {
   const {hasSession} = useSession()
-  // DISABLED: Welcome modal disabled for local development
   const [isOpen, setIsOpen] = useState(false)
 
-  const open = () => setIsOpen(false) // Disabled - always keep closed
-  const close = () => {
-    setIsOpen(false)
-    // Mark that user has actively closed the modal, don't show again this session
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('welcomeModalClosed', 'true')
-    }
-  }
+  const open = () => setIsOpen(true)
+  const close = () => setIsOpen(false)
 
-  // DISABLED: Welcome modal disabled for local development
-  // To re-enable, uncomment the useEffect below and change open() to setIsOpen(true)
-  /*
   useEffect(() => {
     // Only show modal if:
     // 1. User is not logged in
     // 2. We're on the web (this is a web-only feature)
     // 3. We're on the homepage (path is '/' or '/home')
-    // 4. User hasn't actively closed the modal in this session
+    // 4. Modal hasn't been shown before
     if (IS_WEB && !hasSession && typeof window !== 'undefined') {
       const currentPath = window.location.pathname
       const isHomePage = currentPath === '/'
-      const hasUserClosedModal =
-        sessionStorage.getItem('welcomeModalClosed') === 'true'
+      const hasModalBeenShown =
+        localStorage.getItem('welcomeModalShown') === 'true'
 
-      if (isHomePage && !hasUserClosedModal) {
+      if (isHomePage && !hasModalBeenShown) {
+        // Mark that the modal has been shown, don't show again
+        localStorage.setItem('welcomeModalShown', 'true')
         // Small delay to ensure the page has loaded
         const timer = setTimeout(() => {
           open()
@@ -42,7 +34,6 @@ export function useWelcomeModal() {
       }
     }
   }, [hasSession])
-  */
 
   return {isOpen, open, close}
 }

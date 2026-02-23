@@ -10,7 +10,6 @@ import {
 import {msg, Plural, Trans} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 
-import {useActorStatus} from '#/lib/actor-status'
 import {useOpenComposer} from '#/lib/hooks/useOpenComposer'
 import {useTranslate} from '#/lib/hooks/useTranslate'
 import {makeProfileLink} from '#/lib/routes/links'
@@ -39,7 +38,6 @@ import {
   REPLY_LINE_WIDTH,
 } from '#/screens/PostThread/const'
 import {atoms as a, useTheme} from '#/alf'
-import {colors} from '#/components/Admonition'
 import {Button} from '#/components/Button'
 import {DebugFieldDisplay} from '#/components/DebugFieldDisplay'
 import {CalendarClock_Stroke2_Corner0_Rounded as CalendarClockIcon} from '#/components/icons/CalendarClock'
@@ -60,6 +58,7 @@ import {Text} from '#/components/Typography'
 import {VerificationCheckButton} from '#/components/verification/VerificationCheckButton'
 import {WhoCanReply} from '#/components/WhoCanReply'
 import {useAnalytics} from '#/analytics'
+import {useActorStatus} from '#/features/liveNow'
 import * as bsky from '#/types/bsky'
 
 export function ThreadItemAnchor({
@@ -261,6 +260,7 @@ const ThreadItemAnchorInner = memo(function ThreadItemAnchorInner({
         langs: record.langs,
       },
       onPostSuccess: onPostSuccess,
+      logContext: 'PostReply',
     })
 
     if (postSource) {
@@ -451,14 +451,16 @@ const ThreadItemAnchorInner = memo(function ThreadItemAnchorInner({
                   <Text
                     testID="repostCount-expanded"
                     style={[a.text_md, t.atoms.text_contrast_medium]}>
-                    <Text style={[a.text_md, a.font_semi_bold, t.atoms.text]}>
-                      {formatPostStatCount(post.repostCount)}
-                    </Text>{' '}
-                    <Plural
-                      value={post.repostCount}
-                      one="repost"
-                      other="reposts"
-                    />
+                    <Trans comment="Repost count display, the <0> tags enclose the number of reposts in bold (will never be 0)">
+                      <Text style={[a.text_md, a.font_semi_bold, t.atoms.text]}>
+                        {formatPostStatCount(post.repostCount)}
+                      </Text>{' '}
+                      <Plural
+                        value={post.repostCount}
+                        one="repost"
+                        other="reposts"
+                      />
+                    </Trans>
                   </Text>
                 </Link>
               ) : null}
@@ -469,14 +471,16 @@ const ThreadItemAnchorInner = memo(function ThreadItemAnchorInner({
                   <Text
                     testID="quoteCount-expanded"
                     style={[a.text_md, t.atoms.text_contrast_medium]}>
-                    <Text style={[a.text_md, a.font_semi_bold, t.atoms.text]}>
-                      {formatPostStatCount(post.quoteCount)}
-                    </Text>{' '}
-                    <Plural
-                      value={post.quoteCount}
-                      one="quote"
-                      other="quotes"
-                    />
+                    <Trans comment="Quote count display, the <0> tags enclose the number of quotes in bold (will never be 0)">
+                      <Text style={[a.text_md, a.font_semi_bold, t.atoms.text]}>
+                        {formatPostStatCount(post.quoteCount)}
+                      </Text>{' '}
+                      <Plural
+                        value={post.quoteCount}
+                        one="quote"
+                        other="quotes"
+                      />
+                    </Trans>
                   </Text>
                 </Link>
               ) : null}
@@ -485,10 +489,12 @@ const ThreadItemAnchorInner = memo(function ThreadItemAnchorInner({
                   <Text
                     testID="likeCount-expanded"
                     style={[a.text_md, t.atoms.text_contrast_medium]}>
-                    <Text style={[a.text_md, a.font_semi_bold, t.atoms.text]}>
-                      {formatPostStatCount(post.likeCount)}
-                    </Text>{' '}
-                    <Plural value={post.likeCount} one="like" other="likes" />
+                    <Trans comment="Like count display, the <0> tags enclose the number of likes in bold (will never be 0)">
+                      <Text style={[a.text_md, a.font_semi_bold, t.atoms.text]}>
+                        {formatPostStatCount(post.likeCount)}
+                      </Text>{' '}
+                      <Plural value={post.likeCount} one="like" other="likes" />
+                    </Trans>
                   </Text>
                 </Link>
               ) : null}
@@ -496,10 +502,16 @@ const ThreadItemAnchorInner = memo(function ThreadItemAnchorInner({
                 <Text
                   testID="bookmarkCount-expanded"
                   style={[a.text_md, t.atoms.text_contrast_medium]}>
-                  <Text style={[a.text_md, a.font_semi_bold, t.atoms.text]}>
-                    {formatPostStatCount(post.bookmarkCount)}
-                  </Text>{' '}
-                  <Plural value={post.bookmarkCount} one="save" other="saves" />
+                  <Trans comment="Save count display, the <0> tags enclose the number of saves in bold (will never be 0)">
+                    <Text style={[a.text_md, a.font_semi_bold, t.atoms.text]}>
+                      {formatPostStatCount(post.bookmarkCount)}
+                    </Text>{' '}
+                    <Plural
+                      value={post.bookmarkCount}
+                      one="save"
+                      other="saves"
+                    />
+                  </Trans>
                 </Text>
               ) : null}
             </View>
@@ -634,8 +646,6 @@ function BackdatedPostIndicator({post}: {post: AppBskyFeedDefs.PostView}) {
 
   if (!isBackdated) return null
 
-  const orange = colors.warning
-
   return (
     <>
       <Button
@@ -662,7 +672,7 @@ function BackdatedPostIndicator({post}: {post: AppBskyFeedDefs.PostView}) {
                 paddingVertical: 3,
               },
             ]}>
-            <CalendarClockIcon fill={orange} size="sm" aria-hidden />
+            <CalendarClockIcon fill={t.palette.yellow} size="sm" aria-hidden />
             <Text
               style={[
                 a.text_xs,
@@ -677,33 +687,29 @@ function BackdatedPostIndicator({post}: {post: AppBskyFeedDefs.PostView}) {
       </Button>
 
       <Prompt.Outer control={control}>
-        <Prompt.TitleText>
-          <Trans>Archived post</Trans>
-        </Prompt.TitleText>
-        <Prompt.DescriptionText>
-          <Trans>
-            This post claims to have been created on{' '}
-            <RNText style={[a.font_semi_bold]}>
-              {niceDate(i18n, createdAt)}
-            </RNText>
-            , but was first seen by Bluesky on{' '}
-            <RNText style={[a.font_semi_bold]}>
-              {niceDate(i18n, indexedAt)}
-            </RNText>
-            .
-          </Trans>
-        </Prompt.DescriptionText>
-        <Text
-          style={[
-            a.text_md,
-            a.leading_snug,
-            t.atoms.text_contrast_high,
-            a.pb_xl,
-          ]}>
-          <Trans>
-            Bluesky cannot confirm the authenticity of the claimed date.
-          </Trans>
-        </Text>
+        <Prompt.Content>
+          <Prompt.TitleText>
+            <Trans>Archived post</Trans>
+          </Prompt.TitleText>
+          <Prompt.DescriptionText>
+            <Trans>
+              This post claims to have been created on{' '}
+              <RNText style={[a.font_semi_bold]}>
+                {niceDate(i18n, createdAt)}
+              </RNText>
+              , but was first seen by Bluesky on{' '}
+              <RNText style={[a.font_semi_bold]}>
+                {niceDate(i18n, indexedAt)}
+              </RNText>
+              .
+            </Trans>
+          </Prompt.DescriptionText>
+          <Prompt.DescriptionText>
+            <Trans>
+              Bluesky cannot confirm the authenticity of the claimed date.
+            </Trans>
+          </Prompt.DescriptionText>
+        </Prompt.Content>
         <Prompt.Actions>
           <Prompt.Action cta={_(msg`Okay`)} onPress={() => {}} />
         </Prompt.Actions>
