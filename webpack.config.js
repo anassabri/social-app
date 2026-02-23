@@ -18,15 +18,7 @@ const reactNativeWebWebviewConfiguration = {
   },
 }
 
-module.exports = async function (env = {}, argv = {}) {
-  // Ensure env has mode set from argv or environment
-  if (!env.mode && argv.mode) {
-    env.mode = argv.mode
-  }
-  if (!env.mode) {
-    env.mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
-  }
-  
+module.exports = async function (env, argv) {
   let config = await createExpoWebpackConfigAsync(env, argv)
   config = withAlias(config, {
     'react-native$': 'react-native-web',
@@ -36,31 +28,24 @@ module.exports = async function (env = {}, argv = {}) {
       .resolve('unicode-segmenter/grapheme')
       .replace(/\.cjs$/, '.js'),
     'react-native-gesture-handler': false, // RNGH should not be used on web, so let's cause a build error if it sneaks in
-    'react-native-keyboard-controller': false, // Exclude from web builds - incompatible with web
-    'expo-privacy-sensitive': require.resolve('./src/lib/shims/expo-privacy-sensitive.tsx'),
+    '@sentry-internal/replay': false, // not used, ~300kb of dead weight
+    'expo-privacy-sensitive': false, // Missing dependency, mock for web
   })
-  config.optimization = {
-    ...config.optimization,
-    minimize: true,
-  }
   config.module.rules = [
     ...(config.module.rules || []),
     reactNativeWebWebviewConfiguration,
   ]
-  
-  // Override devServer config for port 5000 and allow all hosts
-  // Remove invalid options that are not compatible with webpack-dev-server v5
-  const { https, _assetEmittingPreviousFiles, ...devServerRest } = config.devServer || {}
-  config.devServer = {
-    ...devServerRest,
-    host: '0.0.0.0',
-    port: 5000,
-    allowedHosts: 'all',
-    server: https ? 'https' : 'http',
-  }
-  
   if (env.mode === 'development') {
     config.plugins.push(new ReactRefreshWebpackPlugin())
+    // Reap zombie HMR WebSocket connections that linger after refresh.
+    // Without this, dead sockets exhaust the browser's per-origin connection
+    // pool and the dev server stops responding.
+    config.devServer.onListening = devServer => {
+      devServer.server.on('connection', socket => {
+        socket.setTimeout(10000)
+        socket.on('timeout', () => socket.destroy())
+      })
+    }
   } else {
     // Support static CDN for chunks
     config.output.publicPath = 'auto'
