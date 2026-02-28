@@ -21,13 +21,13 @@ import * as Layout from '#/components/Layout'
 import {Link} from '#/components/Link'
 
 /**
- * Gets the parent domain URL by removing the "social." prefix from the current hostname.
+ * Gets the parent domain URL by removing the "x." prefix from the current hostname.
  */
 function getParentDomainUrl(): string {
   if (typeof window === 'undefined') return '/'
   const hostname = window.location.hostname
-  if (hostname.startsWith('social.')) {
-    const parentDomain = hostname.replace(/^social\./, '')
+  if (hostname.startsWith('x.')) {
+    const parentDomain = hostname.replace(/^x\./, '')
     return `${window.location.protocol}//${parentDomain}`
   }
   return window.location.origin

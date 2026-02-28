@@ -30,24 +30,24 @@ import {Text} from '#/components/Typography'
 import {SidebarLiveEventFeedsBanner} from '#/features/liveEvents/components/SidebarLiveEventFeedsBanner'
 
 /**
- * Gets the parent domain URL by removing the "social." prefix from the current hostname.
- * Example: "social.hi.onl" -> "https://hi.onl"
- * Example: "social.chatgpt.net.im" -> "https://chatgpt.net.im"
- * If no "social." prefix exists, returns the current origin.
+ * Gets the parent domain URL by removing the "x." prefix from the current hostname.
+ * Example: "x.hi.onl" -> "https://hi.onl"
+ * Example: "x.chatgpt.net.im" -> "https://chatgpt.net.im"
+ * If no "x." prefix exists, returns the current origin.
  */
 function getParentDomainUrl(): string {
   if (typeof window === 'undefined') return '/'
   const hostname = window.location.hostname
-  if (hostname.startsWith('social.')) {
-    const parentDomain = hostname.replace(/^social\./, '')
+  if (hostname.startsWith('x.')) {
+    const parentDomain = hostname.replace(/^x\./, '')
     return `${window.location.protocol}//${parentDomain}`
   }
-  // Return current origin if no "social." prefix
+  // Return current origin if no "x." prefix
   return window.location.origin
 }
 
 /**
- * Home button component that links to the parent domain (removes "social." prefix).
+ * Home button component that links to the parent domain (removes "x." prefix).
  * Always renders - links to parent domain or current origin.
  */
 function ParentDomainHomeButton() {
