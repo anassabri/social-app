@@ -2,8 +2,9 @@ import {type JSX, useCallback} from 'react'
 import {type GestureResponderEvent, View} from 'react-native'
 import Animated from 'react-native-reanimated'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
-import {msg, plural, Trans} from '@lingui/macro'
+import {msg, plural} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
+import {Trans} from '@lingui/react/macro'
 import {type BottomTabBarProps} from '@react-navigation/bottom-tabs'
 import {StackActions} from '@react-navigation/native'
 
@@ -48,6 +49,7 @@ import {
   Message_Stroke2_Corner0_Rounded_Filled as MessageFilled,
 } from '#/components/icons/Message'
 import {Text} from '#/components/Typography'
+import {useAgeAssurance} from '#/ageAssurance'
 import {useActorStatus} from '#/features/liveNow'
 import {useDemoMode} from '#/storage/hooks/demo-mode'
 import {styles} from './BottomBarStyles'
@@ -64,6 +66,7 @@ export function BottomBar({navigation}: BottomTabBarProps) {
     useNavigationTabState()
   const numUnreadNotifications = useUnreadNotifications()
   const numUnreadMessages = useUnreadMessageCount()
+  const aa = useAgeAssurance()
   const footerMinimalShellTransform = useMinimalShellFooterTransform()
   const {data: profile} = useProfileQuery({did: currentAccount?.did})
   const {requestSwitchToAccount} = useLoggedOutViewControls()
@@ -212,13 +215,15 @@ export function BottomBar({navigation}: BottomTabBarProps) {
                 )
               }
               onPress={onPressMessages}
-              notificationCount={numUnreadMessages.numUnread}
-              hasNew={numUnreadMessages.hasNew}
+              notificationCount={
+                aa.flags.chatDisabled ? undefined : numUnreadMessages.numUnread
+              }
+              hasNew={aa.flags.chatDisabled ? false : numUnreadMessages.hasNew}
               accessible={true}
               accessibilityRole="tab"
               accessibilityLabel={_(msg`Chat`)}
               accessibilityHint={
-                numUnreadMessages.count > 0
+                !aa.flags.chatDisabled && numUnreadMessages.count > 0
                   ? _(
                       plural(numUnreadMessages.numUnread ?? 0, {
                         one: '# unread item',

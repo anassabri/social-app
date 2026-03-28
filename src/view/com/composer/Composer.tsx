@@ -1,4 +1,6 @@
-import React, {
+import {
+  Fragment,
+  memo,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -52,8 +54,9 @@ import {
   type BskyAgent,
   type RichText,
 } from '@atproto/api'
-import {msg, plural, Trans} from '@lingui/macro'
+import {msg, plural} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
+import {Trans} from '@lingui/react/macro'
 import {useNavigation} from '@react-navigation/native'
 import {useQueryClient} from '@tanstack/react-query'
 
@@ -132,7 +135,7 @@ import * as Prompt from '#/components/Prompt'
 import * as Toast from '#/components/Toast'
 import {Text} from '#/components/Typography'
 import {useAnalytics} from '#/analytics'
-import {IS_ANDROID, IS_IOS, IS_NATIVE, IS_WEB} from '#/env'
+import {IS_ANDROID, IS_IOS, IS_LIQUID_GLASS, IS_NATIVE, IS_WEB} from '#/env'
 import {BottomSheetPortalProvider} from '../../../../modules/bottom-sheet'
 import {
   draftToComposerPosts,
@@ -298,7 +301,7 @@ export const ComposePost = ({
     [activePost.id],
   )
 
-  const selectVideo = React.useCallback(
+  const selectVideo = useCallback(
     (postId: string, asset: ImagePickerAsset) => {
       const abortController = new AbortController()
       composerDispatch({
@@ -484,7 +487,7 @@ export const ComposePost = ({
     [_, agent, currentDid, composerDispatch],
   )
 
-  const handleSelectDraft = React.useCallback(
+  const handleSelectDraft = useCallback(
     async (draftSummary: DraftSummary) => {
       logger.debug('loading draft for editing', {
         draftId: draftSummary.id,
@@ -552,7 +555,7 @@ export const ComposePost = ({
     revokeAllMediaUrls()
   }, [closeComposer, queryClient])
 
-  const getDraftSaveError = React.useCallback(
+  const getDraftSaveError = useCallback(
     (e: unknown): string => {
       if (e instanceof AppBskyDraftCreateDraft.DraftLimitReachedError) {
         return _(msg`You've reached the maximum number of drafts`)
@@ -562,7 +565,7 @@ export const ComposePost = ({
     [_],
   )
 
-  const validateDraftTextOrError = React.useCallback((): boolean => {
+  const validateDraftTextOrError = useCallback((): boolean => {
     const tooLong = composerState.thread.posts.some(
       post => post.richtext.graphemeLength > MAX_DRAFT_GRAPHEME_LENGTH,
     )
@@ -577,7 +580,7 @@ export const ComposePost = ({
     return true
   }, [composerState.thread.posts, _])
 
-  const handleSaveDraft = React.useCallback(async () => {
+  const handleSaveDraft = useCallback(async () => {
     setError('')
     if (!validateDraftTextOrError()) {
       return
@@ -620,7 +623,7 @@ export const ComposePost = ({
   ])
 
   // Save without closing - for use by DraftsButton
-  const saveCurrentDraft = React.useCallback(async (): Promise<{
+  const saveCurrentDraft = useCallback(async (): Promise<{
     success: boolean
   }> => {
     setError('')
@@ -647,7 +650,7 @@ export const ComposePost = ({
   ])
 
   // Handle discard action - fires metric and closes composer
-  const handleDiscard = React.useCallback(() => {
+  const handleDiscard = useCallback(() => {
     const posts = thread.posts
     const hasContent = posts.some(
       post =>
@@ -664,7 +667,7 @@ export const ComposePost = ({
   }, [thread.posts, ax, onClose])
 
   // Check if composer is empty (no content to save)
-  const isComposerEmpty = React.useMemo(() => {
+  const isComposerEmpty = useMemo(() => {
     // Has multiple posts means it's not empty
     if (thread.posts.length > 1) return false
 
@@ -682,7 +685,7 @@ export const ComposePost = ({
   }, [thread.posts])
 
   // Clear the composer (discard current content)
-  const handleClearComposer = React.useCallback(() => {
+  const handleClearComposer = useCallback(() => {
     composerDispatch({
       type: 'clear',
       initInteractionSettings: preferences?.postInteractionSettings,
@@ -793,7 +796,7 @@ export const ComposePost = ({
         ),
     )
 
-  const onPressPublish = React.useCallback(async () => {
+  const onPressPublish = useCallback(async () => {
     if (isPublishing) {
       return
     }
@@ -822,12 +825,21 @@ export const ComposePost = ({
     try {
       logger.info(`composer: posting...`)
       postUri = (
-        await apilib.post(agent, queryClient, {
-          thread,
-          replyTo: replyTo?.uri,
-          onStateChange: setPublishingStage,
-          langs: currentLanguages,
-        })
+        await apilib.post(
+          agent,
+          queryClient,
+          {
+            thread,
+            replyTo: replyTo?.uri,
+            onStateChange: setPublishingStage,
+            langs: currentLanguages,
+          },
+          {
+            highResolutionImages: ax.features.enabled(
+              ax.features.ImageUploadsHighResolution,
+            ),
+          },
+        )
       ).uris[0]
 
       /*
@@ -1014,7 +1026,7 @@ export const ComposePost = ({
     onPressPublish()
   })
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (publishOnUpload) {
       let erroredVideos = 0
       let uploadingVideos = 0
@@ -1180,7 +1192,7 @@ export const ComposePost = ({
             onLayout={onScrollViewLayout}>
             {replyTo ? <ComposerReplyTo replyTo={replyTo} /> : undefined}
             {thread.posts.map((post, index) => (
-              <React.Fragment key={post.id + (composerState.draftId ?? '')}>
+              <Fragment key={post.id + (composerState.draftId ?? '')}>
                 <ComposerPost
                   post={post}
                   dispatch={composerDispatch}
@@ -1200,7 +1212,7 @@ export const ComposePost = ({
                 {IS_WEBFooterSticky && post.id === activePost.id && (
                   <View style={styles.stickyFooterWeb}>{footer}</View>
                 )}
-              </React.Fragment>
+              </Fragment>
             ))}
           </Animated.ScrollView>
           {!IS_WEBFooterSticky && footer}
@@ -1272,7 +1284,7 @@ export const ComposePost = ({
   )
 }
 
-let ComposerPost = React.memo(function ComposerPost({
+let ComposerPost = memo(function ComposerPost({
   post,
   dispatch,
   textInput,
@@ -1521,7 +1533,13 @@ function ComposerTopBar({
     <Animated.View
       style={topBarAnimatedStyle}
       layout={native(LinearTransition)}>
-      <View style={styles.topbarInner}>
+      <View
+        style={[
+          a.flex_row,
+          a.align_center,
+          a.gap_xs,
+          IS_LIQUID_GLASS ? [a.px_lg, a.pt_lg, a.pb_md] : [a.p_sm],
+        ]}>
         <Button
           label={_(msg`Cancel`)}
           variant="ghost"
@@ -1534,7 +1552,7 @@ function ComposerTopBar({
           accessibilityHint={_(
             msg`Closes post composer and discards post draft`,
           )}>
-          <ButtonText style={[a.text_md]}>
+          <ButtonText style={[a.text_md]} maxFontSizeMultiplier={2}>
             <Trans>Cancel</Trans>
           </ButtonText>
         </Button>
@@ -1601,7 +1619,7 @@ function ComposerTopBar({
               size="small"
               onPress={onPublish}
               disabled={!canPost || isPublishQueued}>
-              <ButtonText style={[a.text_md]}>
+              <ButtonText style={[a.text_md]} maxFontSizeMultiplier={2}>
                 {isReply ? (
                   <Trans context="action">Reply</Trans>
                 ) : isThread ? (
@@ -2137,10 +2155,15 @@ function useKeyboardVerticalOffset() {
     return bottom * -1
   }
 
+  // they ditched the gap behaviour on 26
+  if (IS_LIQUID_GLASS) {
+    return top
+  }
+
   // iPhone SE
   if (top === 20) return 40
 
-  // all other iPhones
+  // all other iPhones on <26
   return top + 10
 }
 
@@ -2185,13 +2208,6 @@ function useHideKeyboardOnBackground() {
 }
 
 const styles = StyleSheet.create({
-  topbarInner: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 8,
-    height: 54,
-    gap: 4,
-  },
   postBtn: {
     borderRadius: 20,
     paddingHorizontal: 20,

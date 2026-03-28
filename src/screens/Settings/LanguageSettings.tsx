@@ -1,7 +1,8 @@
 import {useCallback, useMemo, useState} from 'react'
 import {View} from 'react-native'
-import {msg, Trans} from '@lingui/macro'
+import {msg} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
+import {Trans} from '@lingui/react/macro'
 
 import {
   type CommonNavigatorParams,
@@ -146,7 +147,9 @@ export function LanguageSettingsScreen({}: Props) {
                   items={DEDUPED_LANGUAGES.map(l => ({
                     label: languageName(l, langPrefs.appLanguage),
                     value: l.code2,
-                  }))}
+                  })).sort((a, b) =>
+                    a.label.localeCompare(b.label, langPrefs.appLanguage),
+                  )}
                 />
               </Select.Root>
             </View>
@@ -195,12 +198,12 @@ export function LanguageSettingsScreen({}: Props) {
                       )
                     })}
                     <Button
-                      label={_(msg`Add more languages...`)}
+                      label={_(msg`Add more languages…`)}
                       onPress={contentLanguagePrefsControl.open}>
                       <Toggle.Panel adjacent="leading">
                         <Toggle.PanelIcon icon={PlusIcon} />
                         <Toggle.PanelText>
-                          Add more languages...
+                          <Trans>Add more languages…</Trans>
                         </Toggle.PanelText>
                       </Toggle.Panel>
                     </Button>

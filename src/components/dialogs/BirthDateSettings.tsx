@@ -1,7 +1,8 @@
-import React from 'react'
+import {useCallback, useMemo, useState} from 'react'
 import {View} from 'react-native'
-import {msg, Trans} from '@lingui/macro'
+import {msg} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
+import {Trans} from '@lingui/react/macro'
 
 import {useCleanError} from '#/lib/hooks/useCleanError'
 import {isAppPassword} from '#/lib/jwt'
@@ -124,12 +125,10 @@ function BirthdayInner({
 }) {
   const {_} = useLingui()
   const cleanError = useCleanError()
-  const [date, setDate] = React.useState(
-    preferences.birthDate || getDateAgo(18),
-  )
+  const [date, setDate] = useState(preferences.birthDate || getDateAgo(18))
   const {isPending, error, mutateAsync: setBirthDate} = useBirthdateMutation()
   const hasChanged = date !== preferences.birthDate
-  const errorMessage = React.useMemo(() => {
+  const errorMessage = useMemo(() => {
     if (error) {
       const {raw, clean} = cleanError(error)
       return clean || raw || error.toString()
@@ -140,7 +139,7 @@ function BirthdayInner({
   const isUnder13 = age < 13
   const isUnder18 = age >= 13 && age < 18
 
-  const onSave = React.useCallback(async () => {
+  const onSave = useCallback(async () => {
     try {
       // skip if date is the same
       if (hasChanged) {

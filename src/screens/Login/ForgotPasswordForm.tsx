@@ -1,8 +1,9 @@
-import React, {useState} from 'react'
+import {useCallback, useState} from 'react'
 import {Keyboard, View} from 'react-native'
 import {type ComAtprotoServerDescribeServer} from '@atproto/api'
-import {msg, Trans} from '@lingui/macro'
+import {msg} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
+import {Trans} from '@lingui/react/macro'
 import * as EmailValidator from 'email-validator'
 
 import {cleanError, isNetworkError} from '#/lib/strings/errors'
@@ -43,7 +44,7 @@ export const ForgotPasswordForm = ({
   const [email, setEmail] = useState<string>('')
   const {_} = useLingui()
 
-  const onPressSelectService = React.useCallback(() => {
+  const onPressSelectService = useCallback(() => {
     Keyboard.dismiss()
   }, [])
 

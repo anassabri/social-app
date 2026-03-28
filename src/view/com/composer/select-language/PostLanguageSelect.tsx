@@ -1,5 +1,6 @@
-import {msg, Trans} from '@lingui/macro'
+import {msg} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
+import {Trans} from '@lingui/react/macro'
 
 import {LANG_DROPDOWN_HITSLOP} from '#/lib/constants'
 import {codeToLanguageName} from '#/locale/helpers'
@@ -160,7 +161,8 @@ function LanguageBtn(
                 a.leading_snug,
                 {maxWidth: 100},
               ]}
-              numberOfLines={1}>
+              numberOfLines={1}
+              maxFontSizeMultiplier={1.5}>
               {currentLanguages
                 .map(lang => codeToLanguageName(lang, langPrefs.appLanguage))
                 .join(', ')}

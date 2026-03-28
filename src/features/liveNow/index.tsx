@@ -8,7 +8,7 @@ import {
   ComAtprotoRepoPutRecord,
 } from '@atproto/api'
 import {retry} from '@atproto/common-web'
-import {msg} from '@lingui/macro'
+import {msg} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
 import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query'
 import {isAfter, parseISO} from 'date-fns'
@@ -23,8 +23,8 @@ import {
 } from '#/state/cache/profile-shadow'
 import {useAgent, useSession} from '#/state/session'
 import {useTickEveryMinute} from '#/state/shell'
-import * as Toast from '#/view/com/util/Toast'
 import {useDialogContext} from '#/components/Dialog'
+import * as Toast from '#/components/Toast'
 import {useAnalytics} from '#/analytics'
 import {getLiveNowHost, getLiveServiceNames} from '#/features/liveNow/utils'
 import type * as bsky from '#/types/bsky'

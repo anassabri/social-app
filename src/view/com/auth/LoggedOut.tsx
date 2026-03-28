@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState} from 'react'
 import {View} from 'react-native'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
-import {msg} from '@lingui/macro'
+import {msg} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
 import {useQueryClient} from '@tanstack/react-query'
 
@@ -57,6 +57,7 @@ export function LoggedOut({onDismiss}: {onDismiss?: () => void}) {
   const agent = useAgent()
   useEffect(() => {
     const actors = accounts.map(acc => acc.did)
+    if (actors.length === 0) return
     void queryClient.prefetchQuery({
       queryKey: profilesQueryKey(actors),
       staleTime: STALE.MINUTES.FIVE,
