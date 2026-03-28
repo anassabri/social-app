@@ -11,11 +11,14 @@ export function useWelcomeModal() {
   const close = () => setIsOpen(false)
 
   useEffect(() => {
+    // Welcome modal disabled
     // Only show modal if:
     // 1. User is not logged in
     // 2. We're on the web (this is a web-only feature)
     // 3. We're on the homepage (path is '/' or '/home')
     // 4. Modal hasn't been shown before
+    // Uncomment below to re-enable:
+    /*
     if (IS_WEB && !hasSession && typeof window !== 'undefined') {
       const currentPath = window.location.pathname
       const isHomePage = currentPath === '/'
@@ -33,6 +36,7 @@ export function useWelcomeModal() {
         return () => clearTimeout(timer)
       }
     }
+    */
   }, [hasSession])
 
   return {isOpen, open, close}
