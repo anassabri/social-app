@@ -19,6 +19,7 @@ import {
 import {sanitizeDisplayName} from '#/lib/strings/display-names'
 import {isInvalidHandle, sanitizeHandle} from '#/lib/strings/handles'
 import {emitSoftReset} from '#/state/events'
+import {useHomeBadge} from '#/state/home-badge'
 import {useFetchHandle} from '#/state/queries/handle'
 import {useUnreadMessageCount} from '#/state/queries/messages/list-conversations'
 import {useUnreadNotifications} from '#/state/queries/notifications/unread'
@@ -618,6 +619,7 @@ export function DesktopLeftNav() {
   const {_} = useLingui()
   const {isDesktop, isMobile} = useWebMediaQueries()
   const {leftNavMinimal, centerColumnOffset} = useLayoutBreakpoints()
+  const hasHomeBadge = useHomeBadge()
   const numUnreadNotifications = useUnreadNotifications()
 
   // Show on desktop and tablet (not mobile), regardless of login state
@@ -649,7 +651,7 @@ export function DesktopLeftNav() {
       {/* These nav items show for both logged-in and logged-out users */}
       <NavItem
         href="/"
-        hasNew={hasSession && hasHomeBadge && gate('remove_show_latest_button')}
+        hasNew={hasSession && hasHomeBadge}
         icon={
           <Home
             aria-hidden={true}
