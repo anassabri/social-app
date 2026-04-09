@@ -14,7 +14,7 @@ import {ComponentChildren, h} from 'preact'
 import {useMemo} from 'preact/hooks'
 
 import infoIcon from '../../assets/circleInfo_stroke2_corner0_rounded.svg'
-import playIcon from '../../assets/play_filled_corner2_rounded.svg'
+import playIcon from '../../assets/play_filled_corner0_rounded.svg'
 import starterPackIcon from '../../assets/starterPack.svg'
 import {CONTENT_LABELS, labelsToInfo} from '../labels'
 import * as bsky from '../types/bsky'
@@ -389,13 +389,34 @@ function GenericWithImageEmbed({
   )
 }
 
-// just the thumbnail and a play button
 function VideoEmbed({content}: {content: AppBskyEmbedVideo.View}) {
   let aspectRatio = 1
 
   if (content.aspectRatio) {
     const {width, height} = content.aspectRatio
     aspectRatio = clamp(width / height, 1 / 1, 3 / 1)
+  }
+
+  const supportsHls = useMemo(() => {
+    const video = document.createElement('video')
+    return video.canPlayType('application/vnd.apple.mpegurl') !== ''
+  }, [])
+
+  if (supportsHls) {
+    return (
+      <video
+        src={content.playlist}
+        poster={content.thumbnail}
+        controls
+        playsinline
+        preload="metadata"
+        loading="lazy"
+        aria-label={content.alt || undefined}
+        onClickCapture={evt => evt.stopPropagation()}
+        className="w-full rounded-xl bg-black"
+        style={{aspectRatio: `${aspectRatio} / 1`}}
+      />
+    )
   }
 
   return (
