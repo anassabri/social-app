@@ -3898,7 +3898,7 @@ msgstr ""
 
 #: src/Navigation.tsx:818
 #: src/screens/Search/Shell.tsx:354
-#: src/view/shell/desktop/LeftNav.tsx:691
+#: src/view/shell/desktop/LeftNav.tsx:687
 #: src/view/shell/Drawer.tsx:402
 msgid "Explore"
 msgstr ""
@@ -4229,8 +4229,8 @@ msgstr ""
 msgid "Feed unavailable"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:108
-#: src/view/shell/desktop/RightNav.tsx:109
+#: src/view/shell/desktop/RightNav.tsx:178
+#: src/view/shell/desktop/RightNav.tsx:179
 #: src/view/shell/Drawer.tsx:356
 msgid "Feedback"
 msgstr ""
@@ -4248,7 +4248,7 @@ msgstr ""
 #: src/screens/StarterPack/StarterPackScreen.tsx:196
 #: src/view/screens/Feeds.tsx:512
 #: src/view/screens/Profile.tsx:240
-#: src/view/shell/desktop/LeftNav.tsx:729
+#: src/view/shell/desktop/LeftNav.tsx:705
 #: src/view/shell/Drawer.tsx:518
 msgid "Feeds"
 msgstr ""
@@ -4818,6 +4818,10 @@ msgstr ""
 msgid "Go to feed"
 msgstr ""
 
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:52
+msgid "Go to main site"
+msgstr "Go to main site"
+
 #: src/screens/Login/ForgotPasswordForm.tsx:174
 msgid "Go to next"
 msgstr ""
@@ -4940,8 +4944,8 @@ msgstr ""
 
 #: src/screens/Settings/Settings.tsx:251
 #: src/screens/Settings/Settings.tsx:255
-#: src/view/shell/desktop/RightNav.tsx:129
-#: src/view/shell/desktop/RightNav.tsx:132
+#: src/view/shell/desktop/RightNav.tsx:199
+#: src/view/shell/desktop/RightNav.tsx:202
 #: src/view/shell/Drawer.tsx:369
 msgid "Help"
 msgstr ""
@@ -5118,7 +5122,7 @@ msgstr ""
 #: src/Navigation.tsx:813
 #: src/Navigation.tsx:833
 #: src/view/shell/bottom-bar/BottomBar.tsx:179
-#: src/view/shell/desktop/LeftNav.tsx:673
+#: src/view/shell/desktop/LeftNav.tsx:669
 #: src/view/shell/Drawer.tsx:428
 msgid "Home"
 msgstr ""
@@ -5971,11 +5975,11 @@ msgstr ""
 msgid "Logged-out visibility"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:141
+#: src/view/shell/desktop/RightNav.tsx:211
 msgid "Logo by @sawaratsuki.bsky.social"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:138
+#: src/view/shell/desktop/RightNav.tsx:208
 #: src/view/shell/Drawer.tsx:697
 msgid "Logo by <0>@sawaratsuki.bsky.social</0>"
 msgstr ""
@@ -6829,7 +6833,7 @@ msgstr ""
 #: src/screens/Settings/Settings.tsx:202
 #: src/view/screens/Notifications.tsx:130
 #: src/view/shell/bottom-bar/BottomBar.tsx:255
-#: src/view/shell/desktop/LeftNav.tsx:710
+#: src/view/shell/desktop/LeftNav.tsx:728
 #: src/view/shell/Drawer.tsx:481
 msgid "Notifications"
 msgstr ""
@@ -7747,8 +7751,8 @@ msgstr ""
 msgid "Primary language"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:117
-#: src/view/shell/desktop/RightNav.tsx:118
+#: src/view/shell/desktop/RightNav.tsx:187
+#: src/view/shell/desktop/RightNav.tsx:188
 msgid "Privacy"
 msgstr ""
 
@@ -9967,8 +9971,8 @@ msgstr ""
 msgid "Tell us a little more"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:124
-#: src/view/shell/desktop/RightNav.tsx:125
+#: src/view/shell/desktop/RightNav.tsx:194
+#: src/view/shell/desktop/RightNav.tsx:195
 msgid "Terms"
 msgstr ""
 
@@ -11483,7 +11487,7 @@ msgid "View your default post interaction settings"
 msgstr ""
 
 #: src/view/com/home/HomeHeaderLayout.web.tsx:57
-#: src/view/com/home/HomeHeaderLayoutMobile.tsx:82
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:128
 msgid "View your feeds and explore more"
 msgstr ""
 
