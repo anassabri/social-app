@@ -20,21 +20,21 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@atproto/api@^0.19.6":
-  version "0.19.6"
-  resolved "https://registry.yarnpkg.com/@atproto/api/-/api-0.19.6.tgz#c8fae3d792fe429c900ac0ba2609d60b9a89e28b"
-  integrity sha512-8L5dZvGaclB52b8msjtgDNx3uLWUY4PELA7KbFyAWBFVasCceE1txdrscCqDCLN+Fff9+Sm07OIjnjHYJXdETA==
+"@atproto/api@^0.19.13":
+  version "0.19.13"
+  resolved "https://registry.yarnpkg.com/@atproto/api/-/api-0.19.13.tgz#92c74dbc2fd84d79d62715e520da69f7c9012f66"
+  integrity sha512-1/LVbETVQTJFYv3Oa2Px1B/uFCRAwU0cRaoEDqdABgLHMKcWLlYJR1f9IyMdJ2JyLxcRviz6vViJI2BB8D0jcQ==
   dependencies:
-    "@atproto/common-web" "^0.4.19"
+    "@atproto/common-web" "^0.4.21"
     "@atproto/lexicon" "^0.6.2"
-    "@atproto/syntax" "^0.5.3"
+    "@atproto/syntax" "^0.5.4"
     "@atproto/xrpc" "^0.7.7"
     await-lock "^2.2.2"
     multiformats "^9.9.0"
     tlds "^1.234.0"
     zod "^3.23.8"
 
-"@atproto/common-web@^0.4.18", "@atproto/common-web@^0.4.19":
+"@atproto/common-web@^0.4.18":
   version "0.4.19"
   resolved "https://registry.yarnpkg.com/@atproto/common-web/-/common-web-0.4.19.tgz#bbd7f84f545ebe73ca3bc00314ccf4ee66e7069e"
   integrity sha512-3BTi58p5WpT+9/zb6UZrdsXcfPo5P45UJm0E4iwHLILr+jc37CuBj9JReDSZ4U0i9RTrI3ZkfySyZ9bd+LnMsw==
@@ -44,10 +44,30 @@
     "@atproto/syntax" "^0.5.1"
     zod "^3.23.8"
 
+"@atproto/common-web@^0.4.21":
+  version "0.4.21"
+  resolved "https://registry.yarnpkg.com/@atproto/common-web/-/common-web-0.4.21.tgz#2198583f842a000f495f1caec6f7e4eda207191b"
+  integrity sha512-Odq+wdk3YNasGCjjlpl3bCIPvqYHige5DLfMkIffNv/2PI/iIj5ZvAvMvJlJ59OhReKSxtpI0invx5UQPc3+fw==
+  dependencies:
+    "@atproto/lex-data" "^0.0.15"
+    "@atproto/lex-json" "^0.0.16"
+    "@atproto/syntax" "^0.5.4"
+    zod "^3.23.8"
+
 "@atproto/lex-data@^0.0.14":
   version "0.0.14"
   resolved "https://registry.yarnpkg.com/@atproto/lex-data/-/lex-data-0.0.14.tgz#2f2f3c64699925a0d4785e5afd0e7731ba1d46c0"
   integrity sha512-53DUa9664SS76nGAMYopWsO10OH0AAdf7P/HSKB6Wzx3iqe6lk/K61QZnKxOG1LreYl5CfvIJU6eNf4txI6GlQ==
+  dependencies:
+    multiformats "^9.9.0"
+    tslib "^2.8.1"
+    uint8arrays "3.0.0"
+    unicode-segmenter "^0.14.0"
+
+"@atproto/lex-data@^0.0.15":
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/@atproto/lex-data/-/lex-data-0.0.15.tgz#b9a644d71d4a99b32f452250994b5f12276335ef"
+  integrity sha512-ZsbGiaM5S3CnGrcTMbDGON3bLZzCi/Mx9UvcMREKSRujnF68eHgMiXxJqvykP7+QpOX6tYCK93axZkuJVhtSEw==
   dependencies:
     multiformats "^9.9.0"
     tslib "^2.8.1"
@@ -62,6 +82,14 @@
     "@atproto/lex-data" "^0.0.14"
     tslib "^2.8.1"
 
+"@atproto/lex-json@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@atproto/lex-json/-/lex-json-0.0.16.tgz#c99b5147560310f9f7f74405c57858a12c3e365a"
+  integrity sha512-IgLgQ0krshVlrIYZ+heTBDbCnM3LmAgWvsaYn5MxvKA3LcBot3PG3ptdO8VOweVZ+WgCLuo39cz9EbUmIbqdtg==
+  dependencies:
+    "@atproto/lex-data" "^0.0.15"
+    tslib "^2.8.1"
+
 "@atproto/lexicon@^0.6.0", "@atproto/lexicon@^0.6.2":
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/@atproto/lexicon/-/lexicon-0.6.2.tgz#f6152a2119df953236ca127c4b30e332265e81e7"
@@ -73,17 +101,17 @@
     multiformats "^9.9.0"
     zod "^3.23.8"
 
-"@atproto/syntax@^0.5.0", "@atproto/syntax@^0.5.1":
+"@atproto/syntax@0.5.2", "@atproto/syntax@^0.5.0", "@atproto/syntax@^0.5.1":
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/@atproto/syntax/-/syntax-0.5.2.tgz#d4b32c9feb421ceeb5ade1fa80bc42764d51e52e"
   integrity sha512-W41szOnkppoHr0iCUrzL8gy3OD6qmDyp1UvUgmTx2oFQfgbudpz51T/gznesiCcqiUT5obfHdx4PJ+WdlEOE7Q==
   dependencies:
     tslib "^2.8.1"
 
-"@atproto/syntax@^0.5.3":
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/@atproto/syntax/-/syntax-0.5.3.tgz#4331d01f63fe56c374dcf95d4432a22b62271a17"
-  integrity sha512-gzhlHOJHm5KXdCc17fXi1fXM81ccs5jJfNgCui84ay9JGvczxegpYHNqdMlv+iBuhtBzFIjgx6ChjRxN/kO8kQ==
+"@atproto/syntax@^0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@atproto/syntax/-/syntax-0.5.4.tgz#89842eb8b8ab181752b04ed840cc6b100e296b00"
+  integrity sha512-9XJOpMAgsGFxMEIp8nJ8AIWv+krrY1xQMj+wULbbXhQztQV+9aZ0TbG9Jtn3Op2or8Kr6OqyWR4ga9Z189kKDw==
   dependencies:
     tslib "^2.8.1"
 
@@ -2396,10 +2424,22 @@
   dependencies:
     react-responsive "^10.0.1"
 
+"@bsky.app/expo-guess-language@^0.2.8":
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/@bsky.app/expo-guess-language/-/expo-guess-language-0.2.8.tgz#e1c2d03b8852eb5fb7397316b0ec8cd7c4f98747"
+  integrity sha512-krcQfMSJn39kaFRpaOWxLUW9rT04reoBqjQviu2fTGQWXWEImG25SJondSObVNyGXlmRMrltt72Sc+aRPpQeog==
+  dependencies:
+    lande "^1.0.10"
+
 "@bsky.app/expo-image-crop-tool@^0.5.0":
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@bsky.app/expo-image-crop-tool/-/expo-image-crop-tool-0.5.0.tgz#4308fbde5c15e6be9122601797bc3d9549c95e31"
   integrity sha512-gmhQr2HWTRFyPO00fn5OmtiEVtikXusHMrN5Zoq26pu1VZX3zVE+aoc668etTqrvsQcm2Qu8fo96k5F3Wu+6wg==
+
+"@bsky.app/expo-scroll-edge-effect@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@bsky.app/expo-scroll-edge-effect/-/expo-scroll-edge-effect-0.1.4.tgz#8b785b606c3078b3f8d1ec200adaf13bc59c2fec"
+  integrity sha512-P94YcYBqZfuUy7ewTrWulPTxTbs6Yvjg2xS5WX4I/F3R3cSQU9fc8vEzb2Pnn4Ieg2wukJdAywqzt+AnyWgJbw==
 
 "@bsky.app/expo-translate-text@^0.2.9":
   version "0.2.9"
@@ -2411,15 +2451,20 @@
   resolved "https://registry.yarnpkg.com/@bsky.app/react-native-mmkv/-/react-native-mmkv-2.12.5.tgz#eb17d31a6158c74393f617a1763ac223ff3f83a6"
   integrity sha512-3vUz1nQY1DiKIPAWRkpp5ZGxH5f2G6Ui0UuQuEYjYv81xx1qFcSzS9KQ2sHcOKYdkOM9amWV2Q8TQCxt1lrAHg==
 
-"@bsky.app/sift@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@bsky.app/sift/-/sift-0.3.1.tgz#f529832001bcd64950c214e85aec055a1f2edcdb"
-  integrity sha512-jG9GDh0Yh4vBM98BP4HvBp8VBqnt+280tFx9Gh/bWYtZdiN1xfrTkqWqRkvxyujgpXlyoemREUn+7dGs8Bl60A==
+"@bsky.app/sift@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@bsky.app/sift/-/sift-0.3.4.tgz#b166d5332ea826b179d3034a8a7e3abc688472f2"
+  integrity sha512-lOMltRODQVgzF9ssRH3eMG9fylvIrHwr4UFkhJMSW1ANB//Yxb30xgvwuGFd+q8H6Qp8/NF0HKTF6r6kRk/OeQ==
 
-"@bsky.app/tapper@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@bsky.app/tapper/-/tapper-0.5.0.tgz#39f3814a063cc0e8ee58c05e09be3d5cb8638f22"
-  integrity sha512-Fb7L2CruOA/k/FgKDOGChr+JKXsf+geAOTZXDevs9oqbSYTrXuI8KrRgaDwPS+FVCp1vAYHC/3esuVv+lbUtnw==
+"@bsky.app/tapper@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@bsky.app/tapper/-/tapper-0.5.3.tgz#6bc6f2758aae82d61fc0be8841a4f94b2602b031"
+  integrity sha512-pf2GlTPlHYHcsA8E5BSxc9H7HWh/N2NIiV85ccN/gl1fZ02k0Nod44wVK5W9yVWkdunSn7mz0+9Y5of1TDaOaA==
+
+"@bsky.app/video@0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@bsky.app/video/-/video-0.3.4.tgz#68c626d025f0005313a8320120540f51bed58da7"
+  integrity sha512-BTHfdS5hWlpBvMSNhYhsAoBnWtu4BCXYyK/DZ1wA/akXquJP3SuzEGL6B2V0Xdtg2E0rhjJD2njlTj69E64reg==
 
 "@crowdin/cli@^4.14.1":
   version "4.14.1"
@@ -3338,11 +3383,6 @@
   integrity sha512-mUaMsgeUTpRIUOTn33EUXHRK6j7pxBjwqH4WpQyq+pukjd1AIzWlEa6w7i6bInJUcweGgP2beXZmaP6b6UPn7A==
   dependencies:
     dom-mutator "^0.6.0"
-
-"@haileyok/bluesky-video@0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@haileyok/bluesky-video/-/bluesky-video-0.3.2.tgz#44dc3974750a9619a4d72e97a0f1678f335028cd"
-  integrity sha512-CJIS/4HW+x6xqONDZaUljQgMqaaZQnlFjt0afdCSO6VtFk5Fd/ocW+Tc4UulQ6zcCNiL6Y8HJR8sl/EIWHgPDw==
 
 "@humanfs/core@^0.19.1":
   version "0.19.1"
@@ -5526,12 +5566,12 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.5.1.tgz#178d58ee7e4834152b0e8b4d30cbfab578b9bb30"
   integrity sha512-4tT2UrL5LBqDwoed9wZ6N3umC4Yhz3W3FloMmiiG4JwmUJWpie0c7lcnUNd4gtMKuDEO4wRVS8B6Xa0uMRsMKg==
 
-"@types/node@^20.14.3":
-  version "20.17.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.17.6.tgz#6e4073230c180d3579e8c60141f99efdf5df0081"
-  integrity sha512-VEI7OdvK2wP7XHnsuXbAJnEpEkF6NjSN45QJlL4VGqZSXsnicpesdTWsg9RISeSdYd3yeRj/y3k5KGjUXYnFwQ==
+"@types/node@^24.12.2":
+  version "24.12.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-24.12.2.tgz#353cb161dbf1785ea25e8829ba7ec574c5c629ac"
+  integrity sha512-A1sre26ke7HDIuY/M23nd9gfB+nrmhtYyMINbjI1zHJxYteKR6qSMX56FsmjMcDb3SMcjJg5BiRRgOCC/yBD0g==
   dependencies:
-    undici-types "~6.19.2"
+    undici-types "~7.16.0"
 
 "@types/psl@^1.1.1":
   version "1.1.1"
@@ -5725,6 +5765,54 @@
   dependencies:
     "@typescript-eslint/types" "8.58.0"
     eslint-visitor-keys "^5.0.0"
+
+"@typescript/native-preview-darwin-arm64@7.0.0-dev.20260428.1":
+  version "7.0.0-dev.20260428.1"
+  resolved "https://registry.yarnpkg.com/@typescript/native-preview-darwin-arm64/-/native-preview-darwin-arm64-7.0.0-dev.20260428.1.tgz#bbfbc74270ac3b55ee6503860e6857b843df9a6a"
+  integrity sha512-Lll6WmXfgTEj1G3QBIoHlabQwUtJiyhlRgSLksa06QFL5BoA7V+Lu1waa9PtPNZbGsXLDMHodtk/bRQABKuPiw==
+
+"@typescript/native-preview-darwin-x64@7.0.0-dev.20260428.1":
+  version "7.0.0-dev.20260428.1"
+  resolved "https://registry.yarnpkg.com/@typescript/native-preview-darwin-x64/-/native-preview-darwin-x64-7.0.0-dev.20260428.1.tgz#f0da11d99ec5723540d909f3c7bd575b7295d11a"
+  integrity sha512-WbsBNSHlo+4sGrTxDWdmI7r8x48tCtSCuKdmK62FvVOq58UWAs6sL13Z4Rev4ohLcGHdXC5E/8AIdpLPqDYQpw==
+
+"@typescript/native-preview-linux-arm64@7.0.0-dev.20260428.1":
+  version "7.0.0-dev.20260428.1"
+  resolved "https://registry.yarnpkg.com/@typescript/native-preview-linux-arm64/-/native-preview-linux-arm64-7.0.0-dev.20260428.1.tgz#9876c59ede693d371d454123270eca3229c245e6"
+  integrity sha512-cgcBX/ZBMdepkamLT8g8jQdHe7DZS/s6zTZRof6mvcrnJHlMeUnKoC9UO8/c22IrUMV3n0XPh7R8FYjUP0ll+Q==
+
+"@typescript/native-preview-linux-arm@7.0.0-dev.20260428.1":
+  version "7.0.0-dev.20260428.1"
+  resolved "https://registry.yarnpkg.com/@typescript/native-preview-linux-arm/-/native-preview-linux-arm-7.0.0-dev.20260428.1.tgz#c5b42a8791f04a4b198d36ffc87915ce90bf877c"
+  integrity sha512-/d/NnZFvEJU67L5mHh+cO3gsfwNCvJ9HGtxGq1KGz1VwTabOIcwLdpTpfsAR39WXzzfh9GJHL28n6GSGZInPow==
+
+"@typescript/native-preview-linux-x64@7.0.0-dev.20260428.1":
+  version "7.0.0-dev.20260428.1"
+  resolved "https://registry.yarnpkg.com/@typescript/native-preview-linux-x64/-/native-preview-linux-x64-7.0.0-dev.20260428.1.tgz#76e063dcc4594e44de64d350b24e103574796327"
+  integrity sha512-4gJCE7wzenx1BH2Vtx2uKWUo8rFxnhGkxNEH1zxbYy/6ASwo+PnOPYmKHAzNE1C3yB5lzw71/vR5p5zyO57Y4A==
+
+"@typescript/native-preview-win32-arm64@7.0.0-dev.20260428.1":
+  version "7.0.0-dev.20260428.1"
+  resolved "https://registry.yarnpkg.com/@typescript/native-preview-win32-arm64/-/native-preview-win32-arm64-7.0.0-dev.20260428.1.tgz#c30705a891580c6bec397253ebadb25370dc0e4b"
+  integrity sha512-yn6Rzbn62L4QTWrp0QgG8al6l/VG7PCPRdbE0vuGDSlKhInlC+Flo4QSc1qA8KHTbpHgl+nEsq9DymiitI4G4g==
+
+"@typescript/native-preview-win32-x64@7.0.0-dev.20260428.1":
+  version "7.0.0-dev.20260428.1"
+  resolved "https://registry.yarnpkg.com/@typescript/native-preview-win32-x64/-/native-preview-win32-x64-7.0.0-dev.20260428.1.tgz#2de6534a6a40d7a51cc6a74232f7bf2c30ed2d70"
+  integrity sha512-T9z13mcMowXmwGjprA2FIR2EEdYZxgqH8+qk7dFZVBlo5vfk41AN/qJfAdN7IsAhEb640MJ8cMN/aiczweZKmA==
+
+"@typescript/native-preview@^7.0.0-dev.20260428.1":
+  version "7.0.0-dev.20260428.1"
+  resolved "https://registry.yarnpkg.com/@typescript/native-preview/-/native-preview-7.0.0-dev.20260428.1.tgz#64fe1239f1e3bce3b51ff1307b10a005b76af5e4"
+  integrity sha512-JiM4PYWDGs57TT0mV2KArmaW7BnTkk3XRid79NdG17tfvDbRyg4hBCpKI7vARiQPtxjKrHlxyzxOGDpv5W5T7Q==
+  optionalDependencies:
+    "@typescript/native-preview-darwin-arm64" "7.0.0-dev.20260428.1"
+    "@typescript/native-preview-darwin-x64" "7.0.0-dev.20260428.1"
+    "@typescript/native-preview-linux-arm" "7.0.0-dev.20260428.1"
+    "@typescript/native-preview-linux-arm64" "7.0.0-dev.20260428.1"
+    "@typescript/native-preview-linux-x64" "7.0.0-dev.20260428.1"
+    "@typescript/native-preview-win32-arm64" "7.0.0-dev.20260428.1"
+    "@typescript/native-preview-win32-x64" "7.0.0-dev.20260428.1"
 
 "@ungap/structured-clone@^1.3.0":
   version "1.3.0"
@@ -8667,10 +8755,10 @@ eslint-plugin-react@^7.37.5:
     string.prototype.matchall "^4.0.12"
     string.prototype.repeat "^1.0.0"
 
-eslint-plugin-simple-import-sort@^12.1.1:
-  version "12.1.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-12.1.1.tgz#e64bfdaf91c5b98a298619aa634a9f7aa43b709e"
-  integrity sha512-6nuzu4xwQtE3332Uz0to+TxDQYRLTKRESSc2hefVT48Zc8JthmN23Gx9lnYhu0FtkRSL1oxny3kJ2aveVhmOVA==
+eslint-plugin-simple-import-sort@^13.0.0:
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-13.0.0.tgz#93936354367d8bb42c1b9b4c13c92eb29fffd2a5"
+  integrity sha512-McAc+/Nlvcg4byY/CABGH8kqnefWBj8s3JA2okEtz8ixbECQgU46p0HkTUKa4YS7wvgGceimlc34p1nXqbWqtA==
 
 eslint-scope@5.1.1:
   version "5.1.1"
@@ -8984,6 +9072,11 @@ expo-font@~14.0.11:
   integrity sha512-ga0q61ny4s/kr4k8JX9hVH69exVSIfcIc19+qZ7gt71Mqtm7xy2c6kwsPTCyhBW2Ro5yXTT8EaZOpuRi35rHbg==
   dependencies:
     fontfaceobserver "^2.1.0"
+
+expo-glass-effect@55.0.8:
+  version "55.0.8"
+  resolved "https://registry.yarnpkg.com/expo-glass-effect/-/expo-glass-effect-55.0.8.tgz#ace0e662d7c8fc2935c9d1260e8303eb2fde0bc3"
+  integrity sha512-IvUjHb/4t6r2H/LXDjcQ4uDoHrmO2cLOvEb9leLavQ4HX5+P4LRtQrMDMlkWAn5Wo5DkLcG8+1CrQU2nqgogTA==
 
 expo-haptics@~15.0.8:
   version "15.0.8"
@@ -13952,10 +14045,10 @@ react-native-is-edge-to-edge@^1.2.1:
   resolved "https://registry.yarnpkg.com/react-native-is-edge-to-edge/-/react-native-is-edge-to-edge-1.2.1.tgz#64e10851abd9d176cbf2b40562f751622bde3358"
   integrity sha512-FLbPWl/MyYQWz+KwqOZsSyj2JmLKglHatd3xLZWskXOpRaio4LfEDEz8E/A6uD8QoTHW6Aobw1jbEwK7KMgR7Q==
 
-react-native-keyboard-controller@^1.21.0:
-  version "1.21.0"
-  resolved "https://registry.yarnpkg.com/react-native-keyboard-controller/-/react-native-keyboard-controller-1.21.0.tgz#79ad48c67e6f5ec572b7dc896c7b05a98662a2a2"
-  integrity sha512-mLHJysehhSzYoM8BAD2DSjVZEcF69t16ZCJrCAos6sfVtbB3tL+kgGZFX+jNVz/f9BEhqnBFO0EA1tc/V6Hkgw==
+react-native-keyboard-controller@^1.21.5:
+  version "1.21.5"
+  resolved "https://registry.yarnpkg.com/react-native-keyboard-controller/-/react-native-keyboard-controller-1.21.5.tgz#563aabb7e9ce8dbe2a0dd5f949883ba81620b6c0"
+  integrity sha512-wxR+vpJ+2g6QMQCP1mRQKySDUietf5xLntZ76cUNHOGsjyqk6LtznXwHBG9YsR9E/b2IrHXISylwqPnIit6Y6A==
   dependencies:
     react-native-is-edge-to-edge "^1.2.1"
 
@@ -15961,10 +16054,10 @@ unbox-primitive@^1.1.0:
     has-symbols "^1.1.0"
     which-boxed-primitive "^1.1.1"
 
-undici-types@~6.19.2:
-  version "6.19.8"
-  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-6.19.8.tgz#35111c9d1437ab83a7cdc0abae2f26d88eda0a02"
-  integrity sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==
+undici-types@~7.16.0:
+  version "7.16.0"
+  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-7.16.0.tgz#ffccdff36aea4884cbfce9a750a0580224f58a46"
+  integrity sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==
 
 undici@^6.18.2:
   version "6.21.0"

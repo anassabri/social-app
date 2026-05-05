@@ -130,3 +130,6 @@ bskyweb/static/media/*.svg
 
 # Local Netlify folder
 .netlify
+
+# superpowers plugin plans/specs — local-only workspace
+docs/superpowers/

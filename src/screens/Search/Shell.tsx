@@ -27,7 +27,6 @@ import {
   useProfilesQuery,
 } from '#/state/queries/profile'
 import {useSession} from '#/state/session'
-import {useSetMinimalShellMode} from '#/state/shell'
 import {
   makeSearchQuery,
   type Params,
@@ -87,7 +86,6 @@ export function SearchScreenShell({
   const route = useRoute()
   const textInput = useRef<TextInput>(null)
   const {t: l} = useLingui()
-  const setMinimalShellMode = useSetMinimalShellMode()
   const {currentAccount} = useSession()
   const queryClient = useQueryClient()
 
@@ -96,7 +94,12 @@ export function SearchScreenShell({
   const [activeTab, setActiveTab] = useState(() => getTabIndex(tabParam))
 
   // Query terms
-  const [searchText, setSearchText] = useState<string>(queryParam)
+  const [searchText, _setSearchText] = useState<string>(queryParam)
+  const searchTextRef = useRef(searchText)
+  const setSearchText = (text: string) => {
+    searchTextRef.current = text
+    _setSearchText(text)
+  }
   const {data: autocompleteData, isFetching: isAutocompleteFetching} =
     useActorAutocompleteQuery(searchText, true)
 
@@ -227,15 +230,12 @@ export function SearchScreenShell({
     }
   }, [setShowAutocomplete, setSearchText, navigation, route.params, route.name])
 
-  const onSubmit = useCallback(
-    (source: 'typed' | 'autocomplete') => () => {
-      ax.metric('search:query', {
-        source,
-      })
-      navigateToItem(searchText)
-    },
-    [ax, navigateToItem, searchText],
-  )
+  const onSubmit = (source: 'typed' | 'autocomplete') => () => {
+    ax.metric('search:query', {
+      source,
+    })
+    navigateToItem(searchTextRef.current)
+  }
 
   const onAutocompleteResultPress = useCallback(() => {
     if (IS_WEB) {
@@ -286,9 +286,8 @@ export function SearchScreenShell({
 
   useFocusEffect(
     useCallback(() => {
-      setMinimalShellMode(false)
       return listenSoftReset(onSoftReset)
-    }, [onSoftReset, setMinimalShellMode]),
+    }, [onSoftReset]),
   )
 
   const onSearchInputFocus = useCallback(() => {
@@ -479,17 +478,12 @@ let SearchScreenInner = ({
   focusSearchInput: (tab?: TabParam) => void
 }): React.ReactNode => {
   const t = useTheme()
-  const setMinimalShellMode = useSetMinimalShellMode()
   const {hasSession} = useSession()
   const {gtTablet} = useBreakpoints()
 
-  const onPageSelected = useCallback(
-    (index: number) => {
-      setMinimalShellMode(false)
-      setActiveTab(index)
-    },
-    [setActiveTab, setMinimalShellMode],
-  )
+  const onPageSelected = (index: number) => {
+    setActiveTab(index)
+  }
 
   return queryWithParams ? (
     <SearchResults
