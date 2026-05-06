@@ -83,7 +83,7 @@ msgstr ""
 
 #. placeholder {0}: reactions.length
 #. placeholder {1}: groupedReactions.map(g => g.value).join(' ')
-#: src/components/dms/MessageItem.tsx:288
+#: src/components/dms/MessageItem.tsx:292
 msgid "{0, plural, one {# person} other {# people}} reacted – {1}"
 msgstr "{0, plural, one {# person} other {# people}} reacted – {1}"
 
@@ -223,7 +223,7 @@ msgstr ""
 
 #. placeholder {0}: createSanitizedDisplayName(memberSender)
 #. placeholder {1}: reaction.value
-#: src/components/dms/MessageItem.tsx:283
+#: src/components/dms/MessageItem.tsx:287
 msgid "{0} reacted {1}"
 msgstr ""
 
@@ -822,12 +822,12 @@ msgctxt "toast"
 msgid "Account muted"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:106
+#: src/components/moderation/ModerationDetailsDialog.tsx:107
 #: src/lib/moderation/useModerationCauseDescription.ts:99
 msgid "Account Muted"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:92
+#: src/components/moderation/ModerationDetailsDialog.tsx:93
 msgid "Account Muted by List"
 msgstr ""
 
@@ -1056,11 +1056,11 @@ msgid "Add your birthdate"
 msgstr ""
 
 #. placeholder {0}: createSanitizedDisplayName( profile.kind.addedBy, true, moderateProfile(profile.kind.addedBy, moderationOpts).ui('displayName'), )
-#: src/screens/Messages/ConversationSettings/Member.tsx:70
+#: src/screens/Messages/ConversationSettings/Member.tsx:98
 msgid "Added by {0}"
 msgstr "Added by {0}"
 
-#: src/screens/Messages/ConversationSettings/Member.tsx:75
+#: src/screens/Messages/ConversationSettings/Member.tsx:103
 msgid "Added by invite link"
 msgstr "Added by invite link"
 
@@ -1086,7 +1086,7 @@ msgstr ""
 msgid "Additional details (limit 300 characters)"
 msgstr ""
 
-#: src/screens/Messages/ConversationSettings/Member.tsx:55
+#: src/screens/Messages/ConversationSettings/Member.tsx:83
 #: src/screens/Messages/ConversationSettings/MemberMenu.tsx:151
 msgid "Admin"
 msgstr "Admin"
@@ -1283,8 +1283,9 @@ msgstr ""
 msgid "An email has been sent to {0}. It includes a confirmation code which you can enter below."
 msgstr ""
 
-#: src/components/dialogs/GifSelect.tsx:269
+#. Accessibility label for the dialog shown when the GIF picker hits an unexpected runtime error and falls back to its error boundary.
 #: src/components/dialogs/LanguageSelectDialog.tsx:344
+#: src/features/gifPicker/components/GifPickerErrorBoundary.tsx:15
 msgid "An error has occurred"
 msgstr ""
 
@@ -1403,7 +1404,7 @@ msgstr ""
 msgid "An unknown error occurred."
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:137
+#: src/components/moderation/ModerationDetailsDialog.tsx:138
 #: src/lib/moderation/useModerationCauseDescription.ts:145
 msgid "an unknown labeler"
 msgstr ""
@@ -2373,6 +2374,11 @@ msgstr ""
 msgid "Clear all storage data (restart after this)"
 msgstr ""
 
+#. Accessibility label for the X button inside the search input that clears the typed query and returns to the trending feed.
+#: src/features/gifPicker/components/GifPickerHeader.tsx:67
+msgid "Clear GIF search"
+msgstr "Clear GIF search"
+
 #: src/screens/Settings/AboutSettings.tsx:115
 #: src/screens/Settings/AboutSettings.tsx:119
 msgid "Clear image cache"
@@ -2437,7 +2443,7 @@ msgstr "Click here to view the invite link for this group chat"
 msgid "Click to open tag menu for {0}"
 msgstr ""
 
-#: src/components/dms/MessageItem.tsx:561
+#: src/components/dms/MessageItem.tsx:573
 msgid "Click to retry failed message"
 msgstr ""
 
@@ -2449,6 +2455,7 @@ msgstr "Click to view the date and time"
 msgid "Clip 🐴 clop 🐴"
 msgstr ""
 
+#. Visible label of the button that dismisses the GIF picker error dialog.
 #: src/ageAssurance/components/RedirectOverlay.tsx:265
 #: src/ageAssurance/components/RedirectOverlay.tsx:271
 #: src/ageAssurance/components/RedirectOverlay.tsx:321
@@ -2457,7 +2464,6 @@ msgstr ""
 #: src/components/ageAssurance/AgeAssuranceRedirectDialog.tsx:180
 #: src/components/ageAssurance/AgeAssuranceRedirectDialog.tsx:233
 #: src/components/ageAssurance/AgeAssuranceRedirectDialog.tsx:239
-#: src/components/dialogs/GifSelect.tsx:283
 #: src/components/dialogs/LanguageSelectDialog.tsx:359
 #: src/components/dialogs/nuxs/ActivitySubscriptions.tsx:159
 #: src/components/dialogs/nuxs/ActivitySubscriptions.tsx:168
@@ -2487,6 +2493,7 @@ msgstr ""
 #: src/components/verification/VerifierDialog.tsx:146
 #: src/components/WhoCanReply.tsx:236
 #: src/components/WhoCanReply.tsx:243
+#: src/features/gifPicker/components/GifPickerErrorBoundary.tsx:45
 #: src/features/liveNow/components/EditLiveDialog.tsx:217
 #: src/features/liveNow/components/EditLiveDialog.tsx:223
 #: src/screens/Messages/components/InviteLinkDialog.tsx:406
@@ -2511,14 +2518,15 @@ msgstr ""
 msgid "Close bottom drawer"
 msgstr ""
 
+#. Accessibility label for the button that dismisses the GIF picker error dialog.
 #: src/components/ageAssurance/AgeAssuranceInitDialog.tsx:223
 #: src/components/ageAssurance/AgeAssuranceInitDialog.tsx:229
-#: src/components/dialogs/GifSelect.tsx:277
 #: src/components/dialogs/LanguageSelectDialog.tsx:221
 #: src/components/dialogs/LanguageSelectDialog.tsx:322
 #: src/components/dialogs/LanguageSelectDialog.tsx:354
 #: src/components/verification/VerificationsDialog.tsx:138
 #: src/components/verification/VerifierDialog.tsx:139
+#: src/features/gifPicker/components/GifPickerErrorBoundary.tsx:36
 msgid "Close dialog"
 msgstr ""
 
@@ -2526,22 +2534,19 @@ msgstr ""
 msgid "Close drawer menu"
 msgstr ""
 
-#: src/components/dialogs/GifSelect.tsx:173
-msgid "Close GIF dialog"
-msgstr ""
-
-#: src/view/com/lightbox/ImageViewing/components/ImageDefaultHeader.tsx:31
+#: src/components/Lightbox/chrome/Header.tsx:45
 msgid "Close image"
 msgstr ""
 
-#: src/view/com/lightbox/Lightbox.web.tsx:72
-#: src/view/com/lightbox/Lightbox.web.tsx:308
+#: src/components/Lightbox/Lightbox.web.tsx:75
+#: src/components/Lightbox/Lightbox.web.tsx:331
 msgid "Close image viewer"
 msgstr ""
 
 #: src/components/ContextMenu/Backdrop.ios.tsx:53
 #: src/components/ContextMenu/Backdrop.ios.tsx:79
 #: src/components/ContextMenu/Backdrop.tsx:45
+#: src/components/Lightbox/chrome/ImageMenu.tsx:86
 msgid "Close menu"
 msgstr ""
 
@@ -2559,10 +2564,6 @@ msgstr ""
 
 #: src/view/com/composer/Composer.tsx:1618
 msgid "Closes post composer and discards post draft"
-msgstr ""
-
-#: src/view/com/lightbox/ImageViewing/components/ImageDefaultHeader.tsx:32
-msgid "Closes viewer for header image"
 msgstr ""
 
 #: src/view/com/notifications/NotificationFeedItem.tsx:592
@@ -2735,7 +2736,7 @@ msgstr ""
 msgid "Content languages"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:85
+#: src/components/moderation/ModerationDetailsDialog.tsx:86
 #: src/lib/moderation/useModerationCauseDescription.ts:83
 msgid "Content Not Available"
 msgstr ""
@@ -2744,7 +2745,7 @@ msgstr ""
 msgid "Content promoting or depicting self-harm"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:53
+#: src/components/moderation/ModerationDetailsDialog.tsx:54
 #: src/components/moderation/ScreenHider.tsx:100
 #: src/lib/moderation/useGlobalLabelStrings.ts:22
 #: src/lib/moderation/useModerationCauseDescription.ts:46
@@ -2987,6 +2988,11 @@ msgstr ""
 #: src/components/contacts/screens/GetContacts.tsx:165
 msgid "Could not upload contacts. You need to re-verify your phone number to proceed"
 msgstr ""
+
+#. Title of the error screen shown when the GIF provider request fails.
+#: src/features/gifPicker/components/GifPickerPlaceholder.tsx:51
+msgid "Couldn’t load GIFs"
+msgstr "Couldn’t load GIFs"
 
 #: src/components/InternationalPhoneCodeSelect.tsx:80
 msgid "Country code"
@@ -3301,7 +3307,7 @@ msgstr ""
 
 #: src/components/dms/MessagesListHeader.tsx:105
 #: src/screens/Messages/components/ChatListItem.tsx:118
-#: src/screens/Messages/ConversationSettings/Member.tsx:48
+#: src/screens/Messages/ConversationSettings/Member.tsx:76
 msgid "Deleted Account"
 msgstr ""
 
@@ -3571,7 +3577,7 @@ msgctxt "action"
 msgid "Done"
 msgstr ""
 
-#: src/components/dms/MessageItem.tsx:456
+#: src/components/dms/MessageItem.tsx:468
 msgid "Double tap or long press the message to add a reaction"
 msgstr ""
 
@@ -3597,8 +3603,8 @@ msgstr ""
 msgid "Download chat data"
 msgstr ""
 
-#: src/view/com/lightbox/Lightbox.web.tsx:278
-#: src/view/com/lightbox/Lightbox.web.tsx:290
+#: src/components/Lightbox/Lightbox.web.tsx:309
+#: src/components/Lightbox/Lightbox.web.tsx:321
 msgid "Download image"
 msgstr "Download image"
 
@@ -4049,7 +4055,8 @@ msgstr ""
 msgid "Exit fullscreen"
 msgstr ""
 
-#: src/view/com/lightbox/Lightbox.web.tsx:230
+#: src/components/Lightbox/chrome/Footer.tsx:45
+#: src/components/Lightbox/Lightbox.web.tsx:239
 msgid "Expand alt text"
 msgstr ""
 
@@ -4089,7 +4096,7 @@ msgstr ""
 #. placeholder {0}: timeDiff(Date.now(), label.exp)
 #. placeholder {0}: timeDiff(Date.now(), modcause.label.exp)
 #: src/components/moderation/LabelsOnMeDialog.tsx:204
-#: src/components/moderation/ModerationDetailsDialog.tsx:211
+#: src/components/moderation/ModerationDetailsDialog.tsx:224
 msgid "Expires in {0}"
 msgstr ""
 
@@ -4110,7 +4117,7 @@ msgstr ""
 
 #: src/Navigation.tsx:824
 #: src/screens/Search/Shell.tsx:353
-#: src/view/shell/desktop/LeftNav.tsx:691
+#: src/view/shell/desktop/LeftNav.tsx:687
 #: src/view/shell/Drawer.tsx:402
 msgid "Explore"
 msgstr ""
@@ -4175,6 +4182,10 @@ msgstr ""
 #: src/screens/Settings/components/ChangeHandleDialog.tsx:605
 msgid "Failed to change handle. Please try again."
 msgstr ""
+
+#: src/components/Lightbox/Lightbox.web.tsx:299
+msgid "Failed to copy link"
+msgstr "Failed to copy link"
 
 #: src/screens/Settings/components/AddAppPasswordDialog.tsx:173
 msgid "Failed to create app password. Please try again."
@@ -4272,10 +4283,6 @@ msgstr ""
 msgid "Failed to load feeds preferences"
 msgstr ""
 
-#: src/components/dialogs/GifSelect.tsx:227
-msgid "Failed to load GIFs"
-msgstr ""
-
 #: src/screens/Settings/NotificationSettings/ActivityNotificationSettings.tsx:117
 #: src/screens/Settings/NotificationSettings/index.tsx:116
 #: src/screens/Settings/NotificationSettings/LikeNotificationSettings.tsx:50
@@ -4370,7 +4377,7 @@ msgstr ""
 msgid "Failed to save draft"
 msgstr ""
 
-#: src/view/com/lightbox/Lightbox.web.tsx:285
+#: src/components/Lightbox/Lightbox.web.tsx:316
 msgid "Failed to save image"
 msgstr "Failed to save image"
 
@@ -4489,8 +4496,8 @@ msgstr ""
 msgid "Feed unavailable"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:108
-#: src/view/shell/desktop/RightNav.tsx:109
+#: src/view/shell/desktop/RightNav.tsx:178
+#: src/view/shell/desktop/RightNav.tsx:179
 #: src/view/shell/Drawer.tsx:356
 msgid "Feedback"
 msgstr ""
@@ -4508,7 +4515,7 @@ msgstr ""
 #: src/screens/StarterPack/StarterPackScreen.tsx:196
 #: src/view/screens/Feeds.tsx:503
 #: src/view/screens/Profile.tsx:238
-#: src/view/shell/desktop/LeftNav.tsx:729
+#: src/view/shell/desktop/LeftNav.tsx:705
 #: src/view/shell/Drawer.tsx:518
 msgid "Feeds"
 msgstr ""
@@ -4659,6 +4666,7 @@ msgstr "Focus the search field"
 #: src/components/ProfileCard.tsx:546
 #: src/components/ProfileHoverCard/index.web.tsx:495
 #: src/components/ProfileHoverCard/index.web.tsx:506
+#: src/screens/Messages/ConversationSettings/Member.tsx:146
 #: src/screens/PostThread/components/ThreadItemAnchorFollowButton.tsx:157
 #: src/screens/Profile/Header/ProfileHeaderStandard.tsx:402
 #: src/screens/VideoFeed/index.tsx:866
@@ -4672,6 +4680,10 @@ msgstr ""
 #: src/screens/Profile/Header/ProfileHeaderStandard.tsx:390
 msgid "Follow {0}"
 msgstr ""
+
+#: src/screens/Messages/ConversationSettings/Member.tsx:143
+msgid "Follow {displayName}"
+msgstr "Follow {displayName}"
 
 #: src/screens/VideoFeed/index.tsx:845
 msgid "Follow {handle}"
@@ -4788,6 +4800,10 @@ msgstr ""
 #: src/view/com/notifications/NotificationFeedItem.tsx:763
 msgid "Following {0}"
 msgstr ""
+
+#: src/screens/Messages/ConversationSettings/Member.tsx:53
+msgid "Following {displayName}"
+msgstr "Following {displayName}"
 
 #: src/screens/VideoFeed/index.tsx:844
 msgid "Following {handle}"
@@ -5096,6 +5112,10 @@ msgstr ""
 msgid "Go to feed"
 msgstr ""
 
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:52
+msgid "Go to main site"
+msgstr "Go to main site"
+
 #: src/screens/Login/ForgotPasswordForm.tsx:174
 msgid "Go to next"
 msgstr ""
@@ -5223,6 +5243,11 @@ msgstr ""
 msgid "Happening now"
 msgstr ""
 
+#. Accessibility label for the icon-only pill that filters the GIF picker to happy/joyful GIFs.
+#: src/features/gifPicker/components/GifCategoryPills.tsx:65
+msgid "Happy GIFs"
+msgstr "Happy GIFs"
+
 #: src/screens/Settings/AccessibilitySettings.tsx:86
 msgid "Haptics"
 msgstr ""
@@ -5270,8 +5295,8 @@ msgstr ""
 
 #: src/screens/Settings/Settings.tsx:247
 #: src/screens/Settings/Settings.tsx:251
-#: src/view/shell/desktop/RightNav.tsx:129
-#: src/view/shell/desktop/RightNav.tsx:132
+#: src/view/shell/desktop/RightNav.tsx:199
+#: src/view/shell/desktop/RightNav.tsx:202
 #: src/view/shell/Drawer.tsx:369
 msgid "Help"
 msgstr ""
@@ -5452,7 +5477,7 @@ msgstr "Hold your horses! This feature isn't available to you yet. Please check 
 #: src/Navigation.tsx:819
 #: src/Navigation.tsx:839
 #: src/view/shell/bottom-bar/BottomBar.tsx:179
-#: src/view/shell/desktop/LeftNav.tsx:673
+#: src/view/shell/desktop/LeftNav.tsx:669
 #: src/view/shell/Drawer.tsx:428
 msgid "Home"
 msgstr ""
@@ -5511,7 +5536,7 @@ msgstr ""
 msgid "I'm on Bluesky as {0} - come find me! https://bsky.app/download"
 msgstr ""
 
-#: src/view/com/lightbox/Lightbox.web.tsx:232
+#: src/components/Lightbox/Lightbox.web.tsx:241
 msgid "If alt text is long, toggles alt text expanded state"
 msgstr ""
 
@@ -5587,7 +5612,7 @@ msgstr "Image {0}"
 
 #. placeholder {0}: index + 1
 #. placeholder {1}: imgs.length
-#: src/view/com/lightbox/Lightbox.web.tsx:248
+#: src/components/Lightbox/Lightbox.web.tsx:257
 msgid "Image {0} of {1}"
 msgstr ""
 
@@ -5621,18 +5646,19 @@ msgstr "Image is hidden due to your moderation settings."
 msgid "Image is unavailable."
 msgstr "Image is unavailable."
 
-#: src/view/com/lightbox/Lightbox.web.tsx:252
-#: src/view/com/lightbox/Lightbox.web.tsx:265
+#: src/components/Lightbox/chrome/ImageMenu.tsx:74
+#: src/components/Lightbox/Lightbox.web.tsx:261
+#: src/components/Lightbox/Lightbox.web.tsx:270
 msgid "Image options"
 msgstr "Image options"
 
+#: src/components/Lightbox/Lightbox.web.tsx:313
 #: src/lib/media/save-image.ios.ts:25
 #: src/lib/media/save-image.ts:29
-#: src/view/com/lightbox/Lightbox.web.tsx:282
 msgid "Image saved"
 msgstr ""
 
-#: src/view/com/lightbox/Lightbox.web.tsx:81
+#: src/components/Lightbox/Lightbox.web.tsx:84
 msgid "Image viewer"
 msgstr ""
 
@@ -6179,6 +6205,10 @@ msgstr ""
 msgid "Linear"
 msgstr ""
 
+#: src/components/Lightbox/Lightbox.web.tsx:297
+msgid "Link copied to clipboard"
+msgstr "Link copied to clipboard"
+
 #: src/Navigation.tsx:256
 msgid "List"
 msgstr ""
@@ -6386,11 +6416,11 @@ msgstr ""
 msgid "Logged-out visibility"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:141
+#: src/view/shell/desktop/RightNav.tsx:211
 msgid "Logo by @sawaratsuki.bsky.social"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:138
+#: src/view/shell/desktop/RightNav.tsx:208
 #: src/view/shell/Drawer.tsx:697
 msgid "Logo by <0>@sawaratsuki.bsky.social</0>"
 msgstr ""
@@ -6415,6 +6445,11 @@ msgstr ""
 #: src/screens/Feeds/NoFollowingFeed.tsx:36
 msgid "Looks like you're missing a following feed. <0>Click here to add one.</0>"
 msgstr ""
+
+#. Accessibility label for the icon-only pill that filters the GIF picker to GIFs about love/affection.
+#: src/features/gifPicker/components/GifCategoryPills.tsx:55
+msgid "Love GIFs"
+msgstr "Love GIFs"
 
 #: src/components/dialogs/EmailDialog/index.tsx:41
 msgid "Make adjustments to email settings for your account"
@@ -6536,7 +6571,7 @@ msgctxt "toast"
 msgid "Message deleted"
 msgstr ""
 
-#: src/components/dms/MessageItem.tsx:555
+#: src/components/dms/MessageItem.tsx:567
 msgid "Message failed to send."
 msgstr "Message failed to send."
 
@@ -6604,7 +6639,7 @@ msgstr ""
 msgid "Moderation and content filters"
 msgstr "Moderation and content filters"
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:141
+#: src/components/moderation/ModerationDetailsDialog.tsx:142
 msgid "Moderation details"
 msgstr ""
 
@@ -6655,7 +6690,7 @@ msgstr ""
 msgid "Moderation tools"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:55
+#: src/components/moderation/ModerationDetailsDialog.tsx:56
 #: src/lib/moderation/useModerationCauseDescription.ts:48
 msgid "Moderator has chosen to set a general warning on the content."
 msgstr ""
@@ -7019,7 +7054,7 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: src/view/com/lightbox/Lightbox.web.tsx:217
+#: src/components/Lightbox/Lightbox.web.tsx:220
 msgid "Next image"
 msgstr ""
 
@@ -7056,14 +7091,6 @@ msgstr ""
 msgid "No expiry set"
 msgstr ""
 
-#: src/components/dialogs/GifSelect.tsx:237
-msgid "No featured GIFs found. There may be an issue with KLIPY."
-msgstr "No featured GIFs found. There may be an issue with KLIPY."
-
-#: src/components/dialogs/GifSelect.tsx:238
-msgid "No featured GIFs found. There may be an issue with Tenor."
-msgstr ""
-
 #: src/screens/StarterPack/Wizard/StepFeeds.tsx:122
 msgid "No feeds found. Try searching for something else."
 msgstr ""
@@ -7071,6 +7098,16 @@ msgstr ""
 #: src/view/com/profile/ProfileFollowers.tsx:169
 msgid "No followers yet"
 msgstr ""
+
+#. Empty-state message shown in the GIF picker when a search returns zero results. Placeholder is the user’s search query.
+#: src/features/gifPicker/components/GifPickerPlaceholder.tsx:25
+msgid "No GIFs found for \"{query}\"."
+msgstr "No GIFs found for \"{query}\"."
+
+#. Empty-state message shown when the trending/featured GIF feed returns no results (rare, usually a transient provider issue).
+#: src/features/gifPicker/components/GifPickerPlaceholder.tsx:36
+msgid "No GIFs to show right now. Try again in a moment."
+msgstr "No GIFs to show right now. Try again in a moment."
 
 #: src/features/liveNow/components/LinkPreview.tsx:63
 msgid "No image"
@@ -7145,6 +7182,11 @@ msgstr ""
 msgid "No quotes yet"
 msgstr ""
 
+#. Empty-state message shown in the GIF picker’s Recents tab before the user has selected any GIFs.
+#: src/features/gifPicker/components/GifPickerPlaceholder.tsx:31
+msgid "No recent GIFs yet. Pick one to see it here."
+msgstr "No recent GIFs yet. Pick one to see it here."
+
 #: src/view/screens/Profile.tsx:455
 msgid "No replies yet"
 msgstr ""
@@ -7185,10 +7227,6 @@ msgstr "No results found for “<0>{query}</0>”."
 
 #: src/screens/Search/Explore.tsx:832
 msgid "No results."
-msgstr ""
-
-#: src/components/dialogs/GifSelect.tsx:235
-msgid "No search results found for \"{search}\"."
 msgstr ""
 
 #: src/view/screens/Profile.tsx:556
@@ -7312,7 +7350,7 @@ msgstr ""
 #: src/screens/Settings/Settings.tsx:200
 #: src/view/screens/Notifications.tsx:129
 #: src/view/shell/bottom-bar/BottomBar.tsx:255
-#: src/view/shell/desktop/LeftNav.tsx:710
+#: src/view/shell/desktop/LeftNav.tsx:728
 #: src/view/shell/Drawer.tsx:481
 msgid "Notifications"
 msgstr ""
@@ -7340,8 +7378,9 @@ msgstr ""
 msgid "Off"
 msgstr ""
 
-#: src/components/dialogs/GifSelect.tsx:272
+#. Title of the error screen shown when the GIF picker crashes unexpectedly.
 #: src/components/dialogs/LanguageSelectDialog.tsx:347
+#: src/features/gifPicker/components/GifPickerErrorBoundary.tsx:22
 #: src/view/com/util/ErrorBoundary.tsx:57
 msgid "Oh no!"
 msgstr ""
@@ -7600,10 +7639,6 @@ msgstr ""
 msgid "Opens full image"
 msgstr "Opens full image"
 
-#: src/view/com/composer/photos/SelectGifBtn.tsx:37
-msgid "Opens GIF select dialog"
-msgstr ""
-
 #: src/screens/Settings/Settings.tsx:248
 msgid "Opens helpdesk in browser"
 msgstr ""
@@ -7628,6 +7663,11 @@ msgstr ""
 #: src/view/com/composer/select-language/PostLanguageSelect.tsx:200
 msgid "Opens post language settings"
 msgstr ""
+
+#. Accessibility hint announced after the GIF picker button label, describing what activating it will do.
+#: src/view/com/composer/photos/SelectGifBtn.tsx:45
+msgid "Opens the GIF picker dialog"
+msgstr "Opens the GIF picker dialog"
 
 #: src/view/com/feeds/ComposerPrompt.tsx:148
 msgid "Opens the post composer"
@@ -7735,6 +7775,11 @@ msgstr ""
 #: src/view/screens/NotFound.tsx:33
 msgid "Page Not Found"
 msgstr ""
+
+#. Accessibility label for the icon-only pill that filters the GIF picker to celebration/party GIFs.
+#: src/features/gifPicker/components/GifCategoryPills.tsx:85
+msgid "Party GIFs"
+msgstr "Party GIFs"
 
 #: src/screens/Login/LoginForm.tsx:228
 #: src/screens/Settings/AccountSettings.tsx:126
@@ -8151,12 +8196,12 @@ msgstr ""
 msgid "Post has been deleted"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:110
+#: src/components/moderation/ModerationDetailsDialog.tsx:111
 #: src/lib/moderation/useModerationCauseDescription.ts:107
 msgid "Post Hidden by Muted Word"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:113
+#: src/components/moderation/ModerationDetailsDialog.tsx:114
 #: src/lib/moderation/useModerationCauseDescription.ts:116
 msgid "Post Hidden by You"
 msgstr ""
@@ -8251,7 +8296,7 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: src/view/com/lightbox/Lightbox.web.tsx:196
+#: src/components/Lightbox/Lightbox.web.tsx:199
 msgid "Previous image"
 msgstr ""
 
@@ -8260,8 +8305,8 @@ msgstr ""
 msgid "Primary language"
 msgstr ""
 
-#: src/view/shell/desktop/RightNav.tsx:117
-#: src/view/shell/desktop/RightNav.tsx:118
+#: src/view/shell/desktop/RightNav.tsx:187
+#: src/view/shell/desktop/RightNav.tsx:188
 msgid "Privacy"
 msgstr ""
 
@@ -8310,7 +8355,6 @@ msgid "Processing..."
 msgstr ""
 
 #: src/view/screens/DebugMod.tsx:938
-#: src/view/screens/Profile.tsx:382
 msgid "profile"
 msgstr ""
 
@@ -8531,6 +8575,11 @@ msgstr ""
 #: src/screens/Settings/NotificationSettings/components/PreferenceControls.tsx:120
 msgid "Receive push notifications"
 msgstr ""
+
+#. Accessibility label for the icon-only pill that shows previously selected GIFs in the GIF picker.
+#: src/features/gifPicker/components/GifCategoryPills.tsx:35
+msgid "Recent GIFs"
+msgstr "Recent GIFs"
 
 #: src/screens/Search/components/SearchHistory.tsx:49
 msgid "Recent searches"
@@ -8821,12 +8870,12 @@ msgstr ""
 msgid "Reply ({0, plural, one {# reply} other {# replies}})"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:119
+#: src/components/moderation/ModerationDetailsDialog.tsx:120
 #: src/lib/moderation/useModerationCauseDescription.ts:126
 msgid "Reply Hidden by Thread Author"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:118
+#: src/components/moderation/ModerationDetailsDialog.tsx:119
 #: src/lib/moderation/useModerationCauseDescription.ts:125
 msgid "Reply Hidden by You"
 msgstr ""
@@ -9138,6 +9187,11 @@ msgstr ""
 msgid "Returns to the previous step"
 msgstr ""
 
+#. Accessibility label for the icon-only pill that filters the GIF picker to sad/crying GIFs.
+#: src/features/gifPicker/components/GifCategoryPills.tsx:75
+msgid "Sad GIFs"
+msgstr "Sad GIFs"
+
 #: src/components/dialogs/BirthDateSettings.tsx:196
 #: src/components/dialogs/lists/CreateOrEditListDialog.tsx:309
 #: src/components/dialogs/lists/CreateOrEditListDialog.tsx:324
@@ -9158,11 +9212,6 @@ msgstr ""
 #: src/view/com/composer/photos/EditImageDialog.web.tsx:76
 #: src/view/com/composer/photos/ImageAltTextDialog.tsx:163
 #: src/view/com/composer/photos/ImageAltTextDialog.tsx:173
-msgid "Save"
-msgstr ""
-
-#: src/view/com/lightbox/ImageViewing/index.tsx:671
-msgctxt "action"
 msgid "Save"
 msgstr ""
 
@@ -9196,6 +9245,7 @@ msgstr ""
 msgid "Save draft?"
 msgstr ""
 
+#: src/components/Lightbox/chrome/ImageMenu.tsx:100
 #: src/components/StarterPack/ShareDialog.tsx:144
 #: src/components/StarterPack/ShareDialog.tsx:150
 msgid "Save image"
@@ -9330,7 +9380,8 @@ msgstr "Search for people"
 msgid "Search for posts, users, or feeds"
 msgstr ""
 
-#: src/components/dialogs/GifSelect.tsx:181
+#. Accessibility label for the GIF search input inside the GIF picker dialog.
+#: src/features/gifPicker/components/GifPickerHeader.tsx:40
 msgid "Search GIFs"
 msgstr ""
 
@@ -9339,7 +9390,8 @@ msgstr ""
 msgid "Search is currently unavailable when logged out"
 msgstr ""
 
-#: src/components/dialogs/GifSelect.tsx:182
+#. Placeholder text inside the GIF search input. KLIPY is the third-party GIF provider; keep the brand name as-is.
+#: src/features/gifPicker/components/GifPickerHeader.tsx:45
 msgid "Search KLIPY"
 msgstr "Search KLIPY"
 
@@ -9361,10 +9413,6 @@ msgstr ""
 #: src/components/dms/components/UserSearchInput.tsx:63
 #: src/components/ProgressGuide/FollowDialog.tsx:727
 msgid "Search profiles"
-msgstr ""
-
-#: src/components/dialogs/GifSelect.tsx:182
-msgid "Search Tenor"
 msgstr ""
 
 #: src/screens/Profile/ProfileSearch.tsx:38
@@ -9511,12 +9559,14 @@ msgstr ""
 msgid "Select from your lists <0>{numberOfListsSelected, plural, other {(# selected)}}</0>"
 msgstr ""
 
-#: src/view/com/composer/photos/SelectGifBtn.tsx:36
+#. Accessibility label for the button in the post composer that opens the GIF picker dialog.
+#: src/view/com/composer/photos/SelectGifBtn.tsx:38
 msgid "Select GIF"
 msgstr ""
 
+#. Accessibility label for an individual GIF tile in the picker grid. The placeholder is the GIF’s title from the provider.
 #. placeholder {0}: gif.title
-#: src/components/dialogs/GifSelect.tsx:309
+#: src/features/gifPicker/components/GifPickerItem.tsx:31
 msgid "Select GIF \"{0}\""
 msgstr ""
 
@@ -9773,11 +9823,6 @@ msgstr ""
 msgid "Share"
 msgstr ""
 
-#: src/view/com/lightbox/ImageViewing/index.tsx:680
-msgctxt "action"
-msgid "Share"
-msgstr ""
-
 #: src/components/dms/ChatEmptyPill.tsx:37
 msgid "Share a cool story!"
 msgstr ""
@@ -9794,6 +9839,12 @@ msgstr ""
 #: src/components/PostControls/ShareMenu/ShareMenuItems.tsx:179
 msgid "Share author DID"
 msgstr ""
+
+#: src/components/Lightbox/chrome/ImageMenu.tsx:95
+#: src/components/Lightbox/Lightbox.web.tsx:278
+#: src/components/Lightbox/Lightbox.web.tsx:304
+msgid "Share image"
+msgstr "Share image"
 
 #: src/components/dialogs/LinkWarning.tsx:112
 #: src/components/dialogs/LinkWarning.tsx:120
@@ -10146,7 +10197,7 @@ msgid "Someone left the group"
 msgstr "Someone left the group"
 
 #. placeholder {0}: reaction.value
-#: src/components/dms/MessageItem.tsx:285
+#: src/components/dms/MessageItem.tsx:289
 msgid "Someone reacted {0}"
 msgstr ""
 
@@ -10223,7 +10274,7 @@ msgid "Sort replies to the same post by:"
 msgstr ""
 
 #: src/components/moderation/LabelsOnMeDialog.tsx:183
-#: src/components/moderation/ModerationDetailsDialog.tsx:189
+#: src/components/moderation/ModerationDetailsDialog.tsx:202
 msgid "Source: <0>{sourceName}</0>"
 msgstr ""
 
@@ -10518,7 +10569,7 @@ msgstr "Tap to remove"
 msgid "Tap to remove your {0} reaction"
 msgstr "Tap to remove your {0} reaction"
 
-#: src/components/dms/MessageItem.tsx:565
+#: src/components/dms/MessageItem.tsx:577
 msgid "Tap to retry"
 msgstr "Tap to retry"
 
@@ -10531,7 +10582,7 @@ msgstr "Tap to show {0} reactions"
 msgid "Tap to show all reactions"
 msgstr "Tap to show all reactions"
 
-#: src/components/dms/MessageItem.tsx:314
+#: src/components/dms/MessageItem.tsx:318
 msgid "Tap to view reactions"
 msgstr "Tap to view reactions"
 
@@ -10571,8 +10622,8 @@ msgstr ""
 msgid "Temporarily deactivate your account"
 msgstr "Temporarily deactivate your account"
 
-#: src/view/shell/desktop/RightNav.tsx:124
-#: src/view/shell/desktop/RightNav.tsx:125
+#: src/view/shell/desktop/RightNav.tsx:194
+#: src/view/shell/desktop/RightNav.tsx:195
 msgid "Terms"
 msgstr ""
 
@@ -10647,7 +10698,7 @@ msgstr ""
 msgid "The app will be restarted"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:122
+#: src/components/moderation/ModerationDetailsDialog.tsx:123
 #: src/lib/moderation/useModerationCauseDescription.ts:129
 msgid "The author of this thread has hidden this reply."
 msgstr ""
@@ -10764,16 +10815,13 @@ msgstr "There is no invite link for this group chat."
 msgid "There is no time limit for account deactivation, come back any time."
 msgstr ""
 
+#. Body message of the error screen shown when the GIF provider request fails. Encourages the user to retry.
+#: src/features/gifPicker/components/GifPickerPlaceholder.tsx:56
+msgid "There was a problem loading GIFs. Check your connection and try again."
+msgstr "There was a problem loading GIFs. Check your connection and try again."
+
 #: src/components/contacts/screens/GetContacts.tsx:147
 msgid "There was a problem with your internet connection, please try again"
-msgstr ""
-
-#: src/components/dialogs/GifSelect.tsx:230
-msgid "There was an issue connecting to KLIPY."
-msgstr "There was an issue connecting to KLIPY."
-
-#: src/components/dialogs/GifSelect.tsx:231
-msgid "There was an issue connecting to Tenor."
 msgstr ""
 
 #: src/screens/Profile/components/ProfileFeedHeader.tsx:182
@@ -10829,6 +10877,7 @@ msgstr ""
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:431
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:454
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:474
+#: src/screens/Messages/ConversationSettings/Member.tsx:60
 #: src/screens/Messages/ConversationSettings/MemberMenu.tsx:108
 #: src/screens/Messages/ConversationSettings/MemberMenu.tsx:121
 #: src/screens/PostThread/components/ThreadItemAnchorFollowButton.tsx:117
@@ -10859,8 +10908,9 @@ msgstr ""
 msgid "There was an issue. Please check your internet connection and try again."
 msgstr ""
 
-#: src/components/dialogs/GifSelect.tsx:273
+#. Body of the error screen shown when the GIF picker crashes unexpectedly. Encourages the user to report the issue.
 #: src/components/dialogs/LanguageSelectDialog.tsx:349
+#: src/features/gifPicker/components/GifPickerErrorBoundary.tsx:27
 #: src/view/com/util/ErrorBoundary.tsx:59
 msgid "There was an unexpected issue in the application. Please let us know if this happened to you!"
 msgstr ""
@@ -10948,7 +10998,7 @@ msgstr ""
 msgid "This content is hosted by {0}. Do you want to enable external media?"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:87
+#: src/components/moderation/ModerationDetailsDialog.tsx:88
 #: src/lib/moderation/useModerationCauseDescription.ts:85
 msgid "This content is not available because one of the users involved has blocked the other."
 msgstr ""
@@ -11028,7 +11078,7 @@ msgstr ""
 msgid "This label lets the world know that this account is automated. If turned on, this label appears next to the account's name on their profile and posts. It can be turned on or off at any time."
 msgstr "This label lets the world know that this account is automated. If turned on, this label appears next to the account's name on their profile and posts. It can be turned on or off at any time."
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:171
+#: src/components/moderation/ModerationDetailsDialog.tsx:184
 msgid "This label was applied by the author."
 msgstr ""
 
@@ -11060,6 +11110,10 @@ msgstr ""
 #: src/screens/Profile/ErrorState.tsx:41
 msgid "This moderation service is unavailable. See below for more details. If this issue persists, contact us."
 msgstr ""
+
+#: src/components/moderation/ModerationDetailsDialog.tsx:161
+msgid "This moderation was applied to the entire user account and will appear on all posts."
+msgstr "This moderation was applied to the entire user account and will appear on all posts."
 
 #. placeholder {0}: niceDate(i18n, createdAt)
 #. placeholder {1}: niceDate(i18n, indexedAt)
@@ -11127,7 +11181,7 @@ msgstr ""
 msgid "This user has blocked you"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:82
+#: src/components/moderation/ModerationDetailsDialog.tsx:83
 #: src/lib/moderation/useModerationCauseDescription.ts:76
 msgid "This user has blocked you. You cannot view their content."
 msgstr ""
@@ -11137,12 +11191,12 @@ msgid "This user has requested that their content only be shown to signed-in use
 msgstr ""
 
 #. placeholder {0}: list.name
-#: src/components/moderation/ModerationDetailsDialog.tsx:62
+#: src/components/moderation/ModerationDetailsDialog.tsx:63
 msgid "This user is included in the <0>{0}</0> list which you have blocked."
 msgstr ""
 
 #. placeholder {0}: list.name
-#: src/components/moderation/ModerationDetailsDialog.tsx:94
+#: src/components/moderation/ModerationDetailsDialog.tsx:95
 msgid "This user is included in the <0>{0}</0> list which you have muted."
 msgstr ""
 
@@ -11301,6 +11355,11 @@ msgstr ""
 #: src/view/shell/desktop/SidebarTrendingTopics.tsx:50
 msgid "Trending"
 msgstr ""
+
+#. Accessibility label for the icon-only pill that shows currently trending/featured GIFs in the GIF picker.
+#: src/features/gifPicker/components/GifCategoryPills.tsx:45
+msgid "Trending GIFs"
+msgstr "Trending GIFs"
 
 #: src/view/shell/desktop/SidebarTrendingTopics.tsx:57
 msgid "Trending options"
@@ -11760,12 +11819,16 @@ msgstr ""
 msgid "Use your account email address, or another real email address you control, in case KWS or Bluesky needs to contact you."
 msgstr ""
 
+#: src/view/screens/Profile.tsx:382
+msgid "user"
+msgstr "user"
+
 #: src/components/dms/AfterReportDialog.tsx:154
 msgctxt "toast"
 msgid "User blocked"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:74
+#: src/components/moderation/ModerationDetailsDialog.tsx:75
 #: src/lib/moderation/useModerationCauseDescription.ts:64
 msgid "User Blocked"
 msgstr ""
@@ -11779,7 +11842,7 @@ msgstr ""
 msgid "User blocked by list"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:60
+#: src/components/moderation/ModerationDetailsDialog.tsx:61
 msgid "User Blocked by List"
 msgstr ""
 
@@ -11787,7 +11850,7 @@ msgstr ""
 msgid "User Blocking You"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:80
+#: src/components/moderation/ModerationDetailsDialog.tsx:81
 msgid "User Blocks You"
 msgstr ""
 
@@ -12139,7 +12202,7 @@ msgid "View your default post interaction settings"
 msgstr ""
 
 #: src/view/com/home/HomeHeaderLayout.web.tsx:57
-#: src/view/com/home/HomeHeaderLayoutMobile.tsx:82
+#: src/view/com/home/HomeHeaderLayoutMobile.tsx:128
 msgid "View your feeds and explore more"
 msgstr ""
 
@@ -12541,6 +12604,11 @@ msgstr "Wrong kind of conversation"
 msgid "www.mylivestream.tv"
 msgstr ""
 
+#. Accessibility label for the icon-only pill that filters the GIF picker to affirmation/agreement GIFs.
+#: src/features/gifPicker/components/GifCategoryPills.tsx:95
+msgid "Yes GIFs"
+msgstr "Yes GIFs"
+
 #: src/screens/Settings/components/DeactivateAccountDialog.tsx:105
 #: src/screens/Settings/components/DeactivateAccountDialog.tsx:107
 msgid "Yes, deactivate"
@@ -12732,7 +12800,7 @@ msgstr ""
 msgid "You have blocked this user"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:76
+#: src/components/moderation/ModerationDetailsDialog.tsx:77
 #: src/lib/moderation/useModerationCauseDescription.ts:58
 #: src/lib/moderation/useModerationCauseDescription.ts:66
 msgid "You have blocked this user. You cannot view their content."
@@ -12756,7 +12824,7 @@ msgstr ""
 msgid "You have hidden this post"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:114
+#: src/components/moderation/ModerationDetailsDialog.tsx:115
 msgid "You have hidden this post."
 msgstr ""
 
@@ -12764,7 +12832,7 @@ msgstr ""
 msgid "You have marked this account as automated. You can remove it at any time from your account settings."
 msgstr "You have marked this account as automated. You can remove it at any time from your account settings."
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:107
+#: src/components/moderation/ModerationDetailsDialog.tsx:108
 #: src/lib/moderation/useModerationCauseDescription.ts:100
 msgid "You have muted this account."
 msgstr ""
@@ -12829,7 +12897,7 @@ msgstr ""
 msgid "You haven't muted any words or tags yet"
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:121
+#: src/components/moderation/ModerationDetailsDialog.tsx:122
 #: src/lib/moderation/useModerationCauseDescription.ts:128
 msgid "You hid this reply."
 msgstr ""
@@ -12893,7 +12961,7 @@ msgid "You probably want to restart the app now."
 msgstr ""
 
 #. placeholder {0}: reaction.value
-#: src/components/dms/MessageItem.tsx:278
+#: src/components/dms/MessageItem.tsx:282
 msgid "You reacted {0}"
 msgstr ""
 
@@ -12981,7 +13049,7 @@ msgstr ""
 msgid "You've already appealed this label and it's being reviewed by our moderation team."
 msgstr ""
 
-#: src/components/moderation/ModerationDetailsDialog.tsx:111
+#: src/components/moderation/ModerationDetailsDialog.tsx:112
 #: src/lib/moderation/useModerationCauseDescription.ts:109
 msgid "You've chosen to hide a word or tag within this post."
 msgstr ""
