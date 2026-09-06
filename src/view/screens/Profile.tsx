@@ -1,12 +1,9 @@
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {StyleSheet} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
-import {
-  type AppBskyActorDefs,
-  moderateProfile,
-  type ModerationOpts,
-  RichText as RichTextAPI,
-} from '@atproto/api'
+import {ScrollForwarderView} from 'react-native-scroll-forwarder'
+import {moderateProfile, type ModerationOpts} from '@bsky/sdk/moderation'
+import {RichText as RichTextAPI} from '@bsky/sdk/richtext'
 import {msg} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
 import {Trans} from '@lingui/react/macro'
@@ -16,7 +13,6 @@ import {useQueryClient} from '@tanstack/react-query'
 import {useOpenComposer} from '#/lib/hooks/useOpenComposer'
 import {useRequireEmailVerification} from '#/lib/hooks/useRequireEmailVerification'
 import {useSetTitle} from '#/lib/hooks/useSetTitle'
-import {ComposeIcon2} from '#/lib/icons'
 import {
   type CommonNavigatorParams,
   type NativeStackScreenProps,
@@ -25,7 +21,7 @@ import {
 import {combinedDisplayName} from '#/lib/strings/display-names'
 import {cleanError} from '#/lib/strings/errors'
 import {isInvalidHandle} from '#/lib/strings/handles'
-import {colors, s} from '#/lib/styles'
+import {colors} from '#/lib/styles'
 import {useProfileShadow} from '#/state/cache/profile-shadow'
 import {listenSoftReset} from '#/state/events'
 import {useModerationOpts} from '#/state/preferences/moderation-opts'
@@ -33,18 +29,20 @@ import {useLabelerInfoQuery} from '#/state/queries/labeler'
 import {resetProfilePostsQueries} from '#/state/queries/post-feed'
 import {useProfileQuery} from '#/state/queries/profile'
 import {useResolveDidQuery} from '#/state/queries/resolve-uri'
-import {useAgent, useSession} from '#/state/session'
+import {useAppviewClient, useSession} from '#/state/session'
 import {ProfileFeedgens} from '#/view/com/feeds/ProfileFeedgens'
 import {ProfileLists} from '#/view/com/lists/ProfileLists'
 import {PagerWithHeader} from '#/view/com/pager/PagerWithHeader'
+import {type PostFeedRef} from '#/view/com/posts/PostFeed'
 import {ErrorScreen} from '#/view/com/util/error/ErrorScreen'
 import {FAB} from '#/view/com/util/fab/FAB'
 import {type ListRef} from '#/view/com/util/List'
 import {ProfileHeader, ProfileHeaderLoading} from '#/screens/Profile/Header'
 import {ProfileFeedSection} from '#/screens/Profile/Sections/Feed'
 import {ProfileLabelsSection} from '#/screens/Profile/Sections/Labels'
-import {atoms as a} from '#/alf'
+import {atoms as a, useTheme} from '#/alf'
 import {Circle_And_Square_Stroke1_Corner0_Rounded_Filled as CircleAndSquareIcon} from '#/components/icons/CircleAndSquare'
+import {EditBig_Stroke2_Corner2_Rounded as EditBigIcon} from '#/components/icons/EditBig'
 import {Heart2_Stroke1_Corner0_Rounded as HeartIcon} from '#/components/icons/Heart2'
 import {Image_Stroke1_Corner0_Rounded as ImageIcon} from '#/components/icons/Image'
 import {Message_Stroke1_Corner0_Rounded_Filled as MessageIcon} from '#/components/icons/Message'
@@ -52,8 +50,8 @@ import {VideoClip_Stroke1_Corner0_Rounded as VideoIcon} from '#/components/icons
 import * as Layout from '#/components/Layout'
 import {ScreenHider} from '#/components/moderation/ScreenHider'
 import {ProfileStarterPacks} from '#/components/StarterPack/ProfileStarterPacks'
+import {type app} from '#/lexicons'
 import {navigate} from '#/Navigation'
-import {ExpoScrollForwarderView} from '../../../modules/expo-scroll-forwarder'
 
 interface SectionRef {
   scrollToTop: () => void
@@ -117,7 +115,9 @@ function ProfileScreenInner({route}: Props) {
   }, [queryClient, profile?.viewer?.blockedBy, resolvedDid])
 
   // Most pushes will happen here, since we will have only placeholder data
-  if (isDidPending || isProfilePending) {
+  // A disabled dependent query remains pending, so only consider the profile
+  // pending once handle resolution has produced a DID.
+  if (isDidPending || (!!resolvedDid && isProfilePending)) {
     return (
       <Layout.Content>
         <ProfileHeaderLoading />
@@ -167,11 +167,12 @@ function ProfileScreenLoaded({
   moderationOpts,
   hideBackButton,
 }: {
-  profile: AppBskyActorDefs.ProfileViewDetailed
+  profile: app.bsky.actor.defs.ProfileViewDetailed
   moderationOpts: ModerationOpts
   hideBackButton: boolean
   isPlaceholderProfile: boolean
 }) {
+  const t = useTheme()
   const profile = useProfileShadow(profileUnshadowed)
   const {hasSession, currentAccount} = useSession()
   const {openComposer} = useOpenComposer()
@@ -186,6 +187,7 @@ function ProfileScreenLoaded({
     enabled: !!profile.associated?.labeler,
   })
   const [currentPage, setCurrentPage] = useState(0)
+  const [isRefreshing, setIsRefreshing] = useState(false)
   const {_} = useLingui()
 
   const [scrollViewTag, setScrollViewTag] = useState<number | null>(null)
@@ -347,10 +349,18 @@ function ProfileScreenLoaded({
   const wrappedNavToWizard = requireEmailVerification(navToWizard, {
     instructions: [
       <Trans key="nav">
-        Before creating a starter pack, you must first verify your email.
+        Before creating a Starter Pack, you must first verify your email.
       </Trans>,
     ],
   })
+
+  const postFeedRef = useRef<PostFeedRef>(null)
+
+  const onRefresh = async () => {
+    setIsRefreshing(true)
+    await postFeedRef.current?.refreshFeed()
+    setIsRefreshing(false)
+  }
 
   // rendering
   // =
@@ -361,7 +371,10 @@ function ProfileScreenLoaded({
     setMinimumHeight: (height: number) => void
   }) => {
     return (
-      <ExpoScrollForwarderView scrollViewTag={scrollViewTag}>
+      <ScrollForwarderView
+        scrollViewTag={scrollViewTag}
+        refreshing={isRefreshing}
+        onRefresh={onRefresh}>
         <ProfileHeader
           profile={profile}
           labeler={labelerInfo}
@@ -371,7 +384,7 @@ function ProfileScreenLoaded({
           isPlaceholderProfile={showPlaceholder}
           setMinimumHeight={setMinimumHeight}
         />
-      </ExpoScrollForwarderView>
+      </ScrollForwarderView>
     )
   }
 
@@ -439,6 +452,7 @@ function ProfileScreenLoaded({
                       }
                     : undefined
                 }
+                postFeedRef={postFeedRef}
               />
             )
           : null}
@@ -587,7 +601,7 @@ function ProfileScreenLoaded({
         <FAB
           testID="composeFAB"
           onPress={onPressCompose}
-          icon={<ComposeIcon2 strokeWidth={1.5} size={29} style={s.white} />}
+          icon={<EditBigIcon size="lg" fill={t.palette.white} />}
           accessibilityRole="button"
           accessibilityLabel={_(msg`New post`)}
           accessibilityHint=""
@@ -598,7 +612,11 @@ function ProfileScreenLoaded({
 }
 
 function useRichText(text: string): [RichTextAPI, boolean] {
-  const agent = useAgent()
+  /*
+   * Facet/mention resolution is an appview job - it resolves handles through
+   * the appview, and the public fallback keeps it working when logged out.
+   */
+  const client = useAppviewClient()
   const [prevText, setPrevText] = useState(text)
   const [rawRT, setRawRT] = useState(() => new RichTextAPI({text}))
   const [resolvedRT, setResolvedRT] = useState<RichTextAPI | null>(null)
@@ -613,7 +631,7 @@ function useRichText(text: string): [RichTextAPI, boolean] {
     async function resolveRTFacets() {
       // new each time
       const resolvedRT = new RichTextAPI({text})
-      await resolvedRT.detectFacets(agent)
+      await resolvedRT.detectFacets(client)
       if (!ignore) {
         setResolvedRT(resolvedRT)
       }
@@ -622,7 +640,7 @@ function useRichText(text: string): [RichTextAPI, boolean] {
     return () => {
       ignore = true
     }
-  }, [text, agent])
+  }, [text, client])
   const isResolving = resolvedRT === null
   return [resolvedRT ?? rawRT, isResolving]
 }
@@ -631,7 +649,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     height: '100%',
-    // @ts-ignore Web-only.
+    // @ts-expect-error Web-only.
     overflowAnchor: 'none', // Fixes jumps when switching tabs while scrolled down.
   },
   loading: {

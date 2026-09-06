@@ -1,11 +1,10 @@
-import {useMemo, useRef} from 'react'
+import {useEffect, useMemo, useRef} from 'react'
 import {type DimensionValue, Pressable, View} from 'react-native'
 import Animated, {
   type AnimatedRef,
   useAnimatedRef,
 } from 'react-native-reanimated'
 import {Image} from 'expo-image'
-import {type AppBskyEmbedImages} from '@atproto/api'
 import {utils} from '@bsky.app/alf'
 import {msg} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
@@ -18,6 +17,7 @@ import {ArrowsDiagonalOut_Stroke2_Corner0_Rounded as Fullscreen} from '#/compone
 import {MediaInsetBorder} from '#/components/MediaInsetBorder'
 import {Text} from '#/components/Typography'
 import {IS_NATIVE} from '#/env'
+import {type app} from '#/lexicons'
 
 export function ConstrainedImage({
   aspectRatio,
@@ -65,26 +65,35 @@ export function ConstrainedImage({
 export function AutoSizedImage({
   image,
   crop = 'constrained',
-  hideBadge,
   onPress,
   onLongPress,
   onPressIn,
+  onContainerRef,
+  onDimsChange,
 }: {
-  image: AppBskyEmbedImages.ViewImage
+  image: app.bsky.embed.images.ViewImage
   crop?: 'none' | 'square' | 'constrained'
-  hideBadge?: boolean
   onPress?: (
     containerRef: AnimatedRef<any>,
     fetchedDims: Dimensions | null,
   ) => void
   onLongPress?: () => void
   onPressIn?: () => void
+  /** Fires once with the internal container ref so a parent can drive its
+   *  own lightbox-return animation without waiting for an `onPress`. */
+  onContainerRef?: (ref: AnimatedRef<any>) => void
+  /** Fires when the underlying image reports its natural dimensions. */
+  onDimsChange?: (dims: Dimensions) => void
 }) {
   const t = useTheme()
   const {_} = useLingui()
   const largeAlt = useLargeAltBadgeEnabled()
   const containerRef = useAnimatedRef()
   const fetchedDimsRef = useRef<{width: number; height: number} | null>(null)
+
+  useEffect(() => {
+    onContainerRef?.(containerRef)
+  }, [containerRef, onContainerRef])
 
   let aspectRatio: number | undefined
   const dims = image.aspectRatio
@@ -122,17 +131,20 @@ export function AutoSizedImage({
         accessibilityHint=""
         onLoad={e => {
           if (!isContain) {
-            fetchedDimsRef.current = {
+            const dims = {
               width: e.source.width,
               height: e.source.height,
             }
+            fetchedDimsRef.current = dims
+            onDimsChange?.(dims)
           }
         }}
         loading="lazy"
+        useAppleWebpCodec
       />
       <MediaInsetBorder />
 
-      {(hasAlt || isCropped) && !hideBadge ? (
+      {hasAlt || isCropped ? (
         <View
           accessible={false}
           style={[
@@ -151,8 +163,10 @@ export function AutoSizedImage({
           ]}>
           {isCropped && (
             <View
+              accessible={false}
               style={[
-                a.rounded_xs,
+                a.rounded_sm,
+                a.p_xs,
                 t.atoms.bg_contrast_25,
                 {
                   padding: 3,
@@ -172,17 +186,18 @@ export function AutoSizedImage({
           )}
           {hasAlt && (
             <View
+              accessible={false}
               style={[
                 a.justify_center,
-                a.rounded_xs,
+                a.rounded_sm,
+                a.p_xs,
                 t.atoms.bg_contrast_25,
                 {
-                  padding: 3,
                   opacity: 0.8,
                 },
                 largeAlt && [
                   {
-                    padding: 5,
+                    padding: 6,
                   },
                 ],
               ]}>

@@ -1,14 +1,16 @@
-import {useCallback, useMemo} from 'react'
+import {useMemo} from 'react'
 import {type StyleProp, View, type ViewStyle} from 'react-native'
 import {Image} from 'expo-image'
-import {type AppBskyEmbedExternal} from '@atproto/api'
 import {msg} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
 
 import {parseAltFromGIFDescription} from '#/lib/gif-alt-text'
 import {useHaptics} from '#/lib/haptics'
 import {shareUrl} from '#/lib/sharing'
-import {parseEmbedPlayerFromUrl} from '#/lib/strings/embed-player'
+import {
+  exemptExternalEmbedSources,
+  parseEmbedPlayerFromUrl,
+} from '#/lib/strings/embed-player'
 import {toNiceDomain} from '#/lib/strings/url-helpers'
 import {useExternalEmbedsPrefs} from '#/state/preferences'
 import {atoms as a, useTheme} from '#/alf'
@@ -17,6 +19,7 @@ import {Earth_Stroke2_Corner0_Rounded as Globe} from '#/components/icons/Globe'
 import {Link} from '#/components/Link'
 import {Text} from '#/components/Typography'
 import {IS_NATIVE} from '#/env'
+import {type app} from '#/lexicons'
 import {ExternalGif} from './ExternalGif'
 import {ExternalPlayer} from './ExternalPlayer'
 import {GifEmbed} from './Gif'
@@ -24,11 +27,13 @@ import {GifEmbed} from './Gif'
 export const ExternalEmbed = ({
   link,
   onOpen,
+  post,
   style,
   hideAlt,
 }: {
-  link: AppBskyEmbedExternal.ViewExternal
+  link: app.bsky.embed.external.ViewExternal
   onOpen?: () => void
+  post?: app.bsky.feed.defs.PostView
   style?: StyleProp<ViewStyle>
   hideAlt?: boolean
 }) => {
@@ -40,24 +45,27 @@ export const ExternalEmbed = ({
   const imageUri = link.thumb
   const embedPlayerParams = useMemo(() => {
     const params = parseEmbedPlayerFromUrl(link.uri)
-
-    if (params && externalEmbedPrefs?.[params.source] !== 'hide') {
+    if (!params) return
+    const canShow = externalEmbedPrefs?.[params.source] !== 'hide'
+    if (canShow || exemptExternalEmbedSources.has(params.source)) {
       return params
     }
   }, [link.uri, externalEmbedPrefs])
   const hasMedia = Boolean(imageUri || embedPlayerParams)
 
-  const onPress = useCallback(() => {
+  const onPress = () => {
     playHaptic('Light')
     onOpen?.()
-  }, [playHaptic, onOpen])
+  }
 
-  const onShareExternal = useCallback(() => {
-    if (link.uri && IS_NATIVE) {
-      playHaptic('Heavy')
-      shareUrl(link.uri)
-    }
-  }, [link.uri, playHaptic])
+  const onShareExternal = IS_NATIVE
+    ? () => {
+        if (link.uri) {
+          playHaptic('Heavy')
+          void shareUrl(link.uri)
+        }
+      }
+    : undefined
 
   if (
     embedPlayerParams?.source === 'tenor' ||
@@ -82,9 +90,11 @@ export const ExternalEmbed = ({
       label={link.title || _(msg`Open link to ${niceUrl}`)}
       to={link.uri}
       shouldProxy={true}
+      peek
+      style={[a.rounded_md]}
       onPress={onPress}
       onLongPress={onShareExternal}>
-      {({hovered}) => (
+      {({hovered, pressed}) => (
         <View
           style={[
             a.transition_color,
@@ -93,6 +103,7 @@ export const ExternalEmbed = ({
             a.overflow_hidden,
             a.w_full,
             a.border,
+            pressed && t.atoms.bg,
             style,
             hovered
               ? t.atoms.border_contrast_high
@@ -104,13 +115,18 @@ export const ExternalEmbed = ({
               source={{uri: imageUri}}
               accessibilityIgnoresInvertColors
               loading="lazy"
+              useAppleWebpCodec
             />
           ) : undefined}
 
           {embedPlayerParams?.isGif ? (
             <ExternalGif link={link} params={embedPlayerParams} />
           ) : embedPlayerParams ? (
-            <ExternalPlayer link={link} params={embedPlayerParams} />
+            <ExternalPlayer
+              link={link}
+              params={embedPlayerParams}
+              post={post}
+            />
           ) : undefined}
 
           <View

@@ -14,7 +14,6 @@ import Animated, {
   useAnimatedRef,
 } from 'react-native-reanimated'
 import {Image} from 'expo-image'
-import {type AppBskyEmbedImages} from '@atproto/api'
 import {utils} from '@bsky.app/alf'
 import {Trans, useLingui} from '@lingui/react/macro'
 import debounce from 'lodash.debounce'
@@ -24,7 +23,7 @@ import {mergeRefs} from '#/lib/merge-refs'
 import {useA11y} from '#/state/a11y'
 import {useLargeAltBadgeEnabled} from '#/state/preferences/large-alt-badge'
 import {BlockDrawerGesture} from '#/view/shell/BlockDrawerGesture'
-import {atoms as a, useBreakpoints, useTheme, web} from '#/alf'
+import {atoms as a, tokens, useBreakpoints, useTheme, web} from '#/alf'
 import {ArrowsDiagonalOut_Stroke2_Corner0_Rounded as Fullscreen} from '#/components/icons/ArrowsDiagonal'
 import {AutoSizedImage} from '#/components/images/AutoSizedImage'
 import {
@@ -36,16 +35,18 @@ import {useKeyboardHandlers} from '#/components/images/Gallery/useKeyboardHandle
 import {usePointerHandlers} from '#/components/images/Gallery/usePointerHandlers'
 import {getAspectRatio} from '#/components/images/Gallery/utils'
 import {MediaInsetBorder} from '#/components/MediaInsetBorder'
+import {ImageContextMenu} from '#/components/Post/Embed/ImageContextMenu'
 import {PostEmbedViewContext} from '#/components/Post/Embed/types'
 import {Text} from '#/components/Typography'
 import {useAnalytics} from '#/analytics'
-import {IS_WEB} from '#/env'
+import {IS_ANDROID, IS_WEB} from '#/env'
+import {type app} from '#/lexicons'
 
 export * from './const'
 export * from './maybeApplyGalleryOffsetStyles'
 
 interface GalleryProps {
-  images: AppBskyEmbedImages.ViewImage[]
+  images: app.bsky.embed.images.ViewImage[]
   onPress?: (
     index: number,
     containerRefs: AnimatedRef<any>[],
@@ -53,10 +54,18 @@ interface GalleryProps {
   ) => void
   onPressIn?: (index: number) => void
   viewContext?: PostEmbedViewContext
+  isWithinQuote?: boolean
+  // Post context for the in-feed carousel swipe metric. Omit for non-post
+  // contexts (no event will be emitted).
+  metricsPostContext?: {
+    postUri: string
+    postAuthorDid: string
+    feedDescriptor?: string
+  }
 }
 
 const Context = createContext<{
-  bleedRef: React.RefObject<View | null>
+  bleedRef: React.RefObject<React.ComponentRef<typeof View> | null>
   bleedWidth: number
 }>({
   bleedRef: {current: null},
@@ -64,7 +73,7 @@ const Context = createContext<{
 })
 
 export function GalleryBleed({children}: {children: React.ReactNode}) {
-  const ref = useRef<View>(null)
+  const ref = useRef<React.ComponentRef<typeof View>>(null)
   const [bleedWidth, setBleedWidth] = useState(0)
 
   if (!isValidElement(children)) {
@@ -96,6 +105,8 @@ export function Gallery({
   onPress,
   onPressIn,
   viewContext,
+  isWithinQuote,
+  metricsPostContext,
 }: GalleryProps) {
   const {t: l} = useLingui()
   const ax = useAnalytics()
@@ -103,13 +114,19 @@ export function Gallery({
   const largeAltBadge = useLargeAltBadgeEnabled()
   const bps = useBreakpoints()
   const window = useWindowDimensions()
-  const isWithinQuote =
-    viewContext === PostEmbedViewContext.FeedEmbedRecordWithMedia
   const isWithinChat = viewContext === PostEmbedViewContext.ChatMessage
-  const hideBadges = isWithinQuote
   const contentHeight = useMemo(() => {
     if (isWithinChat) {
       return 120
+    }
+    if (isWithinQuote) {
+      if (bps.gtMobile) {
+        return 220
+      } else if (bps.gtPhone) {
+        return 190
+      } else {
+        return 150
+      }
     }
     if (bps.gtMobile) {
       return 300
@@ -118,7 +135,7 @@ export function Gallery({
     } else {
       return 200
     }
-  }, [bps, isWithinChat])
+  }, [bps, isWithinChat, isWithinQuote])
 
   /*
    * Container overflow styles
@@ -128,7 +145,7 @@ export function Gallery({
    * scroll position, so it works correctly for off-screen FlatList items.
    */
   const {bleedRef, bleedWidth} = useGalleryBleed()
-  const contentRef = useRef<View>(null)
+  const contentRef = useRef<React.ComponentRef<typeof View>>(null)
   const [contentDims, setContentDims] = useState<{x: number; width: number}>()
   const measure = () => {
     if (contentRef.current && bleedRef.current) {
@@ -151,7 +168,9 @@ export function Gallery({
 
   const flatListRef = useRef<FlatList>(null)
   const itemWidthsRef = useRef<Map<number, number>>(new Map())
-  const itemRefsRef = useRef<Map<number, View>>(new Map())
+  const itemRefsRef = useRef<Map<number, React.ComponentRef<typeof View>>>(
+    new Map(),
+  )
   const containerRefsRef = useRef<Map<number, AnimatedRef<any>>>(new Map())
   const thumbDimsRef = useRef<Map<number, Dimensions>>(new Map())
   const currentIndexRef = useRef(0)
@@ -159,13 +178,17 @@ export function Gallery({
   const emitSwipeMetric = useMemo(
     () =>
       debounce((fromIndex: number, toIndex: number) => {
-        ax.metric('post:gallery:swipe', {
+        if (!metricsPostContext) return
+        ax.metric('post:photoEmbed:carouselSwipe', {
           fromImage: fromIndex + 1, // convert to 1-based index for easier analysis
           toImage: toIndex + 1, // convert to 1-based index for easier analysis
           totalImages: images.length,
+          postUri: metricsPostContext.postUri,
+          postAuthorDid: metricsPostContext.postAuthorDid,
+          feedDescriptor: metricsPostContext.feedDescriptor,
         })
       }, 200),
-    [ax, images.length],
+    [ax, images.length, metricsPostContext],
   )
 
   const setCurrentIndex = (index: number) => {
@@ -219,7 +242,7 @@ export function Gallery({
             crop={
               viewContext === PostEmbedViewContext.ThreadHighlighted
                 ? 'none'
-                : viewContext === PostEmbedViewContext.FeedEmbedRecordWithMedia
+                : isWithinQuote
                   ? 'square'
                   : 'constrained'
             }
@@ -228,9 +251,6 @@ export function Gallery({
               onPress?.(index, [containerRef], [dims])
             }
             onPressIn={() => onPressIn?.(index)}
-            hideBadge={
-              viewContext === PostEmbedViewContext.FeedEmbedRecordWithMedia
-            }
           />
         ))}
       </View>
@@ -256,6 +276,12 @@ export function Gallery({
           aria-label={l`Image gallery, ${images.length} images`}
           horizontal
           pagingEnabled={false}
+          // We use snapToOffsets on Android to ensure that if the stretch overscroll
+          // leaves the carousel slightly off the left edge, it snaps back to 0.
+          // This fixes the offset bug without disabling the native stretch behavior.
+          overScrollMode="auto"
+          snapToOffsets={IS_ANDROID ? [0] : undefined}
+          snapToEnd={false}
           showsHorizontalScrollIndicator={false}
           directionalLockEnabled
           nestedScrollEnabled
@@ -264,9 +290,19 @@ export function Gallery({
           data={images}
           keyExtractor={(item, index) => item.thumb + index}
           renderItem={({item, index}) => {
+            const openLightboxAtIndex = onPress
+              ? () => {
+                  const refs: AnimatedRef<any>[] = []
+                  const dims: (Dimensions | null)[] = []
+                  for (let i = 0; i < images.length; i++) {
+                    refs.push(containerRefsRef.current.get(i)!)
+                    dims.push(thumbDimsRef.current.get(i) ?? null)
+                  }
+                  onPress(index, refs, dims)
+                }
+              : undefined
             return (
               <GalleryImage
-                hideBadges={hideBadges}
                 largeAltBadge={largeAltBadge}
                 image={item}
                 contentHeight={contentHeight}
@@ -288,24 +324,9 @@ export function Gallery({
                 onThumbDims={(i, dims) => {
                   thumbDimsRef.current.set(i, dims)
                 }}
-                onPress={
-                  onPress
-                    ? () => {
-                        ax.metric('post:gallery:openLightbox', {
-                          fromImage: index + 1, // convert to 1-based index for easier analysis
-                          totalImages: images.length,
-                        })
-                        const refs: AnimatedRef<any>[] = []
-                        const dims: (Dimensions | null)[] = []
-                        for (let i = 0; i < images.length; i++) {
-                          refs.push(containerRefsRef.current.get(i)!)
-                          dims.push(thumbDimsRef.current.get(i) ?? null)
-                        }
-                        onPress(index, refs, dims)
-                      }
-                    : undefined
-                }
+                onPress={openLightboxAtIndex}
                 onPressIn={onPressIn ? () => onPressIn(index) : undefined}
+                onPreviewPress={openLightboxAtIndex}
               />
             )
           }}
@@ -332,6 +353,11 @@ export function Gallery({
               marginLeft: -insetLeft,
               width,
             },
+            // Prevent horizontal trackpad/wheel swipes from triggering the
+            // browser's back/forward overscroll-navigation gesture. Handles
+            // Chrome and Firefox; Safari is handled via the wheel listener in
+            // usePointerHandlers.web.ts since it ignores overscroll-behavior.
+            web({overscrollBehaviorX: 'contain'}),
           ]}
           contentContainerStyle={{
             gap: ITEM_GAP,
@@ -372,25 +398,25 @@ function GalleryImage({
   imageCount,
   onWidthChange,
   itemRef,
-  hideBadges,
   largeAltBadge,
   onContainerRef,
   onThumbDims,
   onPress,
   onPressIn,
+  onPreviewPress,
 }: {
   contentHeight: number
-  image: AppBskyEmbedImages.ViewImage
+  image: app.bsky.embed.images.ViewImage
   index: number
   imageCount: number
   onWidthChange: (index: number, width: number) => void
-  itemRef: (node: View | null) => void
-  hideBadges?: boolean
+  itemRef: (node: React.ComponentRef<typeof View> | null) => void
   largeAltBadge?: boolean
   onContainerRef: (index: number, ref: AnimatedRef<any>) => void
   onThumbDims: (index: number, dims: Dimensions) => void
   onPress?: () => void
   onPressIn?: () => void
+  onPreviewPress?: () => void
 }) {
   const t = useTheme()
   const {t: l} = useLingui()
@@ -416,124 +442,175 @@ function GalleryImage({
       collapsable={false}
       aria-roledescription={l`slide`}
       aria-label={image.alt || l`Image ${index + 1} of ${imageCount}`}>
-      <Pressable
-        ref={itemRef}
-        tabIndex={index === 0 ? 0 : -1}
-        onPress={onPress}
-        onPressIn={onPressIn}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-        accessibilityRole="button"
-        accessibilityLabel={image.alt || l`Image ${index + 1}`}
-        accessibilityHint={l`Opens full image`}
-        android_ripple={{
-          color: utils.alpha(t.atoms.bg.backgroundColor, 0.2),
-          foreground: true,
-        }}
-        style={({pressed}) => [
-          a.rounded_md,
-          a.overflow_hidden,
-          t.atoms.bg_contrast_25,
-          web([
-            {
-              cursor: 'inherit',
-              outline: 0,
-              border: 0,
-            },
-            a.transition_transform,
-            {transitionDuration: '200ms'},
-            pressed && {transform: [{scale: 0.99}]},
-          ]),
-        ]}>
-        <Image
-          source={{uri: image.thumb}}
-          contentFit="cover"
-          accessible={true}
-          accessibilityLabel={image.alt}
-          accessibilityHint=""
-          accessibilityIgnoresInvertColors
-          loading={index === 0 ? 'eager' : 'lazy'}
-          style={[dims]}
-          onLoad={e => {
-            const ar = getAspectRatio(e.source)
-            if (ar && ar !== aspectRatio) {
-              setAspectRatio(ar)
-            }
-            onThumbDims(index, {
-              width: e.source.width,
-              height: e.source.height,
-            })
+      <ImageContextMenu
+        fullsizeUri={image.fullsize}
+        thumbUri={image.thumb}
+        aspectRatio={aspectRatio}
+        borderRadius={tokens.borderRadius.md}
+        onPreviewPress={onPreviewPress}>
+        <Pressable
+          ref={itemRef}
+          tabIndex={index === 0 ? 0 : -1}
+          onPress={onPress}
+          onPressIn={onPressIn}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          accessibilityRole="button"
+          accessibilityLabel={image.alt || l`Image ${index + 1}`}
+          accessibilityHint={l`Opens full image`}
+          android_ripple={{
+            color: utils.alpha(t.atoms.bg.backgroundColor, 0.2),
+            foreground: true,
           }}
-        />
-
-        {(hasAlt || isCropped) && !hideBadges ? (
-          <View
-            accessible={false}
-            style={[
-              a.absolute,
-              a.flex_row,
+          style={({pressed}) => [
+            a.rounded_md,
+            a.overflow_hidden,
+            t.atoms.bg_contrast_25,
+            web([
               {
-                bottom: a.p_xs.padding,
-                right: a.p_xs.padding,
-                gap: 3,
+                cursor: 'inherit',
+                outline: 0,
+                border: 0,
               },
-              largeAltBadge && {
-                gap: 4,
-              },
-            ]}>
-            {isCropped && (
-              <View
-                style={[
-                  a.rounded_sm,
-                  a.p_xs,
-                  t.atoms.bg_contrast_25,
-                  {
-                    opacity: 0.8,
-                  },
-                  largeAltBadge && {
-                    padding: 6,
-                  },
-                ]}>
-                <Fullscreen
-                  fill={t.atoms.text_contrast_high.color}
-                  width={largeAltBadge ? 18 : 12}
-                />
-              </View>
-            )}
-            {hasAlt && (
-              <View
-                style={[
-                  a.justify_center,
-                  a.rounded_sm,
-                  a.p_xs,
-                  t.atoms.bg_contrast_25,
-                  {
-                    opacity: 0.8,
-                  },
-                  largeAltBadge && {
-                    padding: 6,
-                  },
-                ]}>
-                <Text
-                  style={[
-                    a.font_bold,
-                    largeAltBadge ? a.text_xs : {fontSize: 8},
-                  ]}>
-                  <Trans>ALT</Trans>
-                </Text>
-              </View>
-            )}
-          </View>
-        ) : null}
+              a.transition_transform,
+              {transitionDuration: '200ms'},
+              pressed && {transform: [{scale: 0.99}]},
+            ]),
+          ]}>
+          <Image
+            source={{uri: image.thumb}}
+            contentFit="cover"
+            accessible={true}
+            accessibilityLabel={image.alt}
+            accessibilityHint=""
+            accessibilityIgnoresInvertColors
+            loading={index === 0 ? 'eager' : 'lazy'}
+            style={[dims]}
+            onLoad={e => {
+              /*
+               * Only sync from the loaded thumb if we don't already have a
+               * ratio from the record. The CDN scales thumbs to integer pixel
+               * dims, so its reported ratio drifts a fraction from the
+               * record's - re-syncing would jiggle the FlatList item widths.
+               */
+              if (aspectRatio === undefined) {
+                const ar = getAspectRatio(e.source)
+                if (ar !== undefined) {
+                  setAspectRatio(ar)
+                }
+              }
+              onThumbDims(index, {
+                width: e.source.width,
+                height: e.source.height,
+              })
+            }}
+            useAppleWebpCodec
+          />
 
-        <MediaInsetBorder
-          style={
-            focused && {
-              borderWidth: 2,
+          {imageCount > 1 ? (
+            <View
+              accessible={false}
+              pointerEvents="none"
+              style={[
+                a.absolute,
+                a.justify_center,
+                a.rounded_sm,
+                a.p_xs,
+                t.atoms.bg_contrast_25,
+                {
+                  top: a.p_xs.padding,
+                  right: a.p_xs.padding,
+                  opacity: 0.8,
+                },
+                largeAltBadge && {
+                  padding: 6,
+                },
+              ]}>
+              <Text
+                style={[
+                  a.font_bold,
+                  largeAltBadge ? a.text_xs : {fontSize: 8},
+                ]}>
+                <Trans
+                  context="gallery-badge-image-position-numbers"
+                  comment="Badge showing the current image position out of the total number of images in a gallery.">
+                  {index + 1}/{imageCount}
+                </Trans>
+              </Text>
+            </View>
+          ) : null}
+
+          {hasAlt || isCropped ? (
+            <View
+              accessible={false}
+              style={[
+                a.absolute,
+                a.flex_row,
+                {
+                  bottom: a.p_xs.padding,
+                  right: a.p_xs.padding,
+                  gap: 3,
+                },
+                largeAltBadge && {
+                  gap: 4,
+                },
+              ]}>
+              {isCropped && (
+                <View
+                  accessible={false}
+                  style={[
+                    a.rounded_sm,
+                    a.p_xs,
+                    t.atoms.bg_contrast_25,
+                    {
+                      opacity: 0.8,
+                    },
+                    largeAltBadge && {
+                      padding: 6,
+                    },
+                  ]}>
+                  <Fullscreen
+                    fill={t.atoms.text_contrast_high.color}
+                    width={largeAltBadge ? 18 : 12}
+                  />
+                </View>
+              )}
+              {hasAlt && (
+                <View
+                  accessible={false}
+                  style={[
+                    a.justify_center,
+                    a.rounded_sm,
+                    a.p_xs,
+                    t.atoms.bg_contrast_25,
+                    {
+                      opacity: 0.8,
+                    },
+                    largeAltBadge && {
+                      padding: 6,
+                    },
+                  ]}>
+                  <Text
+                    style={[
+                      a.font_bold,
+                      largeAltBadge ? a.text_xs : {fontSize: 8},
+                    ]}>
+                    <Trans>ALT</Trans>
+                  </Text>
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          <MediaInsetBorder
+            style={
+              focused && {
+                borderWidth: 2,
+              }
             }
-          }
-        />
-      </Pressable>
+          />
+        </Pressable>
+      </ImageContextMenu>
     </Animated.View>
   )
 }

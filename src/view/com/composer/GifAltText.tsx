@@ -10,6 +10,7 @@ import {
   type EmbedPlayerParams,
   parseEmbedPlayerFromUrl,
 } from '#/lib/strings/embed-player'
+import {enforceLen} from '#/lib/strings/helpers'
 import {useResolveGifQuery} from '#/state/queries/resolve-link'
 import {AltTextCounterWrapper} from '#/view/com/composer/AltTextCounterWrapper'
 import {atoms as a, useTheme} from '#/alf'
@@ -111,7 +112,7 @@ export function GifAltTextDialogLoaded({
       <Dialog.Outer
         control={control}
         onClose={() => {
-          onSubmit(altTextDraft)
+          onSubmit(enforceLen(altTextDraft, MAX_ALT_TEXT, true))
         }}
         nativeOptions={{fullHeight: true}}>
         <Dialog.Handle />
@@ -162,7 +163,6 @@ function AltTextInner({
                   onChangeText={onChange}
                   defaultValue={altText}
                   multiline
-                  numberOfLines={3}
                   autoFocus
                   onKeyPress={({nativeEvent}) => {
                     if (nativeEvent.key === 'Escape') {
@@ -216,16 +216,13 @@ function AltTextInner({
             style={[a.text_2xl, a.font_semi_bold, a.leading_tight, a.pb_sm]}>
             <Trans>Add alt text</Trans>
           </Text>
-          <View style={[a.align_center]}>
-            <GifEmbed
-              thumb={thumb}
-              altText={altText}
-              isPreferredAltText={true}
-              params={params}
-              hideAlt
-              style={[{height: 225}]}
-            />
-          </View>
+          <GifEmbed
+            thumb={thumb}
+            altText={altText}
+            isPreferredAltText={true}
+            params={params}
+            hideAlt
+          />
         </View>
       </View>
       <Dialog.Close />

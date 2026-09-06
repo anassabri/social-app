@@ -6,11 +6,8 @@ import {
   View,
   type ViewStyle,
 } from 'react-native'
-import {
-  moderateProfile,
-  type ModerationOpts,
-  RichText as RichTextApi,
-} from '@atproto/api'
+import {moderateProfile, type ModerationOpts} from '@bsky/sdk/moderation'
+import {RichText as RichTextApi} from '@bsky/sdk/richtext'
 import {useLingui} from '@lingui/react/macro'
 
 import {getModerationCauseKey} from '#/lib/moderation'
@@ -29,6 +26,7 @@ import {
   type TextStyleProp,
   useTheme,
   type ViewStyleProp,
+  web,
 } from '#/alf'
 import {
   Button,
@@ -257,6 +255,7 @@ function InlineNameAndHandle({
           a.leading_tight,
           a.flex_shrink_0,
           {maxWidth: '70%'},
+          web({direction: 'ltr', unicodeBidi: 'isolate'}),
         ]}
         numberOfLines={1}>
         {forceLTR(name)}
@@ -492,16 +491,21 @@ export function FollowButtonInner({
   const onPressFollow = async (e: GestureResponderEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    const displayNameOrHandle = profile.displayName || profile.handle
     try {
       await queueFollow()
       Toast.show(
         l`Following ${sanitizeDisplayName(
-          profile.displayName || profile.handle,
+          displayNameOrHandle,
           moderation.ui('displayName'),
         )}`,
       )
-      onPressProp?.(e)
-      onFollow?.()
+      if (onPressProp) {
+        onPressProp(e)
+      }
+      if (onFollow) {
+        onFollow()
+      }
     } catch (e) {
       const err = e as Error
       if (err?.name !== 'AbortError') {
@@ -515,15 +519,18 @@ export function FollowButtonInner({
   const onPressUnfollow = async (e: GestureResponderEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    const displayNameOrHandle = profile.displayName || profile.handle
     try {
       await queueUnfollow()
       Toast.show(
         l`No longer following ${sanitizeDisplayName(
-          profile.displayName || profile.handle,
+          displayNameOrHandle,
           moderation.ui('displayName'),
         )}`,
       )
-      onPressProp?.(e)
+      if (onPressProp) {
+        onPressProp(e)
+      }
     } catch (e) {
       const err = e as Error
       if (err?.name !== 'AbortError') {
@@ -599,7 +606,7 @@ export function FollowButtonPlaceholder({style}: ViewStyleProp) {
   return (
     <View
       style={[
-        a.rounded_sm,
+        a.rounded_full,
         t.atoms.bg_contrast_50,
         a.w_full,
         {
@@ -621,8 +628,9 @@ export function Labels({
   const moderation = moderateProfile(profile, moderationOpts)
   const modui = moderation.ui('profileList')
   const followedBy = profile.viewer?.followedBy
+  const mutedOnlyReposts = profile.viewer?.mutedOnlyReposts
 
-  if (!followedBy && !modui.inform && !modui.alert) {
+  if (!followedBy && !mutedOnlyReposts && !modui.inform && !modui.alert) {
     return null
   }
 
@@ -635,6 +643,7 @@ export function Labels({
       {modui.informs.map(inform => (
         <Pills.Label key={getModerationCauseKey(inform)} cause={inform} />
       ))}
+      {mutedOnlyReposts && <Pills.MutedOnlyReposts />}
     </Pills.Row>
   )
 }

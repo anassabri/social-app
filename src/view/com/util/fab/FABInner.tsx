@@ -1,5 +1,6 @@
 import {type ComponentProps, type JSX} from 'react'
 import {
+  type GestureResponderEvent,
   type Pressable,
   type StyleProp,
   StyleSheet,
@@ -49,7 +50,7 @@ export function FABInner({testID, icon, onPress, style, ...props}: FABProps) {
           onPress?.(evt)
           playHaptic('Light')
         }}
-        onLongPress={ios((evt: any) => {
+        onLongPress={ios((evt: GestureResponderEvent) => {
           onPress?.(evt)
           playHaptic('Heavy')
         })}
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   outer: {
-    // @ts-ignore web-only
+    // @ts-expect-error web-only
     position: IS_WEB ? 'fixed' : 'absolute',
     zIndex: 1,
     cursor: 'pointer',

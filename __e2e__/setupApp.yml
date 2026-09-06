@@ -3,30 +3,22 @@ appId: xyz.blueskyweb.app
 - launchApp:
     appId: "xyz.blueskyweb.app"
     clearState: true
-    arguments:
-      "-EXDevMenuIsOnboardingFinished": true
-- runFlow:
-    when:
-      platform: iOS
+- extendedWaitUntil:
+    visible:
+      id: e2eProxyHeaderInput
+    timeout: 180000
+- extendedWaitUntil:
+    visible: "Sign in"
+    timeout: 180000
+- retry:
+    maxRetries: 3
     commands:
-      - openLink: "exp+bluesky://expo-development-client/?url=http%3A%2F%2Flocalhost%3A8081"
-      - runFlow:
-          when:
-            visible: 'Open in "Bluesky"'
-          commands:
-            - tapOn: Open
-- runFlow:
-    when:
-      platform: Android
-    commands:
-      - tapOn: 'http://localhost:8081'
-      - runFlow:
-          label: "Dismiss Expo dev menu"
-          when:
-            visible: "Continue"
-          commands:
-            - back
-- tapOn:
-    id: e2eProxyHeaderInput
-- inputText: ${output.result}
-- pressKey: Enter
+      - tapOn:
+          id: e2eProxyHeaderInput
+      - eraseText
+      - inputText: ${output.result}
+      - pressKey: Enter
+      - extendedWaitUntil:
+          visible:
+            id: e2eSignInAlice
+          timeout: 10000

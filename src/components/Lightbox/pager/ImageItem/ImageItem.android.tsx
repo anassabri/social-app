@@ -7,7 +7,7 @@ import {
 } from 'react-native-gesture-handler'
 import Animated, {
   type AnimatableValue,
-  runOnJS,
+  Reanimated3DefaultSpringConfig,
   type SharedValue,
   useAnimatedReaction,
   useAnimatedRef,
@@ -15,6 +15,7 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated'
+import {scheduleOnRN} from 'react-native-worklets'
 import {Image} from 'expo-image'
 
 import {
@@ -78,6 +79,11 @@ const ImageItem = ({
 
   // Keep track of when we're entering or leaving scaled rendering.
   // Note: DO NOT move any logic reading animated values outside this function.
+  function handleZoom(nextIsScaled: boolean) {
+    setIsScaled(nextIsScaled)
+    onZoom(nextIsScaled)
+  }
+
   useAnimatedReaction(
     () => {
       if (pinchScale.get() !== 1) {
@@ -94,15 +100,10 @@ const ImageItem = ({
     },
     (nextIsScaled, prevIsScaled) => {
       if (nextIsScaled !== prevIsScaled) {
-        runOnJS(handleZoom)(nextIsScaled)
+        scheduleOnRN(handleZoom, nextIsScaled)
       }
     },
   )
-
-  function handleZoom(nextIsScaled: boolean) {
-    setIsScaled(nextIsScaled)
-    onZoom(nextIsScaled)
-  }
 
   // On Android, stock apps prevent going "out of bounds" on pan or pinch. You should "bump" into edges.
   // If the user tried to pan too hard, this function will provide the negative panning to stay in bounds.
@@ -244,7 +245,7 @@ const ImageItem = ({
 
   const singleTap = Gesture.Tap().onEnd(() => {
     'worklet'
-    runOnJS(onTap)()
+    scheduleOnRN(onTap)
   })
 
   const doubleTap = Gesture.Tap()
@@ -358,9 +359,9 @@ const ImageItem = ({
     },
     (show, prevShow) => {
       if (!prevShow && show) {
-        runOnJS(setShowLoader)(true)
+        scheduleOnRN(setShowLoader, true)
       } else if (prevShow && !show) {
-        runOnJS(setShowLoader)(false)
+        scheduleOnRN(setShowLoader, false)
       }
     },
   )
@@ -463,7 +464,10 @@ function clampTranslation(
 
 function withClampedSpring<T extends AnimatableValue>(value: T): T {
   'worklet'
-  return withSpring(value, {overshootClamping: true})
+  return withSpring(value, {
+    ...Reanimated3DefaultSpringConfig,
+    overshootClamping: true,
+  })
 }
 
 export default memo(ImageItem)

@@ -1,12 +1,8 @@
 import {useCallback, useMemo, useRef, useState} from 'react'
 import {View} from 'react-native'
 import {useAnimatedRef} from 'react-native-reanimated'
-import {
-  AppBskyGraphDefs,
-  AtUri,
-  moderateUserList,
-  type ModerationOpts,
-} from '@atproto/api'
+import {AtUri} from '@atproto/syntax'
+import {moderateUserList, type ModerationOpts} from '@bsky/sdk/moderation'
 import {msg} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
 import {Trans} from '@lingui/react/macro'
@@ -15,7 +11,6 @@ import {useQueryClient} from '@tanstack/react-query'
 
 import {useOpenComposer} from '#/lib/hooks/useOpenComposer'
 import {useSetTitle} from '#/lib/hooks/useSetTitle'
-import {ComposeIcon2} from '#/lib/icons'
 import {
   type CommonNavigatorParams,
   type NativeStackScreenProps,
@@ -38,10 +33,12 @@ import {ListHiddenScreen} from '#/screens/List/ListHiddenScreen'
 import {atoms as a, native, platform, useTheme} from '#/alf'
 import {useDialogControl} from '#/components/Dialog'
 import {ListAddRemoveUsersDialog} from '#/components/dialogs/lists/ListAddRemoveUsersDialog'
+import {EditBig_Stroke2_Corner2_Rounded as EditBigIcon} from '#/components/icons/EditBig'
 import * as Layout from '#/components/Layout'
 import {Loader} from '#/components/Loader'
 import * as Hider from '#/components/moderation/Hider'
 import {IS_WEB} from '#/env'
+import {app} from '#/lexicons'
 import {AboutSection} from './AboutSection'
 import {ErrorScreen} from './components/ErrorScreen'
 import {Header} from './components/Header'
@@ -146,7 +143,7 @@ function ProfileListScreenLoaded({
   preferences,
 }: Props & {
   uri: string
-  list: AppBskyGraphDefs.ListView
+  list: app.bsky.graph.defs.ListView
   moderationOpts: ModerationOpts
   preferences: UsePreferencesQueryResponse
 }) {
@@ -158,7 +155,7 @@ function ProfileListScreenLoaded({
   const {rkey} = route.params
   const feedSectionRef = useRef<SectionRef>(null)
   const aboutSectionRef = useRef<SectionRef>(null)
-  const isCurateList = list.purpose === AppBskyGraphDefs.CURATELIST
+  const isCurateList = list.purpose === app.bsky.graph.defs.curatelist.value
   const isScreenFocused = useIsFocused()
   const isHidden = list.labels?.findIndex(l => l.val === '!hide') !== -1
   const isOwner = currentAccount?.did === list.creator.did
@@ -232,13 +229,7 @@ function ProfileListScreenLoaded({
             <FAB
               testID="composeFAB"
               onPress={() => openComposer({logContext: 'Fab'})}
-              icon={
-                <ComposeIcon2
-                  strokeWidth={1.5}
-                  size={29}
-                  style={{color: 'white'}}
-                />
-              }
+              icon={<EditBigIcon size="lg" fill={t.palette.white} />}
               accessibilityRole="button"
               accessibilityLabel={_(msg`New post`)}
               accessibilityHint=""
@@ -281,13 +272,7 @@ function ProfileListScreenLoaded({
           <FAB
             testID="composeFAB"
             onPress={() => openComposer({logContext: 'Fab'})}
-            icon={
-              <ComposeIcon2
-                strokeWidth={1.5}
-                size={29}
-                style={{color: 'white'}}
-              />
-            }
+            icon={<EditBigIcon size="lg" fill={t.palette.white} />}
             accessibilityRole="button"
             accessibilityLabel={_(msg`New post`)}
             accessibilityHint=""

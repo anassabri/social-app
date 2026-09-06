@@ -1,6 +1,5 @@
 import {useMemo, useState} from 'react'
 import {useWindowDimensions, View} from 'react-native'
-import {type ChatBskyConvoDefs} from '@atproto/api'
 import {msg} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
 
@@ -11,12 +10,10 @@ import {
   useContextMenuContext,
   useContextMenuMenuContext,
 } from '#/components/ContextMenu/context'
-import {
-  EmojiHeartEyes_Stroke2_Corner0_Rounded as EmojiHeartEyesIcon,
-  EmojiSmile_Stroke2_Corner0_Rounded as EmojiSmileIcon,
-} from '#/components/icons/Emoji'
+import {PlusLarge_Stroke2_Corner0_Rounded as PlusIcon} from '#/components/icons/Plus'
 import {type TriggerProps} from '#/components/Menu/types'
 import {Text} from '#/components/Typography'
+import {type chat} from '#/lexicons'
 import {EmojiPopup} from './EmojiPopup'
 import {hasAlreadyReacted, hasReachedReactionLimit} from './util'
 
@@ -24,7 +21,7 @@ export function EmojiReactionPicker({
   message,
   onEmojiSelect,
 }: {
-  message: ChatBskyConvoDefs.MessageView
+  message: chat.bsky.convo.defs.MessageView
   children?: TriggerProps['children']
   onEmojiSelect: (emoji: string) => void
 }) {
@@ -36,11 +33,6 @@ export function EmojiReactionPicker({
   const {align, xOffset} = useContextMenuMenuContext()
   const [layout, setLayout] = useState({width: 0, height: 0})
   const {width: screenWidth} = useWindowDimensions()
-
-  // 1 in 100 chance of showing heart eyes icon
-  const EmojiIcon = useMemo(() => {
-    return Math.random() < 0.01 ? EmojiHeartEyesIcon : EmojiSmileIcon
-  }, [])
 
   const position = useMemo(() => {
     return {
@@ -76,7 +68,7 @@ export function EmojiReactionPicker({
         t.atoms.border_contrast_low,
         a.shadow_md,
       ]}>
-      {['👍', '😆', '❤️', '👀', '😢'].map(emoji => {
+      {['❤️', '👍', '😆', '👀', '😢'].map(emoji => {
         const alreadyReacted = hasAlreadyReacted(
           message,
           currentAccount?.did,
@@ -123,16 +115,12 @@ export function EmojiReactionPicker({
         <View
           style={[
             a.rounded_full,
-            t.scheme === 'light'
-              ? t.atoms.bg_contrast_25
-              : t.atoms.bg_contrast_50,
+            t.atoms.bg_contrast_50,
             {height: 40, width: 40},
             a.justify_center,
             a.align_center,
-            a.border,
-            t.atoms.border_contrast_low,
           ]}>
-          <EmojiIcon size="xl" fill={t.palette.contrast_400} />
+          <PlusIcon size="md" fill={t.palette.contrast_1000} />
         </View>
       </EmojiPopup>
     </View>

@@ -9,6 +9,7 @@ import {useNavigation, useNavigationState} from '@react-navigation/native'
 import {useDedupe} from '#/lib/hooks/useDedupe'
 import {useIntentHandler} from '#/lib/hooks/useIntentHandler'
 import {useNotificationsHandler} from '#/lib/hooks/useNotificationHandler'
+import {useOTAUpdateRecovery} from '#/lib/hooks/useOTAUpdates'
 import {useNotificationsRegistration} from '#/lib/notifications/notifications'
 import {isStateAtTabRoot} from '#/lib/routes/helpers'
 import {useDialogFullyExpandedCountContext} from '#/state/dialogs'
@@ -19,7 +20,6 @@ import {
   useSetDrawerOpen,
 } from '#/state/shell'
 import {useCloseAnyActiveElement} from '#/state/util'
-import {ModalsContainer} from '#/view/com/modals/Modal'
 import {ErrorBoundary} from '#/view/com/util/ErrorBoundary'
 import {Deactivated} from '#/screens/Deactivated'
 import {Takendown} from '#/screens/Takendown'
@@ -40,6 +40,7 @@ import {
 } from '#/components/PolicyUpdateOverlay'
 import {Outlet as PortalOutlet} from '#/components/Portal'
 import {useAgeAssurance} from '#/ageAssurance'
+import {DataUnavailableScreen} from '#/ageAssurance/components/DataUnavailableScreen'
 import {NoAccessScreen} from '#/ageAssurance/components/NoAccessScreen'
 import {RedirectOverlay} from '#/ageAssurance/components/RedirectOverlay'
 import {PassiveAnalytics} from '#/analytics/PassiveAnalytics'
@@ -51,7 +52,6 @@ import {Composer} from './Composer'
 import {DrawerContent} from './Drawer'
 
 function ShellInner() {
-  const winDim = useWindowDimensions()
   const insets = useSafeAreaInsets()
   const {state: policyUpdateState} = usePolicyUpdateContext()
 
@@ -108,9 +108,7 @@ function ShellInner() {
           <TabsNavigator layout={drawerLayout} />
         </ErrorBoundary>
       </View>
-
-      <Composer winHeight={winDim.height} />
-      <ModalsContainer />
+      <Composer />
       <MutedWordsDialog />
       <SigninDialog />
       <EmailDialog />
@@ -174,8 +172,15 @@ function DrawerLayout({children}: {children: React.ReactNode}) {
                 // so fail the drawer gesture immediately.
                 .failOffsetX(-1)
                 // Don't rush declaring that a movement to the right
-                // is a drawer swipe. It could be a vertical scroll.
-                .activeOffsetX(5)
+                // is a drawer swipe. It could be a vertical scroll, or a
+                // slow horizontal carousel swipe. On Android a child
+                // `blocksExternalGesture` only holds the drawer off once the
+                // native scroll has activated, which on a slow swipe doesn't
+                // happen until movement crosses the native touch slop
+                // (~8-16px). Activating the drawer below that lets a slow
+                // carousel swipe pop the drawer open (APP-2119), so require
+                // more travel before claiming on Android.
+                .activeOffsetX(IS_ANDROID ? 20 : 5)
             )
           }
         } else {
@@ -213,6 +218,7 @@ export function Shell() {
   const fullyExpandedCount = useDialogFullyExpandedCountContext()
 
   useIntentHandler()
+  useOTAUpdateRecovery()
 
   useEffect(() => {
     setSystemUITheme('theme', t)
@@ -221,6 +227,10 @@ export function Shell() {
   return (
     <View testID="mobileShellView" style={[a.h_full, t.atoms.bg]}>
       <SystemBars
+        hidden={{
+          statusBar: false,
+          navigationBar: false,
+        }}
         style={{
           statusBar:
             t.name !== 'light' ||
@@ -236,7 +246,9 @@ export function Shell() {
         <Deactivated />
       ) : (
         <>
-          {aa.state.access === aa.Access.None ? (
+          {aa.state.error === 'account-data' ? (
+            <DataUnavailableScreen />
+          ) : aa.state.access === aa.Access.None ? (
             <NoAccessScreen />
           ) : (
             <RoutesContainer>

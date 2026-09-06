@@ -60,6 +60,7 @@ export type DialogControlOpenOptions = {
 
 export type DialogOuterProps = {
   control: DialogControlProps
+  onOpen?: () => void
   onClose?: () => void
   nativeOptions?: Omit<BottomSheetViewProps, 'children'>
   webOptions?: {
@@ -79,14 +80,18 @@ export type DialogInnerProps =
       accessibilityLabelledBy: A11yProps['aria-labelledby']
       accessibilityDescribedBy: string
       keyboardDismissMode?: ScrollViewProps['keyboardDismissMode']
+      showsVerticalScrollIndicator?: ScrollViewProps['showsVerticalScrollIndicator']
       contentContainerStyle?: StyleProp<ViewStyle>
       header?: React.ReactNode
+      footer?: React.ReactNode
     }>
   | DialogInnerPropsBase<{
       label: string
       accessibilityLabelledBy?: undefined
       accessibilityDescribedBy?: undefined
       keyboardDismissMode?: ScrollViewProps['keyboardDismissMode']
+      showsVerticalScrollIndicator?: ScrollViewProps['showsVerticalScrollIndicator']
       contentContainerStyle?: StyleProp<ViewStyle>
       header?: React.ReactNode
+      footer?: React.ReactNode
     }>

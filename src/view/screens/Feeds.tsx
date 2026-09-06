@@ -1,6 +1,5 @@
 import {useCallback, useMemo, useRef, useState} from 'react'
 import {ActivityIndicator, StyleSheet, View} from 'react-native'
-import {type AppBskyFeedDefs} from '@atproto/api'
 import {msg} from '@lingui/core/macro'
 import {useLingui} from '@lingui/react'
 import {Trans} from '@lingui/react/macro'
@@ -9,7 +8,6 @@ import debounce from 'lodash.debounce'
 import {useOpenComposer} from '#/lib/hooks/useOpenComposer'
 import {usePalette} from '#/lib/hooks/usePalette'
 import {useWebMediaQueries} from '#/lib/hooks/useWebMediaQueries'
-import {ComposeIcon2} from '#/lib/icons'
 import {
   type CommonNavigatorParams,
   type NativeStackScreenProps,
@@ -37,6 +35,7 @@ import * as FeedCard from '#/components/FeedCard'
 import {SearchInput} from '#/components/forms/SearchInput'
 import {IconCircle} from '#/components/IconCircle'
 import {ChevronRight_Stroke2_Corner0_Rounded as ChevronRight} from '#/components/icons/Chevron'
+import {EditBig_Stroke2_Corner2_Rounded as EditBigIcon} from '#/components/icons/EditBig'
 import {FilterTimeline_Stroke2_Corner0_Rounded as FilterTimeline} from '#/components/icons/FilterTimeline'
 import {ListMagnifyingGlass_Stroke2_Corner0_Rounded} from '#/components/icons/ListMagnifyingGlass'
 import {ListSparkle_Stroke2_Corner0_Rounded} from '#/components/icons/ListSparkle'
@@ -45,6 +44,7 @@ import * as Layout from '#/components/Layout'
 import {Link} from '#/components/Link'
 import * as ListCard from '#/components/ListCard'
 import {IS_NATIVE, IS_WEB} from '#/env'
+import {type app} from '#/lexicons'
 
 type Props = NativeStackScreenProps<CommonNavigatorParams, 'Feeds'>
 
@@ -91,7 +91,7 @@ type FlatlistSlice =
       type: 'popularFeed'
       key: string
       feedUri: string
-      feed: AppBskyFeedDefs.GeneratorView
+      feed: app.bsky.feed.defs.GeneratorView
     }
   | {
       type: 'popularFeedsLoadingMore'
@@ -104,6 +104,7 @@ type FlatlistSlice =
 
 export function FeedsScreen(_props: Props) {
   const pal = usePalette('default')
+  const t = useTheme()
   const {openComposer} = useOpenComposer()
   const {isMobile} = useWebMediaQueries()
   const [query, setQuery] = useState('')
@@ -539,7 +540,7 @@ export function FeedsScreen(_props: Props) {
         <FAB
           testID="composeFAB"
           onPress={onPressCompose}
-          icon={<ComposeIcon2 strokeWidth={1.5} size={29} style={s.white} />}
+          icon={<EditBigIcon size="lg" fill={t.palette.white} />}
           accessibilityRole="button"
           accessibilityLabel={_(msg`New post`)}
           accessibilityHint=""
