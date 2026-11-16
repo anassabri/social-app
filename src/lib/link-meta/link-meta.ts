@@ -21,6 +21,7 @@ export interface LinkMeta {
   title?: string
   description?: string
   image?: string
+  author?: string
   /**
    * The AT-URI of the Atmosphere record representing this external content, if
    * it exists. Example: a site.standard.document record.
@@ -29,9 +30,23 @@ export interface LinkMeta {
   view?: app.bsky.embed.external.View
 }
 
+type CardybLinkMetaResponse = {
+  error: string
+  url: string
+  title?: string
+  description?: string
+  image?: string
+  author?: string
+  associated_refs?: LinkMeta['associatedRefs']
+  view?: LinkMeta['view']
+  external_view?: LinkMeta['view']
+}
+
 export async function getLinkMeta(
   url: string,
   timeout = 15e3,
+  /** Called only when starting a metadata request for an external HTTP(S) URL. */
+  onFetchStart?: () => void,
 ): Promise<LinkMeta> {
   if (isBskyAppUrl(url) && !parseStarterPackUri(url)) {
     return {
@@ -70,16 +85,23 @@ export async function getLinkMeta(
     return meta
   }
 
+  const isExternalUrl =
+    (urlp.protocol === 'https:' || urlp.protocol === 'http:') &&
+    urlp.hostname !== 'bsky.app' &&
+    !urlp.hostname.endsWith('.bsky.app')
   const controller = new AbortController()
   const to = setTimeout(() => controller.abort(), timeout || 5e3)
 
   try {
+    if (isExternalUrl) {
+      onFetchStart?.()
+    }
     const response = await fetch(
       `${LINK_META_PROXY('')}${encodeURIComponent(url)}`,
       {signal: controller.signal},
     )
 
-    const body = await response.json()
+    const body = (await response.json()) as CardybLinkMetaResponse
 
     if (body.error !== '') {
       throw new Error(body.error)
@@ -87,6 +109,7 @@ export async function getLinkMeta(
 
     meta.description = body.description
     meta.image = body.image
+    meta.author = body.author
     meta.title = body.title
     meta.associatedRefs = body.associated_refs
     meta.view = body.view || body.external_view

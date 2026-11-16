@@ -101,6 +101,7 @@ stats.json
 # environment variables
 .env
 .env.*
+!/.env.e2e
 
 # Firebase (Android) Google services
 google-services.json
@@ -143,3 +144,5 @@ docs/superpowers/
 
 # pnpm
 .pnpm-store/
+
+.argent

@@ -69,6 +69,7 @@ import * as bsky from '#/types/bsky'
 import {ChatStatusInfo} from './ChatStatusInfo'
 import {groupSystemMessages, type RenderItem} from './groupSystemMessages'
 import {InviteLinkDialogProvider} from './InviteLinkDialogProvider'
+import {getMessageComposerKeyboardOffsets} from './messageComposerLayout'
 import {
   type MessageEmbedState,
   MessageInputEmbed,
@@ -513,6 +514,8 @@ export function MessagesList({
   // -- Keyboard animation handling
 
   const {bottom: bottomInset} = useSafeAreaInsets()
+  const {stickyViewClosedOffset} =
+    getMessageComposerKeyboardOffsets(bottomInset)
 
   // -- Message sending
   const onSendMessage = useCallback(
@@ -537,6 +540,13 @@ export function MessagesList({
         | $Typed<chat.bsky.embed.joinLink.View>
         | undefined
       let replyTo: chat.bsky.convo.defs.ReplyRef | undefined
+      let sharedPost:
+        | {
+            uri: string
+            authorDid: string
+            source?: 'recentChat' | 'chatSearch'
+          }
+        | undefined
 
       /**
        * Find the embedded link facet and, if it's at the start or end of the
@@ -576,6 +586,14 @@ export function MessagesList({
             embedView = {
               $type: 'app.bsky.embed.record#view',
               record: createEmbedViewRecordFromPost(post),
+            }
+
+            if (embedState.fromShareMenu) {
+              sharedPost = {
+                uri: post.uri,
+                authorDid: post.author.did,
+                source: embedState.shareSource,
+              }
             }
 
             stripLinkFacet(uri => {
@@ -641,6 +659,13 @@ export function MessagesList({
         reply,
       )
 
+      if (sharedPost) {
+        ax.metric('share:dm:send', {
+          ...sharedPost,
+          convoId: convoState.convo.view.id,
+          isGroup: convoState.convo.kind === 'group',
+        })
+      }
       if (replyTo) {
         ax.metric('chat:message:reply:send', {
           convoId: convoState.convo.view.id,
@@ -846,7 +871,7 @@ export function MessagesList({
               minimumOffset={IS_WEB ? 0 : bottomInset}
               offset={{
                 closed: platform({
-                  ios: tokens.space.lg, // hide bottom padding when closed
+                  ios: stickyViewClosedOffset,
                   default: 0,
                 }),
                 opened: 0,
@@ -936,15 +961,16 @@ function ChatScrollComponent({
 }) {
   const scrollEdgeRef = useScrollEdgeEffectRef()
   const {bottom: bottomInset} = useSafeAreaInsets()
+  const {chatScrollOffset} = getMessageComposerKeyboardOffsets(bottomInset)
 
   const offset = platform({
-    ios: bottomInset - tokens.space.lg,
+    ios: chatScrollOffset,
     android: bottomInset,
     default: 0,
   })
 
   const inputOffset = platform({
-    ios: bottomInset - tokens.space.lg,
+    ios: chatScrollOffset,
     android: bottomInset,
     default: 0,
   })
