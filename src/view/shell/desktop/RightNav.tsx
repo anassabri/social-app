@@ -7,8 +7,8 @@ import {useNavigation} from '@react-navigation/native'
 
 import {FEEDBACK_FORM_URL, HELP_DESK_URL} from '#/lib/constants'
 import {useSession} from '#/state/session'
-import {useLogoVariant} from '#/view/icons/useLogoVariant'
 import {PressableWithHover} from '#/view/com/util/PressableWithHover'
+import {useLogoVariant} from '#/view/icons/useLogoVariant'
 import {DesktopFeeds} from '#/view/shell/desktop/Feeds'
 import {DesktopSearch} from '#/view/shell/desktop/Search'
 import {SidebarTrendingTopics} from '#/view/shell/desktop/SidebarTrendingTopics'
@@ -20,9 +20,7 @@ import {
   web,
 } from '#/alf'
 import {AppLanguageDropdown} from '#/components/AppLanguageDropdown'
-import {
-  HomeOpen_Stoke2_Corner0_Rounded as Home,
-} from '#/components/icons/HomeOpen'
+import {HomeOpen_Stoke2_Corner0_Rounded as Home} from '#/components/icons/HomeOpen'
 import {CENTER_COLUMN_OFFSET} from '#/components/Layout'
 import {InlineLinkText} from '#/components/Link'
 import {ProgressGuideList} from '#/components/ProgressGuide/List'
@@ -81,11 +79,7 @@ function ParentDomainHomeButton() {
             height: 24,
           },
         ]}>
-        <Home
-          aria-hidden={true}
-          width={28}
-          style={t.atoms.text}
-        />
+        <Home aria-hidden={true} width={28} style={t.atoms.text} />
       </View>
       <Text style={[a.text_xl, a.font_normal]}>Home</Text>
     </PressableWithHover>
