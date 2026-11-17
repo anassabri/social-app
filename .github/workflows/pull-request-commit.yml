@@ -147,8 +147,10 @@ jobs:
         env:
           BASE_COMMIT: ${{ steps.base-commit.outputs.base-commit }}
         run: |
-          git reset "$BASE_COMMIT"
-          git restore .
+          # Hard reset so files the PR added are removed too. A mixed reset plus
+          # restore leaves them behind as untracked files, and the base build
+          # then runs codegen against the PR's new lexicons.
+          git reset --hard "$BASE_COMMIT"
           # Measure both builds with the PR's script, even when the base
           # predates support for gzip measurements.
           cp "$RUNNER_TEMP/measure-web-bundle.js" scripts/measure-web-bundle.js
@@ -348,17 +350,17 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: 🛠️ Setup Expo project
-        uses: ./.github/actions/setup-expo-project
+        uses: $/.github/actions/setup-expo-project
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
           eas-version: '25.3.0'
 
       - name: 🔤 Compile translations
-        uses: ./.github/actions/compile-i18n
+        uses: $/.github/actions/compile-i18n
 
       - name: ✏️ Write environment variables
         id: env
-        uses: ./.github/actions/write-env
+        uses: $/.github/actions/write-env
         with:
           env-token: ${{ secrets.ENV_TOKEN }}
           sentry-dsn: ${{ secrets.SENTRY_DSN }}
@@ -403,7 +405,7 @@ jobs:
             }
 
       - name: ⬇️ Setup denis CLI
-        uses: ./.github/actions/setup-denis
+        uses: $/.github/actions/setup-denis
         with:
           release-tag: ${{ env.DENIS_RELEASE_TAG }}
           app-id: ${{ vars.SYNC_INTERNAL_APP_ID }}
