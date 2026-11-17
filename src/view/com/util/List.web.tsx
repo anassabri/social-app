@@ -65,10 +65,10 @@ export type ListProps<ItemT = any> = Omit<
 }
 export type ListRef = React.RefObject<ListMethods | null>
 
-const ON_ITEM_SEEN_WAIT_DURATION = 0.5e3 // when we consider post to  be "seen"
+const ON_ITEM_SEEN_WAIT_DURATION = 0.5e3 // when we consider post to be "seen"
 const ON_ITEM_SEEN_INTERSECTION_OPTS = {
-  rootMargin: '-200px 0px -200px 0px',
-} // post must be 200px visible to be "seen"
+  rootMargin: '0px 0px -200px 0px',
+}
 
 const PAGE_STARTED_AT = Date.now()
 const LARGE_LIST_MILESTONES = [100, 250, 500, 1000] as const
@@ -713,7 +713,10 @@ let Row = function RowImpl<ItemT>({
   }
 
   return (
-    <View ref={rowRef}>
+    <View
+      ref={rowRef}
+      // @ts-expect-error web only, for the tooltip rule in style.css
+      dataSet={{listRow: ''}}>
       {renderItem({
         item,
         index,

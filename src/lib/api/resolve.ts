@@ -3,6 +3,7 @@ import {AtUri, type AtUriString, type HandleString} from '@atproto/syntax'
 
 import {IMAGE_SIZE_CONFIG_2K_1MB} from '#/lib/constants'
 import {getLinkMeta, type LinkMeta} from '#/lib/link-meta/link-meta'
+import {createLinkPreviewTelemetry} from '#/lib/link-meta/linkPreviewTelemetry'
 import {resolveShortLink} from '#/lib/link-meta/resolve-short-link'
 import {downloadAndResize} from '#/lib/media/manip'
 import {
@@ -33,6 +34,7 @@ type ResolvedExternalLink = {
   title: string
   description: string
   thumb: ComposerImage | undefined
+  authorDid?: string
   /**
    * The AT-URI of the Atmosphere record representing this external content, if
    * it exists. Example: a site.standard.document record.
@@ -272,20 +274,55 @@ function getFileSlug(url: string | undefined): string | undefined {
   return dotIndex > 0 ? filename.slice(0, dotIndex) : undefined
 }
 
+function getAuthorDid(author: string | undefined): string | undefined {
+  if (!author) return
+
+  try {
+    const uri = new AtUri(author)
+    if (!uri.host.startsWith('did:') || uri.collection || uri.rkey) return
+    return uri.host
+  } catch {
+    return
+  }
+}
+
 async function resolveExternal(uri: string): Promise<ResolvedExternalLink> {
-  const result = await getLinkMeta(uri)
-  return {
-    type: 'external',
-    uri: result.url,
-    title: result.title ?? '',
-    description: result.description ?? '',
-    thumb: result.image ? await imageToThumb(result.image) : undefined,
-    /*
-     * New fields from Standard Site integration. Other fields are derived from
-     * opengraph/oembed as before.
-     */
-    associatedRefs: result.associatedRefs,
-    view: result.view,
+  let telemetry: ReturnType<typeof createLinkPreviewTelemetry> | undefined
+  try {
+    const result = await getLinkMeta(uri, undefined, () => {
+      telemetry = createLinkPreviewTelemetry()
+      telemetry.startMetadata()
+    })
+    telemetry?.finishMetadata(Boolean(result.image))
+    if (result.image) {
+      telemetry?.startThumbnail()
+    }
+    const thumb = result.image ? await imageToThumb(result.image) : undefined
+    telemetry?.finish(
+      result.error
+        ? 'metadata_error'
+        : !result.image
+          ? 'no_image'
+          : thumb
+            ? 'success'
+            : 'thumbnail_error',
+    )
+    return {
+      type: 'external',
+      uri: result.url,
+      title: result.title ?? '',
+      description: result.description ?? '',
+      thumb,
+      authorDid: getAuthorDid(result.author),
+      /*
+       * New fields from Standard Site integration. Other fields are derived from
+       * opengraph/oembed as before.
+       */
+      associatedRefs: result.associatedRefs,
+      view: result.view,
+    }
+  } finally {
+    telemetry?.finish('error')
   }
 }
 

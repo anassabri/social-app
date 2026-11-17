@@ -63,6 +63,8 @@ export function BetaFeaturesSettingsScreen({}: Props) {
     }
   }, [i18n])
 
+  const feedbackFeatureKeys = betaFeatures.map(feature => feature.key)
+
   const onChange = async (next: boolean) => {
     try {
       setIsPending(true)
@@ -100,7 +102,7 @@ export function BetaFeaturesSettingsScreen({}: Props) {
 
   const onPressShareFeedback = () => {
     ax.metric('betaFeatures:feedback:open', {
-      betaFeatureKeys: betaFeatures.map(feature => feature.key),
+      betaFeatureKeys: feedbackFeatureKeys,
     })
     feedbackControl.open()
   }
@@ -151,12 +153,12 @@ export function BetaFeaturesSettingsScreen({}: Props) {
               {IS_WEB
                 ? l({
                     message:
-                      'Beta features may be unstable. Some changes may require reloading the app.',
+                      'Beta features may be unstable. Some changes may require reloading the app. Some beta features may not work properly with ad blockers or VPNs enabled.',
                     context: 'web',
                   })
                 : l({
                     message:
-                      'Beta features may be unstable. Some changes may require restarting the app.',
+                      'Beta features may be unstable. Some changes may require restarting the app. Some beta features may not work properly with ad blockers or VPNs enabled.',
                     context: 'native',
                   })}
             </Admonition>
@@ -233,7 +235,7 @@ export function BetaFeaturesSettingsScreen({}: Props) {
 
       <BetaFeaturesFeedbackDialog
         control={feedbackControl}
-        betaFeatureKeys={betaFeatures.map(feature => feature.key)}
+        betaFeatures={betaFeatures}
       />
     </Layout.Screen>
   )

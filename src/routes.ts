@@ -9,6 +9,8 @@ type AllNavigatableRoutes = Omit<
 export const router = new Router<AllNavigatableRoutes>({
   Home: ['/', '/download'],
   Search: '/search',
+  Atmosphere: '/atmosphere',
+  AtmosphereActivityList: '/atmosphere/activity',
   Feeds: '/feeds',
   Notifications: '/notifications',
   NotificationsActivityList: '/notifications/activity',
@@ -19,8 +21,9 @@ export const router = new Router<AllNavigatableRoutes>({
   Moderation: '/moderation',
   ModerationInbox: '/moderation/inbox',
   ModerationInboxSettings: '/moderation/inbox/settings',
-  ModerationInboxReportDetails: '/moderation/inbox/report/details',
-  ModerationInboxSubjectDetails: '/moderation/inbox/subject/details',
+  ModerationInboxReportDetails:
+    '/moderation/inbox/report/:moderationService/:id',
+  ModerationInboxNoticeDetails: '/moderation/inbox/notice/details',
   ModerationModlists: '/moderation/modlists',
   ModerationMutedAccounts: '/moderation/muted-accounts',
   ModerationBlockedAccounts: '/moderation/blocked-accounts',
